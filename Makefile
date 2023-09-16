@@ -2,7 +2,7 @@ NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I ./gnl -I ./libft
-SRCS = ./source/cub3d.c ./source/main.c
+SRCS = ./source/cub3d.c ./source/main.c ./source/error_handling/input_check.c
 LIBFT = ./libft/libft.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./libft/

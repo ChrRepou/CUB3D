@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/14 17:31:29 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/16 12:09:51 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../gnl/get_next_line.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "cub3d_errors.h"
 
 # define WIDTH 1024
 # define HEIGHT 1024
