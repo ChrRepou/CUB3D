@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 11:25:59 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:24:17 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "cub3d_errors.h"
+# include "utils.h"
+# include "cub3d_parsing.h"
 
 # define WIDTH 1024
 # define HEIGHT 1024
+# define TRUE 1
+# define FALSE 0
 
-char	*so_long(int fd);
+char	*cub3d(int fd);
 
 typedef struct cub3d_color
 {
@@ -50,7 +54,6 @@ typedef struct cub3d_player_info
 	t_orientation	orientation;
 }				t_player_info;
 
-
 typedef struct cub3d_info
 {
 	char	*north_texture;
@@ -62,5 +65,8 @@ typedef struct cub3d_info
 }				t_info;
 
 // map will be represented as a 2d array [][]
+
+/************************* parse.c ************************/
+int		save_information(t_info *map_info, char *line);
 
 #endif

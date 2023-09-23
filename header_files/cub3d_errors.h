@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:04:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/16 12:49:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/23 13:51:00 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,10 @@ int	check_number_of_arguments(int argc);
 int	check_if_file_exists(int fd, const char *filename);
 int	get_file_descriptor(const char *filename);
 int	is_input_valid(int argc, char *argv[]);
+
+/************** file_check.c ***************/
+int	read_file(int fd);
+int	is_empty_file(char **line, int fd);
+int	is_info(char *line);
 
 #endif

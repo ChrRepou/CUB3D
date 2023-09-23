@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 14:15:32 by crepou           ###   ########.fr       */
+/*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
+/*   Updated: 2023/09/23 18:50:08 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d.h"
+#include "../../header_files/cub3d.h"
 
-int	main(int argc, char *argv[])
+int	save_information(t_info *map_info, char *line)
 {
-	int	fd;
-
-	fd = is_input_valid(argc, argv);
-	if (!fd)
-		return (-1);
-	read_file(fd);
-	return (0);
+	if (!ft_strncmp(line, "NO ", 3))
+		map_info->north_texture = get_info(line, 3, -1);
+	printf("North texture: %s\n", map_info->north_texture);
+	return (TRUE);
 }
