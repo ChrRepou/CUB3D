@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/27 17:05:52 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/09/27 21:05:20 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	*so_long(int fd);
 //window management
 typedef struct s_displ {
 	mlx_t		*window;
-	mlx_image_t	*image;
+	mlx_image_t	*img;
 } t_displ;
 
-void	single_key_h(mlx_key_data_t keydata, void *param);
+void	esc_keyfunc(mlx_key_data_t keydata, void *param);
 int		initiate_window(t_displ *s_displ);
 
 
