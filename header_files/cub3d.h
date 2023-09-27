@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 11:25:59 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/27 17:05:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@
 # define HEIGHT 1024
 
 char	*so_long(int fd);
+
+//window management
+typedef struct s_displ {
+	mlx_t		*window;
+	mlx_image_t	*image;
+} t_displ;
+
+void	single_key_h(mlx_key_data_t keydata, void *param);
+int		initiate_window(t_displ *s_displ);
+
 
 typedef struct cub3d_color
 {
