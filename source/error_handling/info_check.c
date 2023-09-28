@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_parsing.h                                    :+:      :+:    :+:   */
+/*   info_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 13:51:54 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 11:10:58 by crepou           ###   ########.fr       */
+/*   Created: 2023/09/27 19:22:19 by crepou            #+#    #+#             */
+/*   Updated: 2023/09/28 11:07:53 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_PARSING_H
-# define CUB3D_PARSING_H
+#include "../../header_files/cub3d.h"
 
-# include "./cub3d.h"
+/* 
+The function returns true if the input is a number 
+(doesn't contain special characters or letters)
+*/
+int	is_number(char *input)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (input[i])
+	{
+		if (!ft_isdigit(input[i]))
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}

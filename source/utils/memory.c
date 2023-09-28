@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_parsing.h                                    :+:      :+:    :+:   */
+/*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 13:51:54 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 11:10:58 by crepou           ###   ########.fr       */
+/*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
+/*   Updated: 2023/09/28 11:13:45 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_PARSING_H
-# define CUB3D_PARSING_H
+#include "../../header_files/cub3d.h"
 
-# include "./cub3d.h"
+/* It frees the memory after using function ft_split*/
+void	free_after_split(char **array)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	if (array)
+		free(array);
+}

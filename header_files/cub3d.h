@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 18:24:17 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/27 19:07:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,9 @@ typedef struct cub3d_info
 
 /************************* parse.c ************************/
 int		save_information(t_info *map_info, char *line);
+int		get_color(char *line, t_color *color);
+
+/********************** file_check.c *********************/
+int		files_exist(t_info *map_info);
 
 #endif
