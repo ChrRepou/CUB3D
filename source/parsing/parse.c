@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 11:13:18 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/28 12:18:04 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	get_color(char *line, t_color *color)
 /* It process and saves the info of the map*/
 int	save_information(t_info *map_info, char *line)
 {
+	if (!ft_strncmp(line, "\n", 1))
+		return (TRUE);
 	if (!ft_strncmp(line, "NO ", 3))
 		map_info->north_texture = get_info(line, 3, -1);
 	else if (!ft_strncmp(line, "SO ", 3))
@@ -54,9 +56,6 @@ int	save_information(t_info *map_info, char *line)
 		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_color))
 			return (printf("This is not a correct color!\n"), FALSE);
 	}
-	else
-		return (printf("Error!\nThe line: %s is not recognised as information\n", \
-			line), FALSE);
 	if (files_exist(map_info))
 		return (TRUE);
 	return (FALSE);
