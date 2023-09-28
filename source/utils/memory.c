@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 11:13:45 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/28 20:44:03 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,21 @@ void	free_after_split(char **array)
 	}
 	if (array)
 		free(array);
+}
+
+/* Free every map_line we saved in the linked list */
+void	free_map_lines(t_line *line)
+{
+	t_line	*head;
+
+	head = line;
+	while (head)
+	{
+		if (head->ln)
+			free(head->ln);
+		head = line->next;
+		if (line)
+			free(line);
+		line = head;
+	}
 }

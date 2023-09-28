@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/27 19:07:14 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/28 16:47:57 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ typedef struct cub3d_info
 	t_color	ceiling_color;
 }				t_info;
 
+typedef struct cub3d_line
+{
+	char				*ln;
+	struct cub3d_line	*next;
+}				t_line;
+
 // map will be represented as a 2d array [][]
 
 /************************* parse.c ************************/
@@ -72,5 +78,8 @@ int		get_color(char *line, t_color *color);
 
 /********************** file_check.c *********************/
 int		files_exist(t_info *map_info);
+
+/********************** memory.c *********************/
+void	free_map_lines(t_line *line);
 
 #endif

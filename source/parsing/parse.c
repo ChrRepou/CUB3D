@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 12:18:04 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/28 22:17:00 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,59 @@ int	save_information(t_info *map_info, char *line)
 	if (files_exist(map_info))
 		return (TRUE);
 	return (FALSE);
+}
+
+void	print_list(t_line *head)
+{
+	int	i;
+
+	i = 0;
+	while (head)
+	{
+		printf("Line %d: %s\n", i, head->ln);
+		i++;
+		head = head->next;
+	}
+}
+
+int	create_map_array(t_line *head, int **map)
+{
+	char	**curr_line_elements;
+	(void)map;
+	//int		x_elements;
+
+	curr_line_elements = ft_split(head->ln, ' ');
+	return (TRUE);
+}
+
+int	save_map(int **map, char *curr_line, int fd)
+{
+	t_line	*map_lines;
+	t_line	*tail;
+	t_line	*head;
+
+	(void)map;
+	if (!curr_line)
+		return (printf("Error!\n There is not map to parse\n"), FALSE);
+	tail = (t_line *)malloc(sizeof(t_line));
+	if (!tail)
+		return (printf("Error!\n Map allocation problem\n"), FALSE);
+	tail->ln = curr_line;
+	tail->next = NULL;
+	head = tail;
+	while (!is_empty_file(&curr_line, fd))
+	{
+		map_lines = (t_line *)malloc(sizeof(t_line));
+		if (!map_lines)
+			return (free_map_lines(head), \
+				printf("Error!\n Map allocation problem\n"), FALSE);
+		map_lines->ln = curr_line;
+		map_lines->next = NULL;
+		tail->next = map_lines;
+		tail = tail->next;
+	}
+	print_list(head);
+	create_map_array(head, map);
+	//save_info_into_map(map, head);
+	return (free_map_lines(head), TRUE);
 }
