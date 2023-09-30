@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:00:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/27 19:16:36 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:45:01 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 /************** string_manipulation.c **************/
 char	*get_info(char *line, int start_index, int end_index);
+char	*char_to_string(char c);
 
 /******************** memory.c *********************/
 void	free_after_split(char **array);
+
+/******************** information_retrieval.c *********************/
+int		get_width(char *line);
 
 #endif

@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.c                                           :+:      :+:    :+:   */
+/*   information_retrieval.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 14:50:42 by crepou           ###   ########.fr       */
+/*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
+/*   Updated: 2023/09/30 15:00:07 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 
-/* It frees the memory after using function ft_split*/
-void	free_after_split(char **array)
+int	get_width(char *line)
 {
-	int	i;
+	int	width;
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	if (array)
-		free(array);
-}
-
-/* Free every map_line we saved in the linked list */
-void	free_map_lines(t_line *line)
-{
-	t_line	*head;
-
-	head = line;
-	while (head)
-	{
-		if (head->ln)
-			free(head->ln);
-		head = line->next;
-		if (line)
-			free(line);
-		line = head;
-	}
+	width = 0;
+	while (line[width] && line[width] != '\n')
+		width++;
+	return (width);
 }

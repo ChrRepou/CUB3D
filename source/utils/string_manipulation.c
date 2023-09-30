@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 19:07:33 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:44:51 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ char	*get_info(char *line, int start_index, int end_index)
 	}
 	new_line[i] = '\0';
 	return (new_line);
+}
+
+char	*char_to_string(char c)
+{
+	char	*str;
+
+	str = (char *)malloc(2);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }

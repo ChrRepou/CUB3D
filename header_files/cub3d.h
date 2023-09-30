@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 16:47:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:54:41 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,22 @@ typedef struct cub3d_line
 	struct cub3d_line	*next;
 }				t_line;
 
+typedef struct cub3d
+{
+	struct cub3d_player_info	*player;
+	int							**map;
+	int							width;
+	int							height;
+	int							index;
+}				t_cub3d;
+
 // map will be represented as a 2d array [][]
 
 /************************* parse.c ************************/
 int		save_information(t_info *map_info, char *line);
 int		get_color(char *line, t_color *color);
+int		save_map(t_cub3d *cub3d_info, char *curr_line, int fd);
+int		create_map_array(t_line *head, t_cub3d *cub3d_info);
 
 /********************** file_check.c *********************/
 int		files_exist(t_info *map_info);

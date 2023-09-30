@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/28 20:43:29 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/30 16:09:15 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	init_map_info(t_info *map_info)
 }
 
 /* checks if a file is empty or not and then saves the information and the map*/
-int	read_file(int fd) 
+int	read_file(int fd)
 {
 	char	*curr_line;
 	int		first_line;
 	int		map_parsing_start;
+	t_cub3d	cub3d_info;
 	t_info	map_info;
-	int		**map;
 
 	first_line = TRUE;
 	map_parsing_start = FALSE;
@@ -66,9 +66,9 @@ int	read_file(int fd)
 	if (first_line)
 		return (FALSE);
 	printf("parsing map stage\n");
-	map = NULL;
+	cub3d_info.map = NULL;
 	map_parsing_start = TRUE;
-	save_map(map, curr_line, fd);
+	save_map(&cub3d_info, curr_line, fd);
 	return (TRUE);
 }
 
