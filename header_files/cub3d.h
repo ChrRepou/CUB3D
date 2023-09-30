@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 17:37:14 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/09/30 18:52:30 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,17 @@ typedef struct cub3d_line
 	struct cub3d_line	*next;
 }				t_line;
 
+// typedef struct s_display
+// {
+// 	mlx_t						*window;
+// 	mlx_image_t					*img;
+// } t_display;
+
 typedef struct cub3d
 {
+	// t_display					*display;
+	mlx_t						*window;
+	mlx_image_t					*img;
 	struct cub3d_player_info	*player;
 	int							**map;
 	int							width;
@@ -102,5 +111,11 @@ int		init_list(t_line **tail, t_line **head, char *curr_line);
 
 /************** information_retrieval.c ***************/
 void	print_list(t_line *head);
+
+/************** initiate.c ***************/
+int		initiate_window(t_cub3d *cub3d_data);
+
+/************** hooks.c ***************/
+void	esc_keyfunc(mlx_key_data_t keydata, void *param);
 
 #endif
