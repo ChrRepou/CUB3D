@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I ./gnl -I ./libft
 SRCS = ./source/cub3d.c ./source/main.c ./source/error_handling/input_check.c ./source/error_handling/file_check.c \
 ./source/parsing/parse.c ./source/utils/string_manipulation.c ./source/utils/memory.c ./source/error_handling/info_check.c \
-./source/utils/information_retrieval.c
+./source/utils/information_retrieval.c ./source/parsing/init.c
 LIBFT = ./libft/libft.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./libft/

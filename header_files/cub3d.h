@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 14:54:41 by crepou           ###   ########.fr       */
+/*   Updated: 2023/09/30 17:15:33 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,21 @@ int		save_information(t_info *map_info, char *line);
 int		get_color(char *line, t_color *color);
 int		save_map(t_cub3d *cub3d_info, char *curr_line, int fd);
 int		create_map_array(t_line *head, t_cub3d *cub3d_info);
+int		save_line(char *line, t_cub3d *cub3d_info);
 
 /********************** file_check.c *********************/
 int		files_exist(t_info *map_info);
 
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
+
+/********************** string_manipulation.c *********************/
+int		is_orientation(char c, t_cub3d *cub3d_info);
+
+/********************** init.c *********************/
+int		init_list(t_line **tail, t_line **head, char *curr_line);
+
+/************** information_retrieval.c ***************/
+void	print_list(t_line *head);
 
 #endif
