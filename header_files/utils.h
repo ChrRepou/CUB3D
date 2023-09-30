@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/23 14:15:32 by crepou           ###   ########.fr       */
+/*   Created: 2023/09/23 14:00:30 by crepou            #+#    #+#             */
+/*   Updated: 2023/09/30 14:45:01 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int argc, char *argv[])
-{
-	int	fd;
+/************** string_manipulation.c **************/
+char	*get_info(char *line, int start_index, int end_index);
+char	*char_to_string(char c);
 
-	fd = is_input_valid(argc, argv);
-	if (!fd)
-		return (-1);
-	read_file(fd);
-	return (0);
-}
+/******************** memory.c *********************/
+void	free_after_split(char **array);
+
+/******************** information_retrieval.c *********************/
+int		get_width(char *line);
+
+#endif
