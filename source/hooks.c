@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/09/30 18:51:53 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/02 17:16:27 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 
 	window = (mlx_t *)param;
 	if (keydata.key == MLX_KEY_ESCAPE)
-	{
 		mlx_close_window(window);
-		return ;
-	}
+	return ;
 }
 
 // static void	linear_move_hook(keys_t key, data_needed_for_calculations)
