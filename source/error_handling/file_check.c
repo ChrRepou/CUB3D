@@ -6,11 +6,11 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 19:06:31 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:58:00 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_errors.h"
 
 /*Checks if the line is an information line*/
 
@@ -43,12 +43,11 @@ void	init_map_info(t_info *map_info)
 }
 
 /* checks if a file is empty or not and then saves the information and the map*/
-int	read_file(int fd)
+int	read_file(int fd, t_cub3d *cub3d_info)
 {
 	char	*curr_line;
 	int		first_line;
 	int		map_parsing_start;
-	t_cub3d	cub3d_info;
 	t_info	map_info;
 
 	first_line = TRUE;
@@ -66,9 +65,9 @@ int	read_file(int fd)
 	if (first_line)
 		return (FALSE);
 	printf("parsing map stage\n");
-	cub3d_info.map = NULL;
+	cub3d_info->map = NULL;
 	map_parsing_start = TRUE;
-	save_map(&cub3d_info, curr_line, fd);
+	save_map(cub3d_info, curr_line, fd);
 	return (TRUE);
 }
 

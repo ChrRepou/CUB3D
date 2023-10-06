@@ -6,13 +6,13 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/09/30 19:01:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/06 19:44:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 
-int initiate_window(t_cub3d *cub3d_data)
+int	initiate_window(t_cub3d *cub3d_data)
 {
 	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
 	if (!cub3d_data->window)
@@ -27,6 +27,7 @@ int initiate_window(t_cub3d *cub3d_data)
 		printf("error creating the image\n");
 		exit(EXIT_FAILURE);
 	}
+	ft_memset(cub3d_data->img->pixels, 255, cub3d_data->img->width * cub3d_data->img->height * sizeof(int32_t));
 	if (mlx_image_to_window(cub3d_data->window, cub3d_data->img, 0, 0) < 0)
 	{
 		printf("error displaying the image\n");

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 18:52:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:12:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct cub3d_color
 
 typedef enum cub3d_orientation
 {
-	N = 0,
+	N = 6,
 	S = 1,
 	E = 2,
 	W = 3
@@ -76,7 +76,7 @@ typedef struct cub3d_line
 // 	mlx_image_t					*img;
 // } t_display;
 
-typedef struct cub3d
+typedef struct s_cub3d
 {
 	// t_display					*display;
 	mlx_t						*window;
