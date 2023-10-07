@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 13:40:16 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 15:29:18 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		files_exist(t_info *map_info);
 void	free_map_lines(t_line *line);
 
 /********************** string_manipulation.c *********************/
-int		is_orientation(char c, t_cub3d *cub3d_info);
+int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
 void	print_map(t_cub3d *cub3d_info);
 
 /********************** init.c *********************/
