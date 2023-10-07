@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 17:15:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:25:41 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,32 +65,24 @@ int	save_information(t_info *map_info, char *line)
 saves a line into the map array and returns TRUE in success
 otherwise it returns FALSE with an error message
 */
-int	save_line(char *line, t_cub3d *cub3d_info)
+int	save_line(char *line, t_cub3d **cub3d_info, int index)
 {
-	int		*ln;
 	int		i;
-	char	*curr_num;
 
-	ln = (int *)malloc(cub3d_info->width * sizeof(int));
-	if (!ln)
+	if (!(*cub3d_info)->map[index])
 		return (printf("Problem during allocation!\n"), FALSE);
 	i = -1;
-	while (++i < cub3d_info->width)
+	while (++i < (*cub3d_info)->width)
 	{
-		if (line[i] == 32)
-			ln[i] = -1;
-		else if (ft_isdigit(line[i]))
-		{
-			curr_num = char_to_string(line[i]);
-			ln[i] = ft_atoi(curr_num);
-			free(curr_num);
-		}
-		else if (!is_orientation(line[i], cub3d_info))
+		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info)))
+			(*cub3d_info)->map[index][i] = line[i];
+		else
 			return (printf("Error! This is not a valid line: %s\n", \
-				line), free(ln), FALSE);
+				line), free((*cub3d_info)->map[index]), FALSE);
 	}
-	cub3d_info->map[cub3d_info->index] = ln;
-	return (cub3d_info->index++, TRUE);
+	(*cub3d_info)->map[index][i] = '\0';
+	i = -1;
+	return (TRUE);
 }
 
 /*
@@ -100,16 +92,19 @@ otherwise returns FALSE
 int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 {
 	t_line	*list;
+	int		i;
 
 	list = head;
 	cub3d_info->width = get_width(head->ln);
 	cub3d_info->index = 0;
-	cub3d_info->map = (int **)malloc(cub3d_info->height * sizeof(int *));
+	init_map(&cub3d_info);
+	i = 0;
 	while (list)
 	{
-		if (!save_line(list->ln, cub3d_info))
+		if (!save_line(list->ln, &cub3d_info, i))
 			return (FALSE);
 		list = list->next;
+		i++;
 	}
 	printf("SUCCESS: saved all lines!\n");
 	return (TRUE);
@@ -125,7 +120,7 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	tail = NULL;
 	if (!init_list(&tail, &head, curr_line))
 		return (FALSE);
-	cub3d_info->height = 0;
+	cub3d_info->height = 1;
 	while (!is_empty_file(&curr_line, fd))
 	{
 		map_lines = (t_line *)malloc(sizeof(t_line));
@@ -138,6 +133,11 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 		tail = tail->next;
 		cub3d_info->height++;
 	}
-	create_map_array(head, cub3d_info);
+	if (!create_map_array(head, cub3d_info))
+		return (free_map_lines(head), FALSE);
+	if (!map_is_valid(cub3d_info))
+		return (FALSE);
+	//print_list(head);
+	print_map(cub3d_info);
 	return (free_map_lines(head), TRUE);
 }

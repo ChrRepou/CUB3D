@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 19:00:53 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:29:37 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
-
 
 int	main(int argc, char *argv[])
 {
@@ -20,6 +19,8 @@ int	main(int argc, char *argv[])
 
 	fd = is_input_valid(argc, argv);
 	if (!fd)
+		return (-1);
+	if (!read_file(fd))
 		return (-1);
 	//parsing happening here, if successful:
 	initiate_window(&cub3d_data);

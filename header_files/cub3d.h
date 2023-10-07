@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 18:52:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/04 09:02:25 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct cub3d
 	mlx_t						*window;
 	mlx_image_t					*img;
 	struct cub3d_player_info	*player;
-	int							**map;
+	char						**map;
 	int							width;
 	int							height;
 	int							index;
@@ -95,7 +95,7 @@ int		save_information(t_info *map_info, char *line);
 int		get_color(char *line, t_color *color);
 int		save_map(t_cub3d *cub3d_info, char *curr_line, int fd);
 int		create_map_array(t_line *head, t_cub3d *cub3d_info);
-int		save_line(char *line, t_cub3d *cub3d_info);
+int		save_line(char *line, t_cub3d **cub3d_info, int index);
 
 /********************** file_check.c *********************/
 int		files_exist(t_info *map_info);
@@ -105,9 +105,11 @@ void	free_map_lines(t_line *line);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info);
+void	print_map(t_cub3d *cub3d_info);
 
 /********************** init.c *********************/
 int		init_list(t_line **tail, t_line **head, char *curr_line);
+void	init_map(t_cub3d **cub3d_info);
 
 /************** information_retrieval.c ***************/
 void	print_list(t_line *head);
@@ -117,5 +119,8 @@ int		initiate_window(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
+
+/************** map_check.c ***************/
+int		map_is_valid(t_cub3d *cub3d_info);
 
 #endif
