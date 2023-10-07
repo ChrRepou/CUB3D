@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_manipulation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 16:58:00 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 15:42:33 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ check if a letter during the parsing of the map is an orientation one,
 saves the info of the player and returns TRUE
 otherwise it returns FALSE
 */
-int	is_orientation(char c, t_cub3d *cub3d_info)
+
+int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 {
 	if (c != 'N' && c != 'S' && c != 'E' && c != 'W')
 		return (FALSE);
 	cub3d_info->player = (t_player_info *)malloc(sizeof(t_player_info));
-	cub3d_info->player->x_position = cub3d_info->width;
-	cub3d_info->player->y_position = cub3d_info->height;
+	cub3d_info->player->x_position = x;
+	cub3d_info->player->y_position = y;
 	if (c == 'N')
 		cub3d_info->player->orientation = N;
 	else if (c == 'S')
