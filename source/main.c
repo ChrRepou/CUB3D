@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/06 20:00:35 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/06 20:17:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	main(int argc, char *argv[])
 		j = 0;
 		i++;
 	}
-	cub3d_data.player->x_position = 26;
-	cub3d_data.player->y_position = 11;
+	cub3d_data.player->x_position = 4;
+	cub3d_data.player->y_position = 3;
 	printf("Player map coordinates %d %d\n", cub3d_data.player->x_position, cub3d_data.player->y_position);
 	initiate_window(&cub3d_data);
 	init_minimap(&cub3d_data, &minimap);
