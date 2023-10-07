@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/06 20:17:49 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 14:48:12 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,7 @@ int	main(int argc, char *argv[])
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
-	read_file(fd, &cub3d_data);
-	cub3d_data.height++;
-	printf("%d\n", cub3d_data.height);
-	printf("%d\n", cub3d_data.width);
-	int i = 0;
-	int j = 0;
-	while (i < cub3d_data.height)
-	{
-		while (j < cub3d_data.width)
-		{
-			printf("%d  ", cub3d_data.map[i][j]);
-			j++;
-		}
-		printf("\n");
-		j = 0;
-		i++;
-	}
-	cub3d_data.player->x_position = 4;
-	cub3d_data.player->y_position = 3;
-	printf("Player map coordinates %d %d\n", cub3d_data.player->x_position, cub3d_data.player->y_position);
+	//parsing happening here, if successful:
 	initiate_window(&cub3d_data);
 	init_minimap(&cub3d_data, &minimap);
 	// ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
