@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 14:48:12 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 15:27:56 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	main(int argc, char *argv[])
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
-	//parsing happening here, if successful:
+	if (read_file(fd, &cub3d_data) != TRUE)
+		return (-1);
+	printf("x:%d, y:%d\n", cub3d_data.player->x_position, cub3d_data.player->y_position);
 	initiate_window(&cub3d_data);
 	init_minimap(&cub3d_data, &minimap);
-	// ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
+	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
 	draw_minimap(&cub3d_data, &minimap);
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	// mlx_loop_hook(cub3d_data.window, (void (*)(void *))generic_hooks, &cub3d_data);

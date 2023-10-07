@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 14:43:07 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 14:56:11 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct cub3d_line
 
 typedef struct s_cub3d
 {
-	// t_display					*display;
 	mlx_t						*window;
 	mlx_image_t					*img;
 	struct cub3d_player_info	*player;
