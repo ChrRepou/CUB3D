@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 15:44:03 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 18:20:16 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	i = -1;
 	while (++i < (*cub3d_info)->width)
 	{
-		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || \
-		is_orientation(line[i], (*cub3d_info), i, index))
+		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
 		else if (!line[i] || line[i] == 10)
 			(*cub3d_info)->map[index][i] = 32;
@@ -129,8 +128,7 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	{
 		map_lines = (t_line *)malloc(sizeof(t_line));
 		if (!map_lines)
-			return (free_map_lines(head), \
-				printf("Error!\n Map allocation problem\n"), FALSE);
+			return (free_map_lines(head), printf("Error!\n"), FALSE);
 		map_lines->ln = curr_line;
 		map_lines->next = NULL;
 		tail->next = map_lines;
@@ -141,7 +139,5 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 		return (free_map_lines(head), FALSE);
 	if (!map_is_valid(cub3d_info))
 		return (FALSE);
-	//print_list(head);
-	print_map(cub3d_info);
 	return (free_map_lines(head), TRUE);
 }

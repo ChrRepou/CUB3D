@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 15:45:18 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 18:18:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,18 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param);
 /************** map_check.c ***************/
 int		map_is_valid(t_cub3d *cub3d_info);
 int		check_row(char *line);
+int		check_row_reverse(char *line, int width);
+int		check_left_wall(t_cub3d *cub3d_info);
+int		check_right_wall(t_cub3d *cub3d_info);
+
+/************** map_check2.c ***************/
+int		check_top_wall(t_cub3d *cub3d_info);
+int		check_column(t_cub3d *cub3d_info, int x);
+int		check_column_reverse(t_cub3d *cub3d_info, int x);
+int		check_bottom_wall(t_cub3d *cub3d_info);
+
+/************** player_check.c ***************/
+int		has_one_player(t_cub3d *cub3d_info);
+int		player_can_move(t_cub3d *cub3d_info);
 
 #endif

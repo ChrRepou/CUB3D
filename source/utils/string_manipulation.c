@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 15:42:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 18:21:02 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ check if a letter during the parsing of the map is an orientation one,
 saves the info of the player and returns TRUE
 otherwise it returns FALSE
 */
-
 int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 {
 	if (c != 'N' && c != 'S' && c != 'E' && c != 'W')
