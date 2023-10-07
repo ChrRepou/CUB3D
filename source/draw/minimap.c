@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/07 14:57:43 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/07 17:17:02 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	draw_tile(mlx_image_t *img, t_mini_draw *data, int tile_h)
 	max_y = data->y_px + tile_h;
 	max_x = data->x_px + tile_h;
 	x_start = data->x_px;
-	// printf("%d/%d/%d/%d/%d\n",data->x_px, data->y_px, max_x, max_y, tile_h);
 	while (data->y_px < max_y)
 	{
 		if ((data->x_px < MINI_W && data->x_px >= 0) \
@@ -49,13 +48,11 @@ int	draw_minimap(t_cub3d *data, t_minimap *minimap)
 	t_mini_draw	mmap;
 
 	init_minimap_draw(&mmap);
-	// printf("Before drawing : start x: %d/ start y: %d/ tile height: %d\n",mmap.x_px, mmap.y_px, minimap->tile_h);
 	while (mmap.y_tile < data->height)
 	{
 		while (mmap.x_tile < data->width)
 		{
-			// if (data->map[mmap.y_tile][mmap.x_tile] == 1 || data->map[mmap.y_tile][mmap.x_tile] == -1)
-			if (data->map[mmap.y_tile][mmap.x_tile] != '0' && data->map[mmap.y_tile][mmap.x_tile] != 'N')
+			if (data->map[mmap.y_tile][mmap.x_tile] == '1')
 				mmap.color = WALL_COLOR;
 			else
 				mmap.color = SPACE_COLOR;
