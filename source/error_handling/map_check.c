@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:04:31 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 17:21:01 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 18:05:35 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,12 @@ int	check_right_wall(t_cub3d *cub3d_info)
 
 int	map_is_valid(t_cub3d *cub3d_info)
 {
-	if (!check_left_wall(cub3d_info) || !check_right_wall(cub3d_info) || !check_top_wall(cub3d_info) || !check_bottom_wall(cub3d_info))
+	if (!has_one_player(cub3d_info))
+		return (FALSE);
+	if (!check_left_wall(cub3d_info) || !check_right_wall(cub3d_info) \
+		|| !check_top_wall(cub3d_info) || !check_bottom_wall(cub3d_info))
 		return (printf("Error!\nThe map is not valid!\n"), FALSE);
+	if (!player_can_move(cub3d_info))
+		return (FALSE);
 	return (TRUE);
 }

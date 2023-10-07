@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 15:28:42 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 17:33:04 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,7 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	{
 		map_lines = (t_line *)malloc(sizeof(t_line));
 		if (!map_lines)
-			return (free_map_lines(head), \
-				printf("Error!\n Map allocation problem\n"), FALSE);
+			return (free_map_lines(head), printf("Error!\n"), FALSE);
 		map_lines->ln = curr_line;
 		map_lines->next = NULL;
 		tail->next = map_lines;
@@ -140,8 +139,5 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 		return (free_map_lines(head), FALSE);
 	if (!map_is_valid(cub3d_info))
 		return (FALSE);
-	printf("PLAYER X: %d PLAYER Y: %d PLAYER ORIENTATION: \n", cub3d_info->player->x_position, cub3d_info->player->y_position);
-	//print_list(head);
-	print_map(cub3d_info);
 	return (free_map_lines(head), TRUE);
 }
