@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 13:25:41 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:43:37 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	{
 		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info)))
 			(*cub3d_info)->map[index][i] = line[i];
+		else if (!line[i] || line[i] == 10)
+			(*cub3d_info)->map[index][i] = 32;
 		else
-			return (printf("Error! This is not a valid line: %s\n", \
-				line), free((*cub3d_info)->map[index]), FALSE);
+			return (printf("Error! This is not a valid line: %s REASON: %d\n", \
+				line, line[i]), free((*cub3d_info)->map[index]), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	i = -1;
@@ -95,7 +97,8 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 	int		i;
 
 	list = head;
-	cub3d_info->width = get_width(head->ln);
+	//change
+	cub3d_info->width = get_width(head);
 	cub3d_info->index = 0;
 	init_map(&cub3d_info);
 	i = 0;

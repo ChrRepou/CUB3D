@@ -6,21 +6,32 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 13:24:25 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:34:51 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 
 /* it gets the width of a line */
-int	get_width(char *line)
+int	get_width(t_line *head)
 {
-	int	width;
+	int		width;
+	int		max_width;
+	char	*line;
 
 	width = 0;
-	while (line[width] && line[width] != '\n')
-		width++;
-	return (width);
+	max_width = 0;
+	while (head)
+	{
+		line = head->ln;
+		while (line[width] && line[width] != '\n')
+			width++;
+		if (max_width < width)
+			max_width = width;
+		width = 0;
+		head = head->next;
+	}
+	return (max_width);
 }
 
 /* It prints a list */

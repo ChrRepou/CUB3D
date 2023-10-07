@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/04 09:02:25 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:40:16 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	init_map(t_cub3d **cub3d_info);
 
 /************** information_retrieval.c ***************/
 void	print_list(t_line *head);
+int		get_width(t_line *head);
 
 /************** initiate.c ***************/
 int		initiate_window(t_cub3d *cub3d_data);
@@ -122,5 +123,6 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param);
 
 /************** map_check.c ***************/
 int		map_is_valid(t_cub3d *cub3d_info);
+int		check_row(char *line);
 
 #endif
