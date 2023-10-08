@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 18:05:07 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/08 16:07:38 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		save_line(char *line, t_cub3d **cub3d_info, int index);
 
 /********************** file_check.c *********************/
 int		files_exist(t_info *map_info);
+int		read_file(int fd, t_cub3d *cub3d_info);
 
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
@@ -137,5 +138,8 @@ int		check_bottom_wall(t_cub3d *cub3d_info);
 /************** player_check.c ***************/
 int		has_one_player(t_cub3d *cub3d_info);
 int		player_can_move(t_cub3d *cub3d_info);
+
+/************** replace.c ***************/
+int		replace_spaces(t_cub3d *cub3d_info);
 
 #endif

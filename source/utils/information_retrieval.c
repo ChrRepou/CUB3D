@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 13:34:51 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/08 16:35:00 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_map(t_cub3d *cub3d_info)
 	map = cub3d_info->map;
 	height = cub3d_info->height;
 	width = cub3d_info->width;
-	printf("HEIGHT: %d | WIDTH: %d\n", height, width);
+	//printf("HEIGHT: %d | WIDTH: %d\n", height, width);
 	while (y < height)
 	{
 		while (x < width)
