@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 18:18:52 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:29:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ typedef enum cub3d_orientation
 
 typedef struct cub3d_player_info
 {
-	int				x_position;
-	int				y_position;
+	double			x_position;
+	double			y_position;
+	mlx_image_t		*mini_player;
 	t_orientation	orientation;
 }				t_player_info;
 
@@ -119,6 +120,7 @@ int		initiate_window(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
+void	generic_hooks(t_cub3d	*cub3d_data);
 
 /************** map_check.c ***************/
 int		map_is_valid(t_cub3d *cub3d_info);

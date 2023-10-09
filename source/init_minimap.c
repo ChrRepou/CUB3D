@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/06 20:19:15 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 14:20:21 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,45 @@ void	draw_direction(mlx_image_t *img, int tile_h)
 
 static void	draw_player(mlx_image_t *img, int tile_h)
 {
-	int	r;
-	int	orig;
-	int	x;
-	int	y;
-	int	h;
+	int	x_px;
+	int	y_px;
+	int	x_start;
+	int	end;
 
-	r = tile_h / 4;
-	orig = tile_h / 2;
-	x = -r;
-	while (x < r)
+	x_px = tile_h / 2 - 2;
+	y_px = tile_h / 2 - 2;
+	end = tile_h / 2 + 3;
+	x_start = x_px;
+	while (y_px <= end)
 	{
-		h = (int)sqrt(r * r - x * x);
-		y = -h;
-		while (y < h)
+		mlx_put_pixel(img, x_px++, y_px, PLAYER_COLOR);
+		if (x_px == end)
 		{
-			mlx_put_pixel(img, (x + orig), (y + orig), PLAYER_COLOR);
-			y++;
+			x_px = x_start;
+			y_px++;
 		}
-		x++;
 	}
+	// mlx_put_pixel(img, tile_h / 2, tile_h / 2, PLAYER_COLOR);
+		// int	r;
+	// int	orig;
+	// int	x;
+	// int	y;
+	// int	h;
+
+	// r = tile_h / 6;
+	// orig = tile_h / 2;
+	// x = -r;
+	// while (x < r)
+	// {
+	// 	h = (int)sqrt(r * r - x * x);
+	// 	y = -h;
+	// 	while (y < h)
+	// 	{
+	// 		mlx_put_pixel(img, (x + orig), (y + orig), PLAYER_COLOR);
+	// 		y++;
+	// 	}
+	// 	x++;
+	// }
 	draw_direction(img, tile_h);
 }
 
@@ -89,6 +108,7 @@ int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 		exit(EXIT_FAILURE);
 	}
 	minimap->img_player = mlx_new_image(cub3d_data->window, minimap->tile_h, minimap->tile_h);
+	cub3d_data->player->mini_player = minimap->img_player;
 	if (!minimap->img_player)
 	{
 		printf("error creating the player image\n");
@@ -98,7 +118,7 @@ int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 	// ft_memset(minimap->img_player->pixels, 200, minimap->img_player->width * minimap->img_player->height * sizeof(int32_t));
 	draw_player(minimap->img_player, minimap->tile_h);
 	if (mlx_image_to_window(cub3d_data->window, minimap->img_player, \
-			cub3d_data->player->x_position * minimap->tile_h, cub3d_data->player->y_position * minimap->tile_h) < 0)
+			(cub3d_data->player->x_position - 0.5) * minimap->tile_h, (cub3d_data->player->y_position - 0.5) * minimap->tile_h) < 0)
 	{
 		printf("error displaying player image\n");
 		//free everything;
