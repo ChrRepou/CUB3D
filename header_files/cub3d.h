@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/09 15:53:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 19:44:08 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define HEIGHT 1024
 # define TRUE 1
 # define FALSE 0
+# define MOVE_SPEED 0.1
 
 char	*so_long(int fd);
 
@@ -41,10 +42,10 @@ typedef struct cub3d_color
 
 typedef enum cub3d_orientation
 {
-	N = 6,
-	S = 1,
-	E = 2,
-	W = 3
+	N = 270,
+	S = 90,
+	E = 0,
+	W = 180,
 }		t_orientation;
 
 typedef struct cub3d_player_info
@@ -53,6 +54,7 @@ typedef struct cub3d_player_info
 	double			y_position;
 	mlx_image_t		*mini_player;
 	t_orientation	orientation;
+	double			angle;
 }				t_player_info;
 
 typedef struct cub3d_info
@@ -142,5 +144,11 @@ int		player_can_move(t_cub3d *cub3d_info);
 
 /************** replace.c ***************/
 int		replace_spaces(t_cub3d *cub3d_info);
+
+/************** movements.c ***************/
+void	move_forward(t_player_info *player, char **map, double x, double y);
+void	move_backward(t_player_info *player, char **map, double x, double y);
+void	move_right(t_player_info *player, char **map, double x, double y);
+void	move_left(t_player_info *player, char **map, double x, double y);
 
 #endif

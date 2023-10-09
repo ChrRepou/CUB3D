@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/09 13:56:19 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 17:11:03 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,22 @@ typedef struct s_mini_draw
 	uint32_t	color;
 }	t_mini_draw;
 
+typedef struct s_2d {
+	int			x;
+	int			y;
+	uint32_t	pt_rgba;
+}	t_2d;
+
+typedef struct s_px {
+	int		step;
+	int		dx;
+	int		dy;
+}	t_px;
+
 int		init_minimap(t_cub3d *cub3d_data, t_minimap *minimap);
 int		draw_minimap(t_cub3d *data, t_minimap *minimap);
+void	draw_player(mlx_image_t *img, int tile_h, double angle);
+void	draw_line(mlx_image_t *img, t_2d s_p1, t_2d s_p2);
 
 // void	rotate_player(t_cub3d *data);
 

@@ -6,12 +6,14 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/09 14:39:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 19:46:47 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 #include "../header_files/cub3d_minimap.h"
+
+
 
 void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 {
@@ -36,46 +38,40 @@ static void move_miniplayer(t_cub3d *cub3d_data)
 	int tile_size;
 	
 	tile_size = get_tile_size(cub3d_data->width, cub3d_data->width);
-	cub3d_data->player->mini_player->instances[0].x = (cub3d_data->player->x_position -0.5) * tile_size;
+	cub3d_data->player->mini_player->instances[0].x = (cub3d_data->player->x_position - 0.5) * tile_size;
 	cub3d_data->player->mini_player->instances[0].y = (cub3d_data->player->y_position - 0.5) * tile_size;
 }
 
 static void	linear_move_hook(keys_t key, t_cub3d *cub3d_data)
 {
 	if (key == MLX_KEY_W)
-	{
-		// printf("Ypos pos: %f", cub3d_data->player->y_position);
-		if (cub3d_data->map[(int)(cub3d_data->player->y_position - 0.2)][(int)cub3d_data->player->x_position] != '1')
-			cub3d_data->player->y_position -= 0.2;
-	}
+		move_forward(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_D)
-	{
-		if (cub3d_data->map[(int)cub3d_data->player->y_position][(int)(cub3d_data->player->x_position + 0.2)] != '1')
-			 cub3d_data->player->x_position += 0.2;
-	}
-		//move right
+		move_right(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_A)
-	{
-		if (cub3d_data->map[(int)cub3d_data->player->y_position][(int)(cub3d_data->player->x_position - 0.2)] != '1')
-			 cub3d_data->player->x_position -= 0.2;
-	}
+		move_left(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_S)
-	{
-		// printf("Ypos: %f",  cub3d_data->player->y_position);
-		if (cub3d_data->map[(int)(cub3d_data->player->y_position + 0.2)][(int)cub3d_data->player->x_position] != '1')
-			cub3d_data->player->y_position += 0.2;
-	}
-
+		move_backward(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
 }
 
-// static void	rotation_hook(keys_t key, data_needed_for_calcualtions)
-// {
-// 	if (key == MLX_KEY_LEFT)
-// 		//look left
-// 	if (key == MLX_KEY_RIGHT)
-// 		//look right
-// 	// draw all again
-// }
+static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
+{
+	if (key == MLX_KEY_LEFT)
+	{
+		if (cub3d_data->player->angle <= 0)
+			cub3d_data->player->angle = 359;
+		else
+			cub3d_data->player->angle--;
+	}
+	if (key == MLX_KEY_RIGHT)
+	{
+		if (cub3d_data->player->angle >= 360)
+			cub3d_data->player->angle = 1;
+		else
+			cub3d_data->player->angle++;
+	}
+	draw_player(cub3d_data->player->mini_player, (int)cub3d_data->player->mini_player->height, cub3d_data->player->angle);
+}
 
 void	generic_hooks(t_cub3d	*cub3d_data)
 {
@@ -87,11 +83,10 @@ void	generic_hooks(t_cub3d	*cub3d_data)
 		linear_move_hook(MLX_KEY_A, cub3d_data);
 	if (mlx_is_key_down(cub3d_data->window, MLX_KEY_S))
 		linear_move_hook(MLX_KEY_S, cub3d_data);
-// 	if (mlx_is_key_down(s_map->window, MLX_KEY_LEFT))
-// 		rotation_hook(MLX_KEY_LEFT, s_map);
-// 	if (mlx_is_key_down(s_map->window, MLX_KEY_RIGHT))
-// 		rotation_hook(MLX_KEY_RIGHT, s_map);
-	// move_player(cub3d_data);
+	if (mlx_is_key_down(cub3d_data->window, MLX_KEY_LEFT))
+		rotation_hook(MLX_KEY_LEFT, cub3d_data);
+	if (mlx_is_key_down(cub3d_data->window, MLX_KEY_RIGHT))
+		rotation_hook(MLX_KEY_RIGHT, cub3d_data);
 	move_miniplayer(cub3d_data);
 	return ;
 }

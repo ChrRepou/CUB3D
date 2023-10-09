@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/09 15:56:26 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 16:15:14 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int	main(int argc, char *argv[])
 	printf("MAP AFTER REPLACEMENT:\n");
 	print_map(&cub3d_data);
 	cub3d_data.player->mini_player = NULL;
-	cub3d_data.player->x_position += 0.5;
+	cub3d_data.player->x_position += 0.5; // adding to place the player in the middle of the square
 	cub3d_data.player->y_position += 0.5;
 	printf("x:%f, y:%f\n", cub3d_data.player->x_position, cub3d_data.player->y_position);
-	printf("%d\n", cub3d_data.player->orientation);
+	cub3d_data.player->angle = (double)cub3d_data.player->orientation;
+	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
 	init_minimap(&cub3d_data, &minimap);
 	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));

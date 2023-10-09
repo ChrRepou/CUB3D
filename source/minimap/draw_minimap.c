@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/07 17:17:02 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 18:24:32 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,3 @@ int	draw_minimap(t_cub3d *data, t_minimap *minimap)
 	}
 	return (0);
 }
-
-	// draw_player(img, s_map->player.x_position, s_map->player.y_position, mmap.tile_h);
