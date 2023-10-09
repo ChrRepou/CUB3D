@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:04:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/06 15:14:29 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:53:09 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int		get_file_descriptor(const char *filename);
 int		is_input_valid(int argc, char *argv[]);
 
 /************** file_check.c ***************/
-// int	read_file(int fd);
-int		read_file(int fd, t_cub3d *cub3d_info);
 int		is_empty_file(char **line, int fd);
 int		is_info(char *line);
 

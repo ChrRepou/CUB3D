@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 15:05:25 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:54:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	}
 	if (first_line)
 		return (FALSE);
-	printf("parsing map stage\n");
 	cub3d_info->map = NULL;
 	map_parsing_start = TRUE;
 	if (!save_map(cub3d_info, curr_line, fd))

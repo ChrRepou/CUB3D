@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/09 14:55:52 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:56:26 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	main(int argc, char *argv[])
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
-	if (read_file(fd, &cub3d_data) != TRUE)
+	if (!read_file(fd, &cub3d_data))
 		return (-1);
+	replace_spaces(&cub3d_data);
+	printf("MAP AFTER REPLACEMENT:\n");
+	print_map(&cub3d_data);
 	cub3d_data.player->mini_player = NULL;
 	cub3d_data.player->x_position += 0.5;
 	cub3d_data.player->y_position += 0.5;
