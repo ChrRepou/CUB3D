@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/09 19:56:56 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/09 20:00:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	move_left(t_player_info *player, char **map, double x, double y)
 		player->x_position = x;
 		player->y_position = y;
 	}
+}
 
 void	move_right(t_player_info *player, char **map, double x, double y)
 {
