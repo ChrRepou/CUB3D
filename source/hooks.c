@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/09 19:46:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/20 19:21:43 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,31 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 	return ;
 }
 
-static int	get_tile_size(map_w, map_h)
+static void	move_miniplayer(t_player_info *player)
 {
-	if (MINI_W / map_w > MINI_H / map_h)
-		return (MINI_H / map_h);
-	else
-		return (MINI_W / map_w);
-}
 
-static void move_miniplayer(t_cub3d *cub3d_data)
-{
-	int tile_size;
-	
-	tile_size = get_tile_size(cub3d_data->width, cub3d_data->width);
-	cub3d_data->player->mini_player->instances[0].x = (cub3d_data->player->x_position - 0.5) * tile_size;
-	cub3d_data->player->mini_player->instances[0].y = (cub3d_data->player->y_position - 0.5) * tile_size;
+	player->mini_player->instances[0].x = \
+		(int)round((player->x_position - 0.5) * player->mini_player->height);
+	player->mini_player->instances[0].y = \
+		(int)round((player->y_position - 0.5) * player->mini_player->height);
 }
 
 static void	linear_move_hook(keys_t key, t_cub3d *cub3d_data)
 {
 	if (key == MLX_KEY_W)
-		move_forward(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
+		move_forward(cub3d_data->player, cub3d_data->map, \
+		cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_D)
-		move_right(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
+		move_right(cub3d_data->player, cub3d_data->map, \
+		cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_A)
-		move_left(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
+		move_left(cub3d_data->player, cub3d_data->map, \
+		cub3d_data->player->x_position, cub3d_data->player->y_position);
 	if (key == MLX_KEY_S)
-		move_backward(cub3d_data->player, cub3d_data->map, cub3d_data->player->x_position, cub3d_data->player->y_position);
+		move_backward(cub3d_data->player, cub3d_data->map, \
+		cub3d_data->player->x_position, cub3d_data->player->y_position);
+	if (cub3d_data->player->mini_player)
+		move_miniplayer(cub3d_data->player);
 }
 
 static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
@@ -70,7 +68,8 @@ static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
 		else
 			cub3d_data->player->angle++;
 	}
-	draw_player(cub3d_data->player->mini_player, (int)cub3d_data->player->mini_player->height, cub3d_data->player->angle);
+	if (cub3d_data->player->mini_player)
+		draw_player(cub3d_data->player->mini_player, cub3d_data->player->angle);
 }
 
 void	generic_hooks(t_cub3d	*cub3d_data)
@@ -87,6 +86,5 @@ void	generic_hooks(t_cub3d	*cub3d_data)
 		rotation_hook(MLX_KEY_LEFT, cub3d_data);
 	if (mlx_is_key_down(cub3d_data->window, MLX_KEY_RIGHT))
 		rotation_hook(MLX_KEY_RIGHT, cub3d_data);
-	move_miniplayer(cub3d_data);
 	return ;
 }

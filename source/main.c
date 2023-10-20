@@ -6,12 +6,29 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/09 16:15:14 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/20 21:57:11 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 #include "../header_files/cub3d_minimap.h"
+
+void	free_data(t_cub3d *cub3d_data)
+{
+	int	i;
+
+	i = 0;
+	if (cub3d_data->map != NULL)
+	{
+		while (i < cub3d_data->height)
+		{
+			free(cub3d_data->map[i]);
+			i++;
+		}
+		free(cub3d_data->map);
+	}
+	free(cub3d_data->player);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -42,7 +59,8 @@ int	main(int argc, char *argv[])
 	mlx_loop(cub3d_data.window);
 	mlx_delete_image(cub3d_data.window, cub3d_data.img);
 	mlx_terminate(cub3d_data.window);
-	free(cub3d_data.map);
+	free_data(&cub3d_data);
+	system("leaks cub3d");
 	return (0);
 }
 
