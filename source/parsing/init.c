@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:06:00 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:39:02 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 20:25:45 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ int	init_list(t_line **tail, t_line **head, char *curr_line)
 void	init_map(t_cub3d **cub3d_info)
 {
 	int	y;
-	
-	y = 0;
-	(*cub3d_info)->map = (char **)malloc(sizeof(char *) * (*cub3d_info)->height);
-    while (y < (*cub3d_info)->height) {
-        (*cub3d_info)->map[y] = (char *)malloc(sizeof(char) * ((*cub3d_info)->width + 1)); // +1 for the null terminator
-		y++;
-    }
 
+	y = 0;
+	(*cub3d_info)->map = (char **) \
+		malloc(sizeof(char *) * (*cub3d_info)->height);
+	while (y < (*cub3d_info)->height)
+	{
+		(*cub3d_info)->map[y] = (char *) \
+			malloc(sizeof(char) * ((*cub3d_info)->width + 1));
+		y++;
+	}
 }
