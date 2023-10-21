@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:34:59 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:53:55 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:03:37 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_mixed(char *string, char *argument, int argument2)
 			break ;
 		string++;
 	}
-	printf("%c", argument2);
+	printf("%c ", argument2);
 	string += 2;
 	while (*string)
 	{

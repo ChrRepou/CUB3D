@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:51:10 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 20:55:03 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	char	*curr_line;
 	int		first_line;
 	int		map_parsing_start;
-	t_info	map_info;
 
 	first_line = TRUE;
 	map_parsing_start = FALSE;
-	init_map_info(&map_info);
+	cub3d_info->info = (t_info *)malloc(sizeof(t_info));
+	init_map_info(cub3d_info->info);
 	while (!is_empty_file(&curr_line, fd))
 	{
 		if (first_line)
 			first_line = FALSE;
 		if (!is_info(curr_line))
 			break ;
-		if (!save_information(&map_info, curr_line))
+		if (!save_information(cub3d_info->info, curr_line))
 			return (free(curr_line), FALSE);
 	}
 	if (first_line)
