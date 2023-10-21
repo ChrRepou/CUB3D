@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/08 16:35:00 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 16:22:17 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,15 @@ void	print_map(t_cub3d *cub3d_info)
 		y++;
 		x = 0;
 	}
+}
+
+/*
+arguments: a character from the map array
+return value: 1 if its player, 0 if not
+*/
+int	is_player(char info)
+{
+	if (info == 'N' || info == 'E' || info == 'S' || info == 'W')
+		return (1);
+	return (0);
 }
