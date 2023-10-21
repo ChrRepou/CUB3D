@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:53:44 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 18:04:38 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 16:38:53 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	has_one_player(t_cub3d *cub3d_info)
 	if (players == 1)
 		return (TRUE);
 	else if (players < 1)
-		return (printf("Error! You don't have players!\n"), FALSE);
-	return (printf("Error! You have more than one players!\n"), FALSE);
+		return (print("Error! You don't have players!\n"), FALSE);
+	return (print("Error! You have more than one players!\n"), FALSE);
 }
 
 int	player_can_move(t_cub3d *cub3d_info)
@@ -61,6 +61,6 @@ int	player_can_move(t_cub3d *cub3d_info)
 	if ((y + 1) < cub3d_info->height && map[y + 1][x] == '1')
 		walls++;
 	if (walls == 4)
-		return (printf("Error! Your player can't move!\n"), FALSE);
+		return (print("Error! Your player can't move!\n"), FALSE);
 	return (TRUE);
 }
