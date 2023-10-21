@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:06:11 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/08 16:32:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 16:24:20 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	replace_spaces(t_cub3d *cub3d_info)
 		{
 			if (map[y][x] == 32)
 				replace(cub3d_info, x, y);
+			else if (is_player(map[y][x]))
+				map[y][x] = '0';
 			x++;
 		}
 		y++;
