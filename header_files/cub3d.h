@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/20 21:58:57 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:01:42 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,6 @@ typedef struct cub3d_line
 	char				*ln;
 	struct cub3d_line	*next;
 }				t_line;
-
-// typedef struct s_display
-// {
-// 	mlx_t						*window;
-// 	mlx_image_t					*img;
-// } t_display;
 
 typedef struct s_cub3d
 {
