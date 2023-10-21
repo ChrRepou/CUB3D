@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:22:04 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:14:53 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_color(char *line, t_color *color)
 
 	colors = ft_split(line, ',');
 	if (!colors)
-		return (printf("Error!\n Problem during saving color.\n"), FALSE);
+		return (print("Error!\n Problem during saving color.\n"), FALSE);
 	if (!colors[0] || !is_number(colors[0]))
 		return (free_after_split(colors), FALSE);
 	color->red = ft_atoi(colors[0]);
@@ -49,12 +49,12 @@ int	save_information(t_info *map_info, char *line)
 	else if (!ft_strncmp(line, "F ", 2))
 	{
 		if (!get_color(get_info(line, 2, -1), &map_info->floor_color))
-			return (printf("This is not a correct color!\n"), FALSE);
+			return (print("This is not a correct color!\n"), FALSE);
 	}
 	else if (!ft_strncmp(line, "C ", 2))
 	{
 		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_color))
-			return (printf("This is not a correct color!\n"), FALSE);
+			return (print("This is not a correct color!\n"), FALSE);
 	}
 	if (files_exist(map_info))
 		return (TRUE);
@@ -70,7 +70,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	int		i;
 
 	if (!(*cub3d_info)->map[index])
-		return (printf("Problem during allocation!\n"), FALSE);
+		return (print("Problem during allocation!\n"), FALSE);
 	i = -1;
 	while (++i < (*cub3d_info)->width)
 	{
@@ -79,7 +79,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 		else if (!line[i] || line[i] == 10)
 			(*cub3d_info)->map[index][i] = 32;
 		else
-			return (printf("Error! This is not a valid line: %s REASON: %d\n", \
+			return (print_mixed("Error! This is not a valid line: %s REASON: %d\n", \
 				line, line[i]), free((*cub3d_info)->map[index]), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';

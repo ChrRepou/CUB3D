@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 18:10:09 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:14:32 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,22 @@ int	files_exist(t_info *map_info)
 
 	fd = open(map_info->north_texture, O_RDONLY);
 	if (fd == -1 && map_info->north_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->north_texture), FALSE);
 	close(fd);
 	fd = open(map_info->south_texture, O_RDONLY);
 	if (fd == -1 && map_info->south_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->south_texture), FALSE);
 	close(fd);
 	fd = open(map_info->east_texture, O_RDONLY);
 	if (fd == -1 && map_info->east_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->east_texture), FALSE);
 	close(fd);
 	fd = open(map_info->west_texture, O_RDONLY);
 	if (fd == -1 && map_info->west_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->west_texture), FALSE);
 	close(fd);
 	return (TRUE);
