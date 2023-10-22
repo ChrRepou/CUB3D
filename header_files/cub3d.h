@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 18:01:42 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/21 19:52:19 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define TRUE 1
 # define FALSE 0
 # define MOVE_SPEED 0.1
-
-char	*so_long(int fd);
 
 typedef struct cub3d_color
 {
