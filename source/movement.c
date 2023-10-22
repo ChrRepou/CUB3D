@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/21 16:36:17 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 20:56:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_wall(char **map, double x, double y)
 		return (FALSE);
 }
 
-void	move_forward(t_player_info *player, char **map, double x, double y)
+void	move_forward(t_player *player, char **map, double x, double y)
 {
 	double	rad;
 	double	dx;
@@ -38,12 +38,12 @@ void	move_forward(t_player_info *player, char **map, double x, double y)
 	y += dy * MOVE_SPEED;
 	if (!is_wall(map, x, y))
 	{
-		player->x_position = x;
-		player->y_position = y;
+		player->x_pos = x;
+		player->y_pos = y;
 	}
 }
 
-void	move_backward(t_player_info *player, char **map, double x, double y)
+void	move_backward(t_player *player, char **map, double x, double y)
 {
 	double	rad;
 	double	dx;
@@ -56,12 +56,12 @@ void	move_backward(t_player_info *player, char **map, double x, double y)
 	y -= dy * MOVE_SPEED;
 	if (!is_wall(map, x, y))
 	{
-		player->x_position = x;
-		player->y_position = y;
+		player->x_pos = x;
+		player->y_pos = y;
 	}
 }
 
-void	move_left(t_player_info *player, char **map, double x, double y)
+void	move_left(t_player *player, char **map, double x, double y)
 {
 	double	rad;
 	double	dx;
@@ -74,12 +74,12 @@ void	move_left(t_player_info *player, char **map, double x, double y)
 	y -= dx * MOVE_SPEED;
 	if (!is_wall(map, x, y))
 	{
-		player->x_position = x;
-		player->y_position = y;
+		player->x_pos = x;
+		player->y_pos = y;
 	}
 }
 
-void	move_right(t_player_info *player, char **map, double x, double y)
+void	move_right(t_player *player, char **map, double x, double y)
 {
 	double	rad;
 	double	dx;
@@ -92,7 +92,7 @@ void	move_right(t_player_info *player, char **map, double x, double y)
 	y += dx * MOVE_SPEED;
 	if (!is_wall(map, x, y))
 	{
-		player->x_position = x;
-		player->y_position = y;
+		player->x_pos = x;
+		player->y_pos = y;
 	}
 }

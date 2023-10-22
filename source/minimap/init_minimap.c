@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/20 20:57:22 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 19:36:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static int	init_player(t_cub3d *cub3d_data, t_minimap *minimap)
 	}
 	draw_player(minimap->img_player, cub3d_data->player->angle);
 	if (mlx_image_to_window(cub3d_data->window, minimap->img_player, \
-	(int)round((cub3d_data->player->x_position - 0.5) * minimap->tile_h), \
-	(int)round((cub3d_data->player->y_position - 0.5) * minimap->tile_h)) < 0)
+	(int)round((cub3d_data->player->x_pos - 0.5) * minimap->tile_h), \
+	(int)round((cub3d_data->player->y_pos - 0.5) * minimap->tile_h)) < 0)
 	{
 		printf("error displaying player image\n");
 		return (1);

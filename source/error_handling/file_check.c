@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 18:14:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 15:07:04 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_info(char *line)
 		!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "WE ", 3) || \
 		!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "F ", 2) || \
 		!ft_strncmp(line, "C ", 2))
-		return (TRUE);
+		return (free(line), TRUE); //Triin added free
 	return (FALSE);
 }
 /*checks if a file is empty before parsing*/
@@ -68,6 +68,12 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	map_parsing_start = TRUE;
 	if (!save_map(cub3d_info, curr_line, fd))
 		return (FALSE);
+	// triin added this part to avoid leaks during testing - for program to fully run this has to be returned
+	free(map_info.north_texture);
+	free(map_info.south_texture);
+	free(map_info.east_texture);
+	free(map_info.west_texture);
+	//
 	return (TRUE);
 }
 

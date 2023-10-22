@@ -6,12 +6,13 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/20 21:57:11 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 21:45:32 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 #include "../header_files/cub3d_minimap.h"
+#include "../header_files/cub3d_raycasting.h"
 
 void	free_data(t_cub3d *cub3d_data)
 {
@@ -35,6 +36,7 @@ int	main(int argc, char *argv[])
 	int			fd;
 	t_cub3d		cub3d_data;
 	t_minimap	minimap;
+	t_caster	rays;
 
 	fd = is_input_valid(argc, argv);
 	if (!fd)
@@ -45,12 +47,17 @@ int	main(int argc, char *argv[])
 	printf("MAP AFTER REPLACEMENT:\n");
 	print_map(&cub3d_data);
 	cub3d_data.player->mini_player = NULL;
-	cub3d_data.player->x_position += 0.5; // adding to place the player in the middle of the square
-	cub3d_data.player->y_position += 0.5;
-	printf("x:%f, y:%f\n", cub3d_data.player->x_position, cub3d_data.player->y_position);
+	cub3d_data.player->x_pos += 0.5; // adding to place the player in the middle of the square
+	cub3d_data.player->y_pos += 0.5;
+	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	cub3d_data.player->angle = (double)cub3d_data.player->orientation;
+	cub3d_data.player->angle = 270.058594;
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
+	
+	initiate_casting(&rays);
+	get_ray_length(&cub3d_data, cub3d_data.player->angle);
+
 	init_minimap(&cub3d_data, &minimap);
 	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
 	draw_minimap(&cub3d_data, &minimap);
@@ -60,7 +67,7 @@ int	main(int argc, char *argv[])
 	mlx_delete_image(cub3d_data.window, cub3d_data.img);
 	mlx_terminate(cub3d_data.window);
 	free_data(&cub3d_data);
-	system("leaks cub3d");
+	// system("leaks cub3d");
 	return (0);
 }
 

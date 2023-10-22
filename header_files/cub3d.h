@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 19:52:19 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 20:56:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ typedef enum cub3d_orientation
 
 typedef struct cub3d_player_info
 {
-	double			x_position;
-	double			y_position;
+	double			x_pos;
+	double			y_pos;
 	mlx_image_t		*mini_player;
 	t_orientation	orientation;
 	double			angle;
-}				t_player_info;
+}				t_player;
 
 typedef struct cub3d_info
 {
@@ -138,9 +138,9 @@ int		player_can_move(t_cub3d *cub3d_info);
 int		replace_spaces(t_cub3d *cub3d_info);
 
 /************** movements.c ***************/
-void	move_forward(t_player_info *player, char **map, double x, double y);
-void	move_backward(t_player_info *player, char **map, double x, double y);
-void	move_right(t_player_info *player, char **map, double x, double y);
-void	move_left(t_player_info *player, char **map, double x, double y);
+void	move_forward(t_player *player, char **map, double x, double y);
+void	move_backward(t_player *player, char **map, double x, double y);
+void	move_right(t_player *player, char **map, double x, double y);
+void	move_left(t_player *player, char **map, double x, double y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/21 18:01:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 20:56:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,29 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 	return ;
 }
 
-static void	move_miniplayer(t_player_info *player)
+static void	move_miniplayer(t_player *player)
 {
 
 	player->mini_player->instances[0].x = \
-		(int)round((player->x_position - 0.5) * player->mini_player->height);
+		(int)round((player->x_pos - 0.5) * player->mini_player->height);
 	player->mini_player->instances[0].y = \
-		(int)round((player->y_position - 0.5) * player->mini_player->height);
+		(int)round((player->y_pos - 0.5) * player->mini_player->height);
 }
 
 static void	linear_move_hook(keys_t key, t_cub3d *cub3d_data)
 {
 	if (key == MLX_KEY_W)
 		move_forward(cub3d_data->player, cub3d_data->map, \
-		cub3d_data->player->x_position, cub3d_data->player->y_position);
+		cub3d_data->player->x_pos, cub3d_data->player->y_pos);
 	if (key == MLX_KEY_D)
 		move_right(cub3d_data->player, cub3d_data->map, \
-		cub3d_data->player->x_position, cub3d_data->player->y_position);
+		cub3d_data->player->x_pos, cub3d_data->player->y_pos);
 	if (key == MLX_KEY_A)
 		move_left(cub3d_data->player, cub3d_data->map, \
-		cub3d_data->player->x_position, cub3d_data->player->y_position);
+		cub3d_data->player->x_pos, cub3d_data->player->y_pos);
 	if (key == MLX_KEY_S)
 		move_backward(cub3d_data->player, cub3d_data->map, \
-		cub3d_data->player->x_position, cub3d_data->player->y_position);
+		cub3d_data->player->x_pos, cub3d_data->player->y_pos);
 	if (cub3d_data->player->mini_player)
 		move_miniplayer(cub3d_data->player);
 }

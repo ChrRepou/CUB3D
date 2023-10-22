@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:53:44 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:38:53 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/22 19:36:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	player_can_move(t_cub3d *cub3d_info)
 	char	**map;
 	int		walls;
 
-	x = cub3d_info->player->x_position;
-	y = cub3d_info->player->y_position;
+	x = cub3d_info->player->x_pos;
+	y = cub3d_info->player->y_pos;
 	map = cub3d_info->map;
 	walls = 0;
 	if ((x - 1) > -1 && map[y][x - 1] == '1')

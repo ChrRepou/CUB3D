@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 18:16:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/22 20:56:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 {
 	if (c != 'N' && c != 'S' && c != 'E' && c != 'W')
 		return (FALSE);
-	cub3d_info->player = (t_player_info *)malloc(sizeof(t_player_info));
-	cub3d_info->player->x_position = x;
-	cub3d_info->player->y_position = y;
+	cub3d_info->player = (t_player *)malloc(sizeof(t_player));
+	cub3d_info->player->x_pos = x;
+	cub3d_info->player->y_pos = y;
 	if (c == 'N')
 		cub3d_info->player->orientation = N;
 	else if (c == 'S')
