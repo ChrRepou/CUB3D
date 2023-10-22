@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/07 13:25:41 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:14:53 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_color(char *line, t_color *color)
 
 	colors = ft_split(line, ',');
 	if (!colors)
-		return (printf("Error!\n Problem during saving color.\n"), FALSE);
+		return (print("Error!\n Problem during saving color.\n"), FALSE);
 	if (!colors[0] || !is_number(colors[0]))
 		return (free_after_split(colors), FALSE);
 	color->red = ft_atoi(colors[0]);
@@ -49,12 +49,12 @@ int	save_information(t_info *map_info, char *line)
 	else if (!ft_strncmp(line, "F ", 2))
 	{
 		if (!get_color(get_info(line, 2, -1), &map_info->floor_color))
-			return (printf("This is not a correct color!\n"), FALSE);
+			return (print("This is not a correct color!\n"), FALSE);
 	}
 	else if (!ft_strncmp(line, "C ", 2))
 	{
 		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_color))
-			return (printf("This is not a correct color!\n"), FALSE);
+			return (print("This is not a correct color!\n"), FALSE);
 	}
 	if (files_exist(map_info))
 		return (TRUE);
@@ -70,15 +70,17 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	int		i;
 
 	if (!(*cub3d_info)->map[index])
-		return (printf("Problem during allocation!\n"), FALSE);
+		return (print("Problem during allocation!\n"), FALSE);
 	i = -1;
 	while (++i < (*cub3d_info)->width)
 	{
-		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info)))
+		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
+		else if (!line[i] || line[i] == 10)
+			(*cub3d_info)->map[index][i] = 32;
 		else
-			return (printf("Error! This is not a valid line: %s\n", \
-				line), free((*cub3d_info)->map[index]), FALSE);
+			return (print_mixed("Error! This is not a valid line: %s REASON: %d\n", \
+				line, line[i]), free((*cub3d_info)->map[index]), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	i = -1;
@@ -95,7 +97,8 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 	int		i;
 
 	list = head;
-	cub3d_info->width = get_width(head->ln);
+	//change
+	cub3d_info->width = get_width(head);
 	cub3d_info->index = 0;
 	init_map(&cub3d_info);
 	i = 0;
@@ -106,7 +109,7 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 		list = list->next;
 		i++;
 	}
-	printf("SUCCESS: saved all lines!\n");
+	//printf("SUCCESS: saved all lines!\n");
 	return (TRUE);
 }
 
@@ -125,8 +128,7 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	{
 		map_lines = (t_line *)malloc(sizeof(t_line));
 		if (!map_lines)
-			return (free_map_lines(head), \
-				printf("Error!\n Map allocation problem\n"), FALSE);
+			return (free_map_lines(head), printf("Error!\n"), FALSE);
 		map_lines->ln = curr_line;
 		map_lines->next = NULL;
 		tail->next = map_lines;
@@ -137,7 +139,5 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 		return (free_map_lines(head), FALSE);
 	if (!map_is_valid(cub3d_info))
 		return (FALSE);
-	//print_list(head);
-	print_map(cub3d_info);
 	return (free_map_lines(head), TRUE);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/03 20:08:13 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/21 18:14:32 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_errors.h"
 
 /*Checks if the line is an information line*/
 
@@ -43,12 +43,11 @@ void	init_map_info(t_info *map_info)
 }
 
 /* checks if a file is empty or not and then saves the information and the map*/
-int	read_file(int fd)
+int	read_file(int fd, t_cub3d *cub3d_info)
 {
 	char	*curr_line;
 	int		first_line;
 	int		map_parsing_start;
-	t_cub3d	cub3d_info;
 	t_info	map_info;
 
 	first_line = TRUE;
@@ -65,10 +64,9 @@ int	read_file(int fd)
 	}
 	if (first_line)
 		return (FALSE);
-	printf("parsing map stage\n");
-	cub3d_info.map = NULL;
+	cub3d_info->map = NULL;
 	map_parsing_start = TRUE;
-	if (!save_map(&cub3d_info, curr_line, fd))
+	if (!save_map(cub3d_info, curr_line, fd))
 		return (FALSE);
 	return (TRUE);
 }
@@ -80,22 +78,22 @@ int	files_exist(t_info *map_info)
 
 	fd = open(map_info->north_texture, O_RDONLY);
 	if (fd == -1 && map_info->north_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->north_texture), FALSE);
 	close(fd);
 	fd = open(map_info->south_texture, O_RDONLY);
 	if (fd == -1 && map_info->south_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->south_texture), FALSE);
 	close(fd);
 	fd = open(map_info->east_texture, O_RDONLY);
 	if (fd == -1 && map_info->east_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->east_texture), FALSE);
 	close(fd);
 	fd = open(map_info->west_texture, O_RDONLY);
 	if (fd == -1 && map_info->west_texture)
-		return (printf("Error!\nThe file: %s doesn't exist!\n", \
+		return (print_s("Error!\nThe file: %s doesn't exist!\n", \
 			map_info->west_texture), FALSE);
 	close(fd);
 	return (TRUE);

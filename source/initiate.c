@@ -6,32 +6,38 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/09/30 19:01:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/20 20:46:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 
-int initiate_window(t_cub3d *cub3d_data)
+void	error_free_exit(char *error_msg, char **map)
+{
+	printf("%s\n", error_msg);
+	if (map)
+		free_after_split(map); // there is more to free!
+	exit (EXIT_FAILURE);
+}
+
+int	initiate_window(t_cub3d *cub3d_data)
 {
 	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
 	if (!cub3d_data->window)
-	{
-		printf("error while creating a window\n");
-		//free everything;
-		exit(EXIT_FAILURE);
-	}
+		error_free_exit("error while creating a window", cub3d_data->map);
 	cub3d_data->img = mlx_new_image(cub3d_data->window, WIDTH, HEIGHT);
 	if (!cub3d_data->img)
 	{
-		printf("error creating the image\n");
-		exit(EXIT_FAILURE);
+		mlx_terminate(cub3d_data->window);
+		error_free_exit("error creating the image", cub3d_data->map);
 	}
+	ft_memset(cub3d_data->img->pixels, 255, \
+	cub3d_data->img->width * cub3d_data->img->height * sizeof(int32_t));
 	if (mlx_image_to_window(cub3d_data->window, cub3d_data->img, 0, 0) < 0)
 	{
-		printf("error displaying the image\n");
-		//free everything;
-		exit(EXIT_FAILURE);
+		mlx_delete_image(cub3d_data->window, cub3d_data->img);
+		mlx_terminate(cub3d_data->window);
+		error_free_exit("error displaying the image", cub3d_data->map);
 	}
 	return (0);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_parsing.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:51:54 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 14:26:09 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:30:08 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_PARSING_H
 # define CUB3D_PARSING_H
 
-# include "./cub3d.h"
+# include "cub3d.h"
 
 /************************* parse.c ************************/
 

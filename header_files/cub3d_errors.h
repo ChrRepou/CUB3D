@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_errors.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:04:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/30 17:09:30 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:53:09 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_ERRORS_H
 # define CUB3D_ERRORS_H
+
+# include "cub3d.h"
+
+typedef struct s_cub3d	t_cub3d;
 
 /************** input_check.c **************/
 int		check_extension(const char *filename);
@@ -21,7 +25,6 @@ int		get_file_descriptor(const char *filename);
 int		is_input_valid(int argc, char *argv[]);
 
 /************** file_check.c ***************/
-int		read_file(int fd);
 int		is_empty_file(char **line, int fd);
 int		is_info(char *line);
 
