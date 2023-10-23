@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/22 21:41:28 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:31:41 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	wall_hit(char **map, int x, int y)
 	return (FALSE);
 }
 
-static double	get_x_distance(t_player *player, char **map, double ray_angle)
+static double	get_x_distance(t_player *player, char **map, int map_h, double ray_angle)
 {
 	t_ray	ray;
 
@@ -42,15 +42,23 @@ static double	get_x_distance(t_player *player, char **map, double ray_angle)
 	ray.hit_x = \
 		player->x_pos + (player->y_pos - ray.hit_y) / -tan(ray.rad);
 	printf("x axis x and y [%f, %f]\n", ray.hit_x, ray.hit_y);
-	while (ray.hit_x >= 1 && !wall_hit(map, floor(ray.hit_x), floor(ray.hit_y) + ray.modifier))
+	while (ray.hit_x >= 0 && ray.hit_x <= map_h)
 	{
+		if (wall_hit(map, floor(ray.hit_x), floor(ray.hit_y) + ray.modifier))
+			return (fabs((player->y_pos - ray.hit_y) / sin(ray.rad)));
 		ray.hit_y = ray.hit_y + ray.direction;
 		ray.hit_x = player->x_pos + (player->y_pos - ray.hit_y) / -tan(ray.rad);
 	}
-	return (fabs((player->y_pos - ray.hit_y) / sin(ray.rad)));
+	return (-1);
+	// while (ray.hit_x >= 1 && !wall_hit(map, floor(ray.hit_x), floor(ray.hit_y) + ray.modifier))
+	// {
+	// 	ray.hit_y = ray.hit_y + ray.direction;
+	// 	ray.hit_x = player->x_pos + (player->y_pos - ray.hit_y) / -tan(ray.rad);
+	// }
+	// return (fabs((player->y_pos - ray.hit_y) / sin(ray.rad)));
 }
 
-static double	get_y_distance(t_player *player, char **map, double ray_angle)
+static double	get_y_distance(t_player *player, char **map, int map_w, double ray_angle)
 {
 	t_ray	ray;
 
@@ -72,12 +80,14 @@ static double	get_y_distance(t_player *player, char **map, double ray_angle)
 	ray.hit_y = \
 		player->y_pos + (player->x_pos - ray.hit_x) * -tan(ray.rad);
 	printf("y axis x and y [%f, %f]\n", ray.hit_x, ray.hit_y);
-	while (ray.hit_y >= 1 && !wall_hit(map, floor(ray.hit_x) + ray.modifier, floor(ray.hit_y)))
+	while (ray.hit_y >= 0 && ray.hit_y <= map_w)
 	{
+		if (wall_hit(map, floor(ray.hit_x) + ray.modifier, floor(ray.hit_y)))
+			return (fabs((player->x_pos - ray.hit_x) / cos(ray.rad)));
 		ray.hit_x = ray.hit_x + ray.direction;
 		ray.hit_y = player->y_pos + (player->x_pos - ray.hit_x) * -tan(ray.rad);
 	}
-	return (fabs((player->x_pos - ray.hit_x) / cos(ray.rad)));
+	return (-1);
 }
 
 double	get_ray_length(t_cub3d *cub3d_data, double ray_angle)
@@ -85,8 +95,9 @@ double	get_ray_length(t_cub3d *cub3d_data, double ray_angle)
 	double	x_dist;
 	double	y_dist;
 
-	x_dist = get_x_distance(cub3d_data->player, cub3d_data->map, ray_angle);
-	y_dist = get_y_distance(cub3d_data->player, cub3d_data->map, ray_angle);
+	x_dist = \
+	get_x_distance(cub3d_data->player, cub3d_data->map, cub3d_data->height, ray_angle);
+	y_dist = get_y_distance(cub3d_data->player, cub3d_data->map, cub3d_data->width, ray_angle);
 	printf("The distance to x axis is %f\n", x_dist);
 	printf("The distance to y axis is %f\n", y_dist);
 	if (x_dist != -1 && x_dist < y_dist) //here is a fish

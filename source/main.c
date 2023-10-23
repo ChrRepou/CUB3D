@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/22 21:45:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:47:34 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char *argv[])
 	cub3d_data.player->y_pos += 0.5;
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	cub3d_data.player->angle = (double)cub3d_data.player->orientation;
-	cub3d_data.player->angle = 270.058594;
+	cub3d_data.player->angle = cub3d_data.player->angle - 0.058594;
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
 	
