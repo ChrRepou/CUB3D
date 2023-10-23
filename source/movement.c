@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/21 16:36:17 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:43:55 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ bool	is_wall(char **map, double x, double y)
 
 void	move_forward(t_player_info *player, char **map, double x, double y)
 {
-	double	rad;
 	double	dx;
 	double	dy;
 
-	rad = player->angle * (M_PI / 180.0);
-	dx = cos(rad);
-	dy = sin(rad);
+	dx = cos(player->angle);
+	dy = sin(player->angle);
 	x += dx * MOVE_SPEED;
 	y += dy * MOVE_SPEED;
 	if (!is_wall(map, x, y))
@@ -45,13 +43,11 @@ void	move_forward(t_player_info *player, char **map, double x, double y)
 
 void	move_backward(t_player_info *player, char **map, double x, double y)
 {
-	double	rad;
 	double	dx;
 	double	dy;
 
-	rad = player->angle * (M_PI / 180.0);
-	dx = cos(rad);
-	dy = sin(rad);
+	dx = cos(player->angle);
+	dy = sin(player->angle);
 	x -= dx * MOVE_SPEED;
 	y -= dy * MOVE_SPEED;
 	if (!is_wall(map, x, y))
@@ -63,13 +59,11 @@ void	move_backward(t_player_info *player, char **map, double x, double y)
 
 void	move_left(t_player_info *player, char **map, double x, double y)
 {
-	double	rad;
 	double	dx;
 	double	dy;
 
-	rad = player->angle * (M_PI / 180.0);
-	dx = cos(rad);
-	dy = sin(rad);
+	dx = cos(player->angle);
+	dy = sin(player->angle);
 	x += dy * MOVE_SPEED;
 	y -= dx * MOVE_SPEED;
 	if (!is_wall(map, x, y))
@@ -81,13 +75,11 @@ void	move_left(t_player_info *player, char **map, double x, double y)
 
 void	move_right(t_player_info *player, char **map, double x, double y)
 {
-	double	rad;
 	double	dx;
 	double	dy;
 
-	rad = player->angle * (M_PI / 180.0);
-	dx = cos(rad);
-	dy = sin(rad);
+	dx = cos(player->angle);
+	dy = sin(player->angle);
 	x -= dy * MOVE_SPEED;
 	y += dx * MOVE_SPEED;
 	if (!is_wall(map, x, y))

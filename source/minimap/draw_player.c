@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/21 18:01:36 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:50:43 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static t_2d	get_endpoint(t_2d start_pt, double angle, int length)
 {
 	t_2d	end_pt;
 
-	end_pt.x = round(start_pt.x + (length * cos(angle * M_PI / 180)));
-	end_pt.y = round(start_pt.y + (length * sin(angle * M_PI / 180)));
+	end_pt.x = round(start_pt.x + (length * cos(angle)));
+	end_pt.y = round(start_pt.y + (length * sin(angle)));
 	return (end_pt);
 }
 
@@ -57,4 +57,12 @@ void	draw_player(mlx_image_t *img, double angle)
 		}
 	}
 	draw_direction(img, angle);
+}
+
+void	move_miniplayer(t_player_info *player)
+{
+	player->mini_player->instances[0].x = \
+		(int)round((player->x_position - 0.5) * player->mini_player->height);
+	player->mini_player->instances[0].y = \
+		(int)round((player->y_position - 0.5) * player->mini_player->height);
 }

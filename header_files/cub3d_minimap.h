@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/20 16:56:34 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:51:21 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		init_minimap(t_cub3d *cub3d_data, t_minimap *minimap);
 int		draw_minimap(t_cub3d *data, t_minimap *minimap);
 void	draw_player(mlx_image_t *img, double angle);
 void	draw_line(mlx_image_t *img, t_2d s_p1, t_2d s_p2);
+void	move_miniplayer(t_player_info *player);
 
 // void	rotate_player(t_cub3d *data);
 

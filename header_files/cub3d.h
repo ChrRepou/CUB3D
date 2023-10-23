@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 19:52:19 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:52:33 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define TRUE 1
 # define FALSE 0
 # define MOVE_SPEED 0.1
+# define TURN_SPEED 0.1
 
 typedef struct cub3d_color
 {
@@ -40,10 +41,10 @@ typedef struct cub3d_color
 
 typedef enum cub3d_orientation
 {
-	N = 270,
-	S = 90,
-	E = 0,
-	W = 180,
+	E,
+	S,
+	W,
+	N,
 }		t_orientation;
 
 typedef struct cub3d_player_info

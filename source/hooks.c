@@ -6,14 +6,12 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/21 18:01:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:54:44 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 #include "../header_files/cub3d_minimap.h"
-
-
 
 void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 {
@@ -23,15 +21,6 @@ void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(window);
 	return ;
-}
-
-static void	move_miniplayer(t_player_info *player)
-{
-
-	player->mini_player->instances[0].x = \
-		(int)round((player->x_position - 0.5) * player->mini_player->height);
-	player->mini_player->instances[0].y = \
-		(int)round((player->y_position - 0.5) * player->mini_player->height);
 }
 
 static void	linear_move_hook(keys_t key, t_cub3d *cub3d_data)
@@ -57,17 +46,16 @@ static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
 	if (key == MLX_KEY_LEFT)
 	{
 		if (cub3d_data->player->angle <= 0)
-			cub3d_data->player->angle = 359;
-		else
-			cub3d_data->player->angle--;
+			cub3d_data->player->angle = 2 * M_PI;
+		cub3d_data->player->angle -= TURN_SPEED;
 	}
 	if (key == MLX_KEY_RIGHT)
 	{
-		if (cub3d_data->player->angle >= 360)
-			cub3d_data->player->angle = 1;
-		else
-			cub3d_data->player->angle++;
+		if (cub3d_data->player->angle >= 2 * M_PI)
+			cub3d_data->player->angle = 0;
+		cub3d_data->player->angle += TURN_SPEED;
 	}
+	printf("turning %f\n", cub3d_data->player->angle);
 	if (cub3d_data->player->mini_player)
 		draw_player(cub3d_data->player->mini_player, cub3d_data->player->angle);
 }
