@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:00:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 16:40:24 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:05:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
+
+typedef enum cub3d_orientation	t_orientation;
 
 /************** string_manipulation.c **************/
 char	*get_info(char *line, int start_index, int end_index);
@@ -27,5 +29,8 @@ int		is_player(char info);
 void	print(char *string);
 void	print_s(char *string, char *argument);
 void	print_mixed(char *string, char *argument, int argument2);
+
+/******************** math.c *********************/
+double	get_angle(t_orientation cub3d_orientation);
 
 #endif

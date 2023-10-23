@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:07 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:25:05 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define TRUE 1
 # define FALSE 0
 # define MOVE_SPEED 0.1
+# define TURN_SPEED 0.1
 
 typedef struct cub3d_color
 {
@@ -40,10 +41,10 @@ typedef struct cub3d_color
 
 typedef enum cub3d_orientation
 {
-	N = 270,
-	S = 90,
-	E = 0,
-	W = 180,
+	E,
+	S,
+	W,
+	N,
 }		t_orientation;
 
 typedef struct cub3d_player_info
@@ -80,6 +81,7 @@ typedef struct s_cub3d
 	int							width;
 	int							height;
 	int							index;
+	t_info						*info;
 }				t_cub3d;
 
 // map will be represented as a 2d array [][]
@@ -97,6 +99,7 @@ int		read_file(int fd, t_cub3d *cub3d_info);
 
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
+void	free_map_info(t_cub3d *map_info);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
