@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 17:38:07 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:06:43 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ int	main(int argc, char *argv[])
 	mlx_loop(cub3d_data.window);
 	mlx_delete_image(cub3d_data.window, cub3d_data.img);
 	mlx_terminate(cub3d_data.window);
-	free_data(&cub3d_data);
-	// system("leaks cub3d");
+	//free_map_info(&cub3d_data);
 	return (0);
 }
 

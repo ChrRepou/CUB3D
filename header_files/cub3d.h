@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 17:52:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:03:30 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_cub3d
 	int							width;
 	int							height;
 	int							index;
+	t_info						*info;
 }				t_cub3d;
 
 // map will be represented as a 2d array [][]
@@ -98,6 +99,7 @@ int		read_file(int fd, t_cub3d *cub3d_info);
 
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
+void	free_map_info(t_cub3d *map_info);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
