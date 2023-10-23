@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/22 21:19:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 19:56:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define CUBE_SIDE 126
 # define PLAYER_EYELINE 64
-# define FIELD_OF_VIEW 60
+# define ANGLE_TOLERANCE 0.002
 
 # include "cub3d.h"
 
@@ -31,7 +31,6 @@ typedef struct s_ray
 {
 	double	hit_x;
 	double	hit_y;
-	double	rad;
 	int		modifier;
 	int		direction;
 }	t_ray;

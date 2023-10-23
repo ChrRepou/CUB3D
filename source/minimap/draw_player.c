@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/23 17:50:43 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:45:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	draw_player(mlx_image_t *img, double angle)
 	draw_direction(img, angle);
 }
 
-void	move_miniplayer(t_player_info *player)
+void	move_miniplayer(t_player_info *cub3d_player_info)
 {
-	player->mini_player->instances[0].x = \
-		(int)round((player->x_position - 0.5) * player->mini_player->height);
-	player->mini_player->instances[0].y = \
-		(int)round((player->y_position - 0.5) * player->mini_player->height);
+	cub3d_player_info->mini_player->instances[0].x = \
+		(int)round((cub3d_player_info->x_pos - 0.5) * cub3d_player_info->mini_player->height);
+	cub3d_player_info->mini_player->instances[0].y = \
+		(int)round((cub3d_player_info->y_pos - 0.5) * cub3d_player_info->mini_player->height);
 }

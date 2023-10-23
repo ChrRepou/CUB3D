@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 18:25:56 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:46:33 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,6 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	map_parsing_start = TRUE;
 	if (!save_map(cub3d_info, curr_line, fd))
 		return (FALSE);
-	// triin added this part to avoid leaks during testing - for program to fully run this has to be returned
-	free(map_info.north_texture);
-	free(map_info.south_texture);
-	free(map_info.east_texture);
-	free(map_info.west_texture);
-	//
 	return (TRUE);
 }
 

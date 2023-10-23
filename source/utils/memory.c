@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 20:46:42 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:53:16 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	free_map_info(t_cub3d *map_info)
 	free(map_info->info->south_texture);
 	free(map_info->info->west_texture);
 	free(map_info->info);
-	free(map_info);
+	// free(map_info);
 }
