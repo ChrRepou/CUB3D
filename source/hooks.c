@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/23 17:54:44 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:10:33 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
 			cub3d_data->player->angle = 0;
 		cub3d_data->player->angle += TURN_SPEED;
 	}
-	printf("turning %f\n", cub3d_data->player->angle);
 	if (cub3d_data->player->mini_player)
 		draw_player(cub3d_data->player->mini_player, cub3d_data->player->angle);
 }

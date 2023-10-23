@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/23 17:51:21 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:11:47 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "cub3d.h"
 
-# define MINI_H 1000
-# define MINI_W 1000
+# define MINI_H 500
+# define MINI_W 500
 # define WALL_COLOR 0x1CFF8AFF
 # define PLAYER_COLOR 0xE00016FF
 # define SPACE_COLOR 0x15164AFF
