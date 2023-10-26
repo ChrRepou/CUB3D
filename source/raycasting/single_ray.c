@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/23 20:29:55 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/23 20:53:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static double	get_x_dist(t_player *player, char **map, int map_h, double ray_ang
 	ray.hit_x = \
 		player->x_pos + (player->y_pos - ray.hit_y) / -tan(ray_angle);
 	printf("x axis x and y [%f, %f]\n", ray.hit_x, ray.hit_y);
-	while (ray.hit_x >= 0 && ray.hit_x <= map_h)
+	while (ray.hit_x >= 0 && ray.hit_x <= map_h) //nott 100% sure about this
 	{
 		if (wall_hit(map, floor(ray.hit_x), floor(ray.hit_y) + ray.modifier))
 			return (fabs((player->y_pos - ray.hit_y) / sin(ray_angle)));
