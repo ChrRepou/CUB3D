@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 18:08:59 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/26 16:04:44 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 	int		i;
 
 	list = head;
-	//change
 	cub3d_info->width = get_width(head);
 	cub3d_info->index = 0;
 	init_map(&cub3d_info);
@@ -109,7 +108,6 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 		list = list->next;
 		i++;
 	}
-	//printf("SUCCESS: saved all lines!\n");
 	return (TRUE);
 }
 

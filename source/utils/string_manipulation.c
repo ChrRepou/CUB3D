@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_manipulation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 18:16:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/26 16:03:31 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*get_info(char *line, int start_index, int end_index)
 			end_index++;
 	}
 	new_line = (char *)malloc(end_index - start_index + 1);
+	if (!new_line)
+		return (print("Error!\n Map allocation problem\n"), NULL);
 	i = 0;
 	while (start_index < end_index)
 	{
@@ -48,6 +50,8 @@ char	*char_to_string(char c)
 	char	*str;
 
 	str = (char *)malloc(2);
+	if (!str)
+		return (NULL);
 	str[0] = c;
 	str[1] = '\0';
 	return (str);
@@ -63,6 +67,8 @@ int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 	if (c != 'N' && c != 'S' && c != 'E' && c != 'W')
 		return (FALSE);
 	cub3d_info->player = (t_player_info *)malloc(sizeof(t_player_info));
+	if (!cub3d_info->player)
+		return (print("Error!\n Player allocation problem\n"), FALSE);
 	cub3d_info->player->x_position = x;
 	cub3d_info->player->y_position = y;
 	if (c == 'N')
