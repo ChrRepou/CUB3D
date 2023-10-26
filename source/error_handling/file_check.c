@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 18:46:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/26 16:52:27 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 {
 	char	*curr_line;
 	int		first_line;
-	int		map_parsing_start;
 
 	first_line = TRUE;
-	map_parsing_start = FALSE;
 	cub3d_info->info = (t_info *)malloc(sizeof(t_info));
+	if (!cub3d_info->info)
+		return (print("Error!\n Allocation problem\n"), FALSE);
 	init_map_info(cub3d_info->info);
 	while (!is_empty_file(&curr_line, fd))
 	{
@@ -65,7 +65,6 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	if (first_line)
 		return (FALSE);
 	cub3d_info->map = NULL;
-	map_parsing_start = TRUE;
 	if (!save_map(cub3d_info, curr_line, fd))
 		return (FALSE);
 	return (TRUE);
