@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:06:00 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/21 20:25:45 by crepou           ###   ########.fr       */
+/*   Updated: 2023/10/26 16:03:59 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ void	init_map(t_cub3d **cub3d_info)
 	y = 0;
 	(*cub3d_info)->map = (char **) \
 		malloc(sizeof(char *) * (*cub3d_info)->height);
+	if (!(*cub3d_info)->map)
+		return (print("Error!\n Map allocation problem\n"));
 	while (y < (*cub3d_info)->height)
 	{
 		(*cub3d_info)->map[y] = (char *) \
 			malloc(sizeof(char) * ((*cub3d_info)->width + 1));
+		if (!(*cub3d_info)->map[y])
+			return (print("Error!\n Map allocation problem\n"));
 		y++;
 	}
 }
