@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 18:03:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:06:24 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,9 @@ void	move_forward(t_player_info *player, char **map, double x, double y);
 void	move_backward(t_player_info *player, char **map, double x, double y);
 void	move_right(t_player_info *player, char **map, double x, double y);
 void	move_left(t_player_info *player, char **map, double x, double y);
+
+/************** colors.c ***************/
+int		rgb_to_color(t_color c);
+t_color	*color_to_rgb(int color);
 
 #endif
