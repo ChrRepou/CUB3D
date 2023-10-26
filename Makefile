@@ -7,8 +7,9 @@ SRCS = ./source/cub3d.c ./source/main.c ./source/initiate.c ./source/hooks.c ./s
 ./source/error_handling/map_check.c ./source/error_handling/map_check2.c ./source/error_handling/player_check.c  \
 ./source/parsing/parse.c ./source/parsing/init.c ./source/parsing/replace.c \
 ./source/utils/string_manipulation.c ./source/utils/memory.c ./source/utils/information_retrieval.c \
-./source/utils/printing.c ./source/utils/math.c \
-./source/minimap/draw_minimap.c ./source/minimap/init_minimap.c ./source/minimap/draw_line.c ./source/minimap/draw_player.c
+./source/utils/printing.c ./source/utils/math.c\
+./source/minimap/draw_minimap.c ./source/minimap/init_minimap.c ./source/minimap/draw_line.c ./source/minimap/draw_player.c \
+./source/utils/colors.c
 LIBFT = ./libft/libft.a
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./libft/
