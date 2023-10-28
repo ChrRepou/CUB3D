@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 20:16:56 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/28 16:27:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	int			fd;
 	t_cub3d		cub3d_data;
 	t_minimap	minimap;
-	t_caster	rays;
+	t_caster	cast_data;
 
 	fd = is_input_valid(argc, argv);
 	if (!fd)
@@ -37,15 +37,18 @@ int	main(int argc, char *argv[])
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	cub3d_data.player->angle = get_angle(cub3d_data.player->orientation);
 	
+	initiate_casting(&cast_data);
+	cub3d_data.raycaster = &cast_data;
+	// cub3d_data.player->angle = cub3d_data.player->angle - (M_PI / 3);
+	
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
+	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
 	
-	initiate_casting(&rays);
-	cub3d_data.player->angle = rays.ray_angle_step * 2 + cub3d_data.player->angle;
-	get_ray_length(&cub3d_data, cub3d_data.player->angle);
+	draw_raycast_image(&cub3d_data);
+	// draw_column(&cub3d_data, &cast_data, cub3d_data.player->angle);
 
 	init_minimap(&cub3d_data, &minimap);
-	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
 	draw_minimap(&cub3d_data, &minimap);
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	mlx_loop_hook(cub3d_data.window, (void (*)(void *))generic_hooks, &cub3d_data);

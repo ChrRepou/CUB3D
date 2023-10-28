@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/26 16:54:36 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/10/27 22:10:01 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define TRUE 1
 # define FALSE 0
 # define MOVE_SPEED 0.1
-# define TURN_SPEED 0.1
+# define TURN_SPEED 0.05
 
 typedef struct cub3d_color
 {
@@ -77,6 +77,7 @@ typedef struct s_cub3d
 	mlx_t						*window;
 	mlx_image_t					*img;
 	struct cub3d_player_info	*player;
+	struct s_raycaster			*raycaster;
 	char						**map;
 	int							width;
 	int							height;
@@ -113,13 +114,6 @@ void	init_map(t_cub3d **cub3d_info);
 void	print_list(t_line *head);
 int		get_width(t_line *head);
 
-/************** initiate.c ***************/
-int		initiate_window(t_cub3d *cub3d_data);
-
-/************** hooks.c ***************/
-void	esc_keyfunc(mlx_key_data_t keydata, void *param);
-void	generic_hooks(t_cub3d	*cub3d_data);
-
 /************** map_check.c ***************/
 int		map_is_valid(t_cub3d *cub3d_info);
 int		check_row(char *line);
@@ -140,10 +134,20 @@ int		player_can_move(t_cub3d *cub3d_info);
 /************** replace.c ***************/
 int		replace_spaces(t_cub3d *cub3d_info);
 
+/************** initiate.c ***************/
+int		initiate_window(t_cub3d *cub3d_data);
+
+/************** hooks.c ***************/
+void	esc_keyfunc(mlx_key_data_t keydata, void *param);
+void	generic_hooks(t_cub3d	*cub3d_data);
+
 /************** movements.c ***************/
-void	move_forward(t_player_info *player, char **map, double x, double y);
-void	move_backward(t_player_info *player, char **map, double x, double y);
-void	move_right(t_player_info *player, char **map, double x, double y);
-void	move_left(t_player_info *player, char **map, double x, double y);
+void	move_forward(t_player *player, char **map, double x, double y);
+void	move_backward(t_player *player, char **map, double x, double y);
+void	move_right(t_player *player, char **map, double x, double y);
+void	move_left(t_player *player, char **map, double x, double y);
+
+/************** draw/draw.c ***************/
+void	my_put_pixel(mlx_image_t *image, int x, int y, uint32_t color);
 
 #endif
