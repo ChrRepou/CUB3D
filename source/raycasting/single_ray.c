@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 15:20:41 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:43:12 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i)
 	ray_data.wall_h = \
 	get_wall_pixels(cub3d_data->raycaster, ray_data.distance, ray_angle);
 	start_y = (HEIGHT - ray_data.wall_h) / 2;
-	printf("RAY DATA: \n");
-	printf("true_angle: [%f]\n", ray_data.true_angle);
-	printf("hitpoint: ([%f], [%f])\n", ray_data.hit_x, ray_data.hit_y);
-	printf("distance: [%f]\n", ray_data.distance);
-	printf("wall direction and height : [%d][%d]\n", ray_data.wall, ray_data.wall_h);
+	// printf("RAY DATA: \n");
+	// printf("true_angle: [%f]\n", ray_data.true_angle);
+	// printf("hitpoint: ([%f], [%f])\n", ray_data.hit_x, ray_data.hit_y);
+	// printf("distance: [%f]\n", ray_data.distance);
+	// printf("wall direction and height : [%d][%d]\n", ray_data.wall, ray_data.wall_h);
 	while (i < ray_data.wall_h)
 		my_put_pixel(cub3d_data->img, ray_i, (start_y + i++), 0xfff4dbff);
 }
