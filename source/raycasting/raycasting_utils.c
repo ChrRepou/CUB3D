@@ -6,14 +6,14 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:55:45 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/28 17:22:15 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 13:45:50 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 #include "../../header_files/cub3d_raycasting.h"
 
-bool	wall_hit(char **map, int x, int y)
+bool	is_wall_hit(char **map, int x, int y)
 {
 	if (map[y][x] == '1')
 		return (TRUE);
