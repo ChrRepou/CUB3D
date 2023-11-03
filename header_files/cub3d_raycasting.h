@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 15:26:12 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:36:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_ray
 	double			true_angle;
 	double			hit_x;
 	double			hit_y;
-	double			distance;
 	t_orientation	wall;
+	double			distance;
 	int				wall_h;
 }	t_ray;
 
@@ -48,11 +48,17 @@ typedef struct s_ray_utils
 	t_player	*pt_0;
 }	t_ray_utils;
 
+/************** raycaster.c **************/
 void	initiate_casting(t_caster *cast_data);
-void	get_ray_data(t_cub3d *cub3d, t_ray *ray);
-void	draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i);
 void	draw_raycast_image(t_cub3d *cub3d_data);
 
+/************** single_ray.c **************/
+void	get_ray_data(t_cub3d *cub3d, t_ray *ray);
+
+/************** single_ray_2.c **************/
+void	draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i);
+
+/************** raycasting_utils.c **************/
 bool	is_wall_hit(char **map, int x, int y);
 double	remove_distortion(double distance, double angle_offcenter);
 double	get_true_angle(double player_angle, double ray_angle);
