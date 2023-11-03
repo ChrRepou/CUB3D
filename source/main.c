@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/28 16:27:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 18:51:03 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main(int argc, char *argv[])
 	cub3d_data.player->mini_player = NULL;
 	cub3d_data.player->x_pos += 0.5; // adding to place the player in the middle of the square
 	cub3d_data.player->y_pos += 0.5;
+	cub3d_data.info->celing_color = rgb_to_color(cub3d_data.info->ceiling_rgb);
+	cub3d_data.info->floor_color = rgb_to_color(cub3d_data.info->floor_rgb);
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	cub3d_data.player->angle = get_angle(cub3d_data.player->orientation);
 	

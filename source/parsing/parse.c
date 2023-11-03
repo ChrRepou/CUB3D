@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/26 16:04:44 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/03 18:45:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int	save_information(t_info *map_info, char *line)
 		map_info->west_texture = get_info(line, 3, -1);
 	else if (!ft_strncmp(line, "F ", 2))
 	{
-		if (!get_color(get_info(line, 2, -1), &map_info->floor_color))
+		if (!get_color(get_info(line, 2, -1), &map_info->floor_rgb))
 			return (print("This is not a correct color!\n"), FALSE);
 	}
 	else if (!ft_strncmp(line, "C ", 2))
 	{
-		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_color))
+		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_rgb))
 			return (print("This is not a correct color!\n"), FALSE);
 	}
 	if (files_exist(map_info))

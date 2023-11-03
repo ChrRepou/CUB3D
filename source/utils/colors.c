@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:50:06 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/26 13:05:13 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/03 18:26:30 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 /*
 The function returns all the 3 colors of rgb into one integer color
 */
-int	rgb_to_color(t_color c)
+uint32_t	rgb_to_color(t_color c)
 {
 	int	color;
 
-	color = (c.red << 16) | (c.green << 8) | c.blue;
+	color = (c.red << 24) | (c.green << 16) | (c.blue << 8) | 0xFF;
 	return (color);
 }
 

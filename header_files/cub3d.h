@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/27 22:10:01 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 18:47:18 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include "utils.h"
 # include "cub3d_parsing.h"
 
-# define WIDTH 1024
-# define HEIGHT 1024
+# define WIDTH 1280
+# define HEIGHT 800
 # define TRUE 1
 # define FALSE 0
 # define MOVE_SPEED 0.1
-# define TURN_SPEED 0.05
+# define TURN_SPEED 0.02
 
 typedef struct cub3d_color
 {
@@ -58,12 +58,14 @@ typedef struct cub3d_player_info
 
 typedef struct cub3d_info
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*east_texture;
-	char	*west_texture;
-	t_color	floor_color;
-	t_color	ceiling_color;
+	char		*north_texture;
+	char		*south_texture;
+	char		*east_texture;
+	char		*west_texture;
+	t_color		floor_rgb;
+	t_color		ceiling_rgb;
+	uint32_t	floor_color;
+	uint32_t	celing_color;
 }				t_info;
 
 typedef struct cub3d_line

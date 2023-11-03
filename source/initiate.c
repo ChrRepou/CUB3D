@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/20 20:46:48 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:56:08 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	initiate_window(t_cub3d *cub3d_data)
 		mlx_terminate(cub3d_data->window);
 		error_free_exit("error creating the image", cub3d_data->map);
 	}
-	ft_memset(cub3d_data->img->pixels, 255, \
-	cub3d_data->img->width * cub3d_data->img->height * sizeof(int32_t));
 	if (mlx_image_to_window(cub3d_data->window, cub3d_data->img, 0, 0) < 0)
 	{
 		mlx_delete_image(cub3d_data->window, cub3d_data->img);

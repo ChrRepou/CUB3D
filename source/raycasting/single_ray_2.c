@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 15:09:15 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/03 16:55:16 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,20 @@ static int	get_y_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 
 static t_orientation	get_wall(double angle, char hit_axis)
 {
-	if (angle && hit_axis)
-		return (N);
-	return (S);
+	if (hit_axis == 'x')
+	{
+		if (angle < M_PI)
+			return (S);
+		else
+			return (N);
+	}
+	else
+	{
+		if (angle > M_PI_2 && angle < (3 * M_PI / 2))
+			return (W);
+		else
+			return (E);
+	}
 }
 
 static void	set_ray_data(t_ray *ray, t_pt *hit_point, double start_x, char axis)

@@ -3,7 +3,7 @@ SO textures/south.xpm42
 WE textures/west.xpm42
 EA textures/east.xpm42
 F 220,100,0
-C 225,30,0
+C 255,231,176
 
 1111111
 1001001
