@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 17:56:08 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 19:20:47 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,33 @@ void	error_free_exit(char *error_msg, char **map)
 	if (map)
 		free_after_split(map); // there is more to free!
 	exit (EXIT_FAILURE);
+}
+
+static mlx_image_t	*texture_to_img(mlx_t *mlx, char *path)
+{
+	xpm_t		*texture_s;
+	mlx_image_t	*texture_as_img;
+
+	texture_s = mlx_load_xpm42(path);
+	if (!texture_s)
+		return (NULL);
+	texture_as_img = mlx_texture_to_image(mlx, &texture_s->texture);
+	mlx_delete_texture(&texture_s->texture);
+	return (texture_as_img);
+}
+
+static int	initiate_textures(t_cub3d *cub3d)
+{
+	cub3d->north_img = \
+	texture_to_img(cub3d->window, cub3d->info->north_texture);
+	//error message
+	cub3d->south_img = \
+	texture_to_img(cub3d->window, cub3d->info->south_texture);
+	cub3d->east_img = \
+	texture_to_img(cub3d->window, cub3d->info->east_texture);
+	cub3d->west_img = \
+	texture_to_img(cub3d->window, cub3d->info->west_texture);
+	return (0);
 }
 
 int	initiate_window(t_cub3d *cub3d_data)
@@ -38,4 +65,13 @@ int	initiate_window(t_cub3d *cub3d_data)
 		error_free_exit("error displaying the image", cub3d_data->map);
 	}
 	return (0);
+}
+
+int	initiate_mlx(t_cub3d *cub3d_data)
+{
+	if (initiate_window(cub3d_data) != 0)
+		return (EXIT_FAILURE);
+	if (initiate_textures(cub3d_data) != 0)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 16:03:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 18:56:10 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ typedef struct s_cub3d
 {
 	mlx_t						*window;
 	mlx_image_t					*img;
+	mlx_image_t					*north_img;
+	mlx_image_t					*south_img;
+	mlx_image_t					*east_img;
+	mlx_image_t					*west_img;
 	struct cub3d_player_info	*player;
 	struct s_raycaster			*raycaster;
 	char						**map;
@@ -86,6 +90,8 @@ typedef struct s_cub3d
 	int							index;
 	t_info						*info;
 }				t_cub3d;
+
+typedef struct s_raycaster	t_caster;
 
 // map will be represented as a 2d array [][]
 
@@ -137,7 +143,10 @@ int		player_can_move(t_cub3d *cub3d_info);
 int		replace_spaces(t_cub3d *cub3d_info);
 
 /************** initiate.c ***************/
-int		initiate_window(t_cub3d *cub3d_data);
+int		initiate_mlx(t_cub3d *cub3d_data);
+
+/************** cub3d.c ***************/
+int		initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
