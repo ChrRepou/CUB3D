@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/03 18:45:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:34:51 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 
 /*getting the line with the colors and save each inside a t_color struct*/
-int	get_color(char *line, t_color *color)
+int	get_color(char *line, t_color *color, uint32_t *pixel_color)
 {
 	char	**colors;
 
@@ -30,6 +30,7 @@ int	get_color(char *line, t_color *color)
 		return (free_after_split(colors), FALSE);
 	color->blue = ft_atoi(colors[2]);
 	free_after_split(colors);
+	*pixel_color = rgb_to_color(*color);
 	return (TRUE);
 }
 
@@ -48,12 +49,14 @@ int	save_information(t_info *map_info, char *line)
 		map_info->west_texture = get_info(line, 3, -1);
 	else if (!ft_strncmp(line, "F ", 2))
 	{
-		if (!get_color(get_info(line, 2, -1), &map_info->floor_rgb))
+		if (!get_color(get_info(line, 2, -1), \
+			&map_info->floor_rgb, &map_info->floor_color))
 			return (print("This is not a correct color!\n"), FALSE);
 	}
 	else if (!ft_strncmp(line, "C ", 2))
 	{
-		if (!get_color(get_info(line, 2, -1), &map_info->ceiling_rgb))
+		if (!get_color(get_info(line, 2, -1), \
+			&map_info->ceiling_rgb, &map_info->celing_color))
 			return (print("This is not a correct color!\n"), FALSE);
 	}
 	if (files_exist(map_info))
