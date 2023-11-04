@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/03 18:47:18 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:32:18 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_cub3d
 
 /************************* parse.c ************************/
 int		save_information(t_info *map_info, char *line);
-int		get_color(char *line, t_color *color);
+int		get_color(char *line, t_color *color, uint32_t *pixel_color);
 int		save_map(t_cub3d *cub3d_info, char *curr_line, int fd);
 int		create_map_array(t_line *head, t_cub3d *cub3d_info);
 int		save_line(char *line, t_cub3d **cub3d_info, int index);

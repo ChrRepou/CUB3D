@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_manipulation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/26 16:57:21 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:36:08 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 	cub3d_info->player = (t_player *)malloc(sizeof(t_player));
 	if (!cub3d_info->player)
 		return (print("Error!\n Player allocation problem\n"), FALSE);
-	cub3d_info->player->x_pos = x;
-	cub3d_info->player->y_pos = y;
+	cub3d_info->player->x_pos = x + 0.5;
+	cub3d_info->player->y_pos = y + 0.5;
 	if (c == 'N')
 		cub3d_info->player->orientation = N;
 	else if (c == 'S')
