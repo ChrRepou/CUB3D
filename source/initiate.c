@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/04 19:20:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 19:53:59 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static mlx_image_t	*texture_to_img(mlx_t *mlx, char *path)
 		return (NULL);
 	texture_as_img = mlx_texture_to_image(mlx, &texture_s->texture);
 	mlx_delete_texture(&texture_s->texture);
+	if (!texture_as_img)
+		return (NULL);
 	return (texture_as_img);
 }
 
@@ -37,13 +39,16 @@ static int	initiate_textures(t_cub3d *cub3d)
 {
 	cub3d->north_img = \
 	texture_to_img(cub3d->window, cub3d->info->north_texture);
-	//error message
+	//if NULL --> error message, terminate previous?, return 1
 	cub3d->south_img = \
 	texture_to_img(cub3d->window, cub3d->info->south_texture);
+	//if NULL --> error message, terminate previous?, return 1
 	cub3d->east_img = \
 	texture_to_img(cub3d->window, cub3d->info->east_texture);
+	//if NULL --> error message, terminate previous?, return 1
 	cub3d->west_img = \
 	texture_to_img(cub3d->window, cub3d->info->west_texture);
+	//if NULL --> error message, terminate previous?, return 1
 	return (0);
 }
 
