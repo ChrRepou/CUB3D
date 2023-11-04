@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/28 16:28:13 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 16:03:18 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
 	draw_raycast_image(cub3d_data);
 }
 
-void	generic_hooks(t_cub3d	*cub3d_data)
+void	gen_hooks(t_cub3d	*cub3d_data)
 {
 	if (mlx_is_key_down(cub3d_data->window, MLX_KEY_W))
 		linear_move_hook(MLX_KEY_W, cub3d_data);

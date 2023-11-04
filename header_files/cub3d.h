@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:32:18 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/04 16:03:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int		initiate_window(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
-void	generic_hooks(t_cub3d	*cub3d_data);
+void	gen_hooks(t_cub3d	*cub3d_data);
 
 /************** movements.c ***************/
 void	move_forward(t_player *player, char **map, double x, double y);

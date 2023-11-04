@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:45:51 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 16:03:09 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,16 @@ int	main(int argc, char *argv[])
 	print_map(&cub3d_data);
 	cub3d_data.player->mini_player = NULL;
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
-	cub3d_data.player->angle = get_angle(cub3d_data.player->orientation);
-
 	initiate_casting(&cast_data);
 	cub3d_data.raycaster = &cast_data;
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
-	// ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
-	
 	draw_raycast_image(&cub3d_data);
-	// draw_column(&cub3d_data, &cast_data, cub3d_data.player->angle);
 
 	init_minimap(&cub3d_data, &minimap);
 	draw_minimap(&cub3d_data, &minimap);
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
-	mlx_loop_hook(cub3d_data.window, (void (*)(void *))generic_hooks, &cub3d_data);
+	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
 	mlx_loop(cub3d_data.window);
 	mlx_delete_image(cub3d_data.window, cub3d_data.img);
 	mlx_terminate(cub3d_data.window);
