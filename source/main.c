@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:36:43 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:45:51 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@ int	main(int argc, char *argv[])
 	cub3d_data.player->mini_player = NULL;
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	cub3d_data.player->angle = get_angle(cub3d_data.player->orientation);
-	
+
 	initiate_casting(&cast_data);
 	cub3d_data.raycaster = &cast_data;
-	// cub3d_data.player->angle = cub3d_data.player->angle - (M_PI / 3);
-	
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	initiate_window(&cub3d_data);
-	ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
+	// ft_memset(cub3d_data.img->pixels, 255, cub3d_data.img->width * cub3d_data.img->height * sizeof(int32_t));
 	
 	draw_raycast_image(&cub3d_data);
 	// draw_column(&cub3d_data, &cast_data, cub3d_data.player->angle);
