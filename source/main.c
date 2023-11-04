@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 19:22:38 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 20:08:19 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ int	main(int argc, char *argv[])
 	print_map(&cub3d_data);
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
+	
 	initiate_cub3d(&cub3d_data, &cast_data);
-
+	//if fails, delete mages, teminate window, free parsing data, exit here
 
 	init_minimap(&cub3d_data, &minimap);
 	draw_minimap(&cub3d_data, &minimap);
+	//I think we should have bonus rule for minimap...
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
 	mlx_loop(cub3d_data.window);
+	
 	mlx_delete_image(cub3d_data.window, cub3d_data.img);
 	mlx_delete_image(cub3d_data.window, cub3d_data.north_img);
 	mlx_delete_image(cub3d_data.window, cub3d_data.south_img);

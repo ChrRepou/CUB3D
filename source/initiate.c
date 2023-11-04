@@ -6,11 +6,12 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/04 19:53:59 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 20:10:31 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
+
 
 void	error_free_exit(char *error_msg, char **map)
 {
