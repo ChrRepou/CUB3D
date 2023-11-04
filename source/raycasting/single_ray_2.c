@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 16:55:16 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/04 16:35:44 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,14 @@ static t_orientation	get_wall(double angle, char hit_axis)
 	}
 }
 
-static void	set_ray_data(t_ray *ray, t_pt *hit_point, double start_x, char axis)
+static void	set_ray_data(t_ray *ray, t_pt *hit_point, t_player *st, char axis)
 {
 	ray->hit_x = hit_point->x;
 	ray->hit_y = hit_point->y;
-	ray->distance = fabs((start_x - hit_point->x) / cos(ray->true_angle));
+	if (axis == 'x')
+		ray->distance = fabs((st->y_pos - hit_point->y) / sin(ray->true_angle));
+	else if (axis == 'y')
+		ray->distance = fabs((st->x_pos - hit_point->x) / cos(ray->true_angle));
 	ray->wall = get_wall(ray->true_angle, axis);
 	return ;
 }
@@ -110,15 +113,15 @@ void	get_ray_data(t_cub3d *cub3d, t_ray *ray)
 	if (!get_x_intersect(cub3d, &x_wall, ray->true_angle))
 	{
 		get_y_intersect(cub3d, &y_wall, ray->true_angle);
-		return (set_ray_data(ray, &y_wall, cub3d->player->x_pos, 'y'));
+		return (set_ray_data(ray, &y_wall, cub3d->player, 'y'));
 	}
 	if (!get_y_intersect(cub3d, &y_wall, ray->true_angle))
-		return (set_ray_data(ray, &x_wall, cub3d->player->x_pos, 'x'));
+		return (set_ray_data(ray, &x_wall, cub3d->player, 'x'));
 	x_dist = fabs((cub3d->player->x_pos - x_wall.x) / cos(ray->true_angle));
 	y_dist = fabs((cub3d->player->x_pos - y_wall.x) / cos(ray->true_angle));
 	if (x_dist <= y_dist)
-		set_ray_data(ray, &x_wall, cub3d->player->x_pos, 'x');
+		set_ray_data(ray, &x_wall, cub3d->player, 'x');
 	else
-		set_ray_data(ray, &y_wall, cub3d->player->x_pos, 'y');
+		set_ray_data(ray, &y_wall, cub3d->player, 'y');
 	return ;
 }
