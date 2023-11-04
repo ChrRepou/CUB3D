@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:36:43 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:43:02 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char *argv[])
 	print_map(&cub3d_data);
 	cub3d_data.player->mini_player = NULL;
 	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
-	cub3d_data.player->angle = get_angle(cub3d_data.player->orientation);
 	
 	initiate_casting(&cast_data);
 	cub3d_data.raycaster = &cast_data;
