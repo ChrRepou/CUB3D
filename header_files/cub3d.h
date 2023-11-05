@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 20:08:57 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/05 22:29:26 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ typedef struct s_cub3d
 	mlx_image_t					*south_img;
 	mlx_image_t					*east_img;
 	mlx_image_t					*west_img;
-	struct cub3d_player_info	*player;
+	t_player					*player;
 	struct s_raycaster			*raycaster;
 	char						**map;
 	int							width;
 	int							height;
 	int							index;
 	t_info						*info;
+	t_minimap					*minimap; //change
 }				t_cub3d;
 
 typedef struct s_raycaster	t_caster;
@@ -110,7 +111,7 @@ int		read_file(int fd, t_cub3d *cub3d_info);
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
 void	free_map_info(t_cub3d *map_info);
-void	delete_images(t_cub3d *cub3d_info, t_minimap *minimap);
+void	garbage_collector(t_cub3d *cub3d_info);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
@@ -149,6 +150,7 @@ int		initiate_mlx(t_cub3d *cub3d_data);
 
 /************** cub3d.c ***************/
 int		initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data);
+void	init_struct(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
@@ -162,5 +164,10 @@ void	move_left(t_player *player, char **map, double x, double y);
 
 /************** draw/draw.c ***************/
 void	my_put_pixel(mlx_image_t *image, int x, int y, uint32_t color);
+
+int		init_minimap(t_cub3d *cub3d_data, t_minimap *minimap);
+int		draw_minimap(t_cub3d *data); //change
+void	move_miniplayer(t_player_info *cub3d_player_info);
+void	delete_images(t_cub3d *cub3d_info); //change
 
 #endif

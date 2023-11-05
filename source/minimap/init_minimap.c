@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/22 19:36:48 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 22:23:20 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
 
 static int	get_tile_size(map_w, map_h)
 {
@@ -62,17 +61,19 @@ int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 	if (!minimap->img_mini)
 	{
 		printf("error creating the minimap image\n");
-		// free everything
+		garbage_collector(cub3d_data);// free everything //change
 		exit(EXIT_FAILURE);
 	}
 	if (mlx_image_to_window(cub3d_data->window, minimap->img_mini, 0, 0) < 0)
 	{
 		printf("error displaying the minimap image\n");
-		//free everything;
+		garbage_collector(cub3d_data);//free everything;
 		exit(EXIT_FAILURE);
 	}
 	if (init_player(cub3d_data, minimap) != 0)
-		//free everything
+	{
+		garbage_collector(cub3d_data);//free everything
 		exit(EXIT_FAILURE);
+	}
 	return (0);
 }

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/23 18:45:49 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 21:18:27 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
 
 static t_2d	get_endpoint(t_2d start_pt, double angle, int length)
 {

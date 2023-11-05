@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:34:51 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/05 21:09:05 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	get_color(char *line, t_color *color, uint32_t *pixel_color)
 	color->blue = ft_atoi(colors[2]);
 	free_after_split(colors);
 	*pixel_color = rgb_to_color(*color);
+	free(line); //change
 	return (TRUE);
 }
 
@@ -38,7 +39,7 @@ int	get_color(char *line, t_color *color, uint32_t *pixel_color)
 int	save_information(t_info *map_info, char *line)
 {
 	if (!ft_strncmp(line, "\n", 1))
-		return (TRUE);
+		return (free(line), TRUE);
 	if (!ft_strncmp(line, "NO ", 3))
 		map_info->north_texture = get_info(line, 3, -1);
 	else if (!ft_strncmp(line, "SO ", 3))
