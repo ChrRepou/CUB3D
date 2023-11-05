@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/10/09 18:24:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 21:30:17 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
 
 static void	init_minimap_draw(t_mini_draw *s_minimap)
 {
@@ -43,7 +42,7 @@ static void	draw_tile(mlx_image_t *img, t_mini_draw *data, int tile_h)
 	}
 }
 
-int	draw_minimap(t_cub3d *data, t_minimap *minimap)
+int	draw_minimap(t_cub3d *data) //change
 {
 	t_mini_draw	mmap;
 
@@ -56,12 +55,12 @@ int	draw_minimap(t_cub3d *data, t_minimap *minimap)
 				mmap.color = WALL_COLOR;
 			else
 				mmap.color = SPACE_COLOR;
-			draw_tile(minimap->img_mini, &mmap, minimap->tile_h);
+			draw_tile(data->minimap->img_mini, &mmap, data->minimap->tile_h);
 			mmap.x_tile++;
-			mmap.x_px = mmap.x_px + minimap->tile_h;
-			mmap.y_px = mmap.y_tile * minimap->tile_h;
+			mmap.x_px = mmap.x_px + data->minimap->tile_h;
+			mmap.y_px = mmap.y_tile * data->minimap->tile_h;
 		}
-		mmap.y_px = mmap.y_px + minimap->tile_h;
+		mmap.y_px = mmap.y_px + data->minimap->tile_h;
 		mmap.x_tile = 0;
 		mmap.x_px = 0;
 		mmap.y_tile++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/26 16:52:27 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 23:16:19 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_info(char *line)
 		!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "WE ", 3) || \
 		!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "F ", 2) || \
 		!ft_strncmp(line, "C ", 2))
-		return (free(line), TRUE); //Triin added free
+		return (free(line), TRUE);
 	return (FALSE);
 }
 /*checks if a file is empty before parsing*/
@@ -49,10 +49,12 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	int		first_line;
 
 	first_line = TRUE;
+	init_struct(cub3d_info); //change
 	cub3d_info->info = (t_info *)malloc(sizeof(t_info));
 	if (!cub3d_info->info)
 		return (print("Error!\n Allocation problem\n"), FALSE);
 	init_map_info(cub3d_info->info);
+	printf("hello world\n");
 	while (!is_empty_file(&curr_line, fd))
 	{
 		if (first_line)
