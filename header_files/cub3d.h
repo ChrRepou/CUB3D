@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 18:56:10 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:08:57 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "cub3d_errors.h"
 # include "utils.h"
 # include "cub3d_parsing.h"
+# include "cub3d_minimap.h"
 
 # define WIDTH 1280
 # define HEIGHT 800
@@ -109,6 +110,7 @@ int		read_file(int fd, t_cub3d *cub3d_info);
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
 void	free_map_info(t_cub3d *map_info);
+void	delete_images(t_cub3d *cub3d_info, t_minimap *minimap);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);

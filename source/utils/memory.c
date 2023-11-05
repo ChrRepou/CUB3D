@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/10/23 18:53:16 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:08:50 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,15 @@ void	free_map_info(t_cub3d *map_info)
 	free(map_info->info->west_texture);
 	free(map_info->info);
 	// free(map_info);
+}
+
+void	delete_images(t_cub3d *cub3d_info, t_minimap *minimap)
+{
+	mlx_delete_image(cub3d_info->window, cub3d_info->img);
+	mlx_delete_image(cub3d_info->window, cub3d_info->north_img);
+	mlx_delete_image(cub3d_info->window, cub3d_info->south_img);
+	mlx_delete_image(cub3d_info->window, cub3d_info->east_img);
+	mlx_delete_image(cub3d_info->window, cub3d_info->west_img);
+	mlx_delete_image(cub3d_info->window, minimap->img_mini);
+	mlx_delete_image(cub3d_info->window, minimap->img_player);
 }

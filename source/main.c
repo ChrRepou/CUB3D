@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 20:08:19 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:10:09 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
-#include "../header_files/cub3d_minimap.h"
 #include "../header_files/cub3d_raycasting.h"
 #include "../header_files/utils.h"
 
@@ -43,14 +42,7 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
 	mlx_loop(cub3d_data.window);
-	
-	mlx_delete_image(cub3d_data.window, cub3d_data.img);
-	mlx_delete_image(cub3d_data.window, cub3d_data.north_img);
-	mlx_delete_image(cub3d_data.window, cub3d_data.south_img);
-	mlx_delete_image(cub3d_data.window, cub3d_data.east_img);
-	mlx_delete_image(cub3d_data.window, cub3d_data.west_img);
-	mlx_delete_image(cub3d_data.window, minimap.img_mini);
-	mlx_delete_image(cub3d_data.window, minimap.img_player);
+	delete_images(&cub3d_data, &minimap);
 	mlx_terminate(cub3d_data.window);
 	free_map_info(&cub3d_data);
 	// system("leaks cub3d");
