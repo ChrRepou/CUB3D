@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:31:08 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:40:41 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	free_info(t_cub3d *cub3d_info)
 //it checks for allocated memory and frees everything
 void	garbage_collector(t_cub3d *cub3d_info)
 {
+	//printf("hello1\n");
 	delete_images(cub3d_info);
 	if (cub3d_info->player)
 		free(cub3d_info->player);

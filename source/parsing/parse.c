@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 21:09:05 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:44:50 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	save_information(t_info *map_info, char *line)
 			return (print("This is not a correct color!\n"), FALSE);
 	}
 	if (files_exist(map_info))
-		return (TRUE);
+		return (free(line), TRUE);//change
 	return (FALSE);
 }
 
