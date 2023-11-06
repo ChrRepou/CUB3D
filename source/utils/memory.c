@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:26:29 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:31:08 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,6 @@ void	delete_images(t_cub3d *cub3d_info)
 		if (cub3d_info->minimap->img_player)
 			mlx_delete_image(cub3d_info->window, \
 							cub3d_info->minimap->img_player);
-	}
-}
-
-void	free_player(t_cub3d *cub3d_info)
-{
-	if (cub3d_info->player)
-	{
-		if (cub3d_info->player->mini_player && cub3d_info->window)
-			mlx_delete_image(cub3d_info->window, \
-							cub3d_info->player->mini_player);
-		free(cub3d_info->player);
 	}
 }
 
