@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 18:54:58 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:17:45 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ static int	get_wall_pixels(t_caster *cast_data, double dist, double ray_angle)
 }
 
 // get-pixel_color
+// void	get_texture_line(t_cub3d *cub3d, t_orientation orientation)
+// {
+// 	if (orientation == N)
+// 	{
 
+// 	}
+// }
 	//in addition to wall_h this needs collision_point and wall_hit
 void	draw_column(t_cub3d *cub3d, double ray_angle, int ray_i)
 {

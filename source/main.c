@@ -3,10 +3,9 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 15:47:57 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +17,7 @@ void	leaks( void )
 {
 	system("leaks cub3d");
 }
+
 
 int	main(int argc, char *argv[])
 {
@@ -40,7 +40,6 @@ int	main(int argc, char *argv[])
 	if(!initiate_cub3d(&cub3d_data, &cast_data))
 		garbage_collector(&cub3d_data);
 	init_minimap(&cub3d_data, &minimap);
-	cub3d_data.minimap = &minimap;
 	draw_minimap(&cub3d_data); //change
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);

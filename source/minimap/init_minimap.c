@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/05 22:23:20 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:46:42 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	init_player(t_cub3d *cub3d_data, t_minimap *minimap)
 {
 	minimap->img_player = \
 		mlx_new_image(cub3d_data->window, minimap->tile_h, minimap->tile_h);
-	cub3d_data->player->mini_player = minimap->img_player; //ading pointer to the main struct
+	cub3d_data->player->mini_player = minimap->img_player; //adding pointer to the main struct
 	if (!minimap->img_player)
 	{
 		printf("error creating the player image\n");
@@ -51,6 +51,7 @@ static int	init_player(t_cub3d *cub3d_data, t_minimap *minimap)
 
 int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 {
+	cub3d_data->minimap = minimap;
 	minimap->tile_h = get_tile_size(cub3d_data->width, cub3d_data->height);
 	if (minimap->tile_h < 1)
 	{
