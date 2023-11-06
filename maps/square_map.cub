@@ -1,7 +1,7 @@
-NO textures/north.xpm42
-SO textures/south.xpm42
-WE textures/west.xpm42
-EA textures/east.xpm42
+NO textures/greystone.png
+SO textures/mossy.png
+WE textures/purplestone.png
+EA textures/lava.png
 
 F 69,222,199
 C 235,198,52

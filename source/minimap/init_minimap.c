@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/06 15:46:42 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/06 16:46:00 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 		garbage_collector(cub3d_data);//free everything;
 		exit(EXIT_FAILURE);
 	}
+	draw_minimap(cub3d_data);
 	if (init_player(cub3d_data, minimap) != 0)
 	{
 		garbage_collector(cub3d_data);//free everything

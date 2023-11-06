@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:22:24 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 17:01:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,19 @@ typedef struct cub3d_player_info
 }				t_player;
 
 typedef struct cub3d_info
-{
-	char		*north_texture;
-	char		*south_texture;
-	char		*east_texture;
-	char		*west_texture;
-	t_color		floor_rgb;
-	t_color		ceiling_rgb;
-	uint32_t	floor_color;
-	uint32_t	celing_color;
+{	
+	char			*north_texture;
+	char			*south_texture;
+	char			*east_texture;
+	char			*west_texture;
+	t_color			floor_rgb;
+	t_color			ceiling_rgb;
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*east;
+	mlx_texture_t	*west;
+	uint32_t		floor_color;
+	uint32_t		celing_color;
 }				t_info;
 
 typedef struct cub3d_line
@@ -79,10 +83,6 @@ typedef struct s_cub3d
 {
 	mlx_t						*window;
 	mlx_image_t					*img;
-	mlx_image_t					*north_img;
-	mlx_image_t					*south_img;
-	mlx_image_t					*east_img;
-	mlx_image_t					*west_img;
 	t_player					*player;
 	struct s_raycaster			*raycaster;
 	char						**map;

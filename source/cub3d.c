@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:24:29 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 22:29:29 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 17:08:21 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 void	init_struct(t_cub3d *cub3d_data) //change
 {
 	cub3d_data->minimap = NULL;
-	cub3d_data->east_img = NULL;
-	cub3d_data->north_img = NULL;
-	cub3d_data->west_img = NULL;
-	cub3d_data->south_img = NULL;
 	cub3d_data->img = NULL;
 	cub3d_data->window = NULL;
 	cub3d_data->player = NULL;

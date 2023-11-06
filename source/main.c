@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 15:52:07 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/06 21:52:36 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	t_minimap	minimap;
 	t_caster	cast_data;
 
-	atexit(leaks);
+	// atexit(leaks);
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
@@ -39,8 +39,7 @@ int	main(int argc, char *argv[])
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	if(!initiate_cub3d(&cub3d_data, &cast_data))
 		garbage_collector(&cub3d_data);
-	init_minimap(&cub3d_data, &minimap);
-	draw_minimap(&cub3d_data); //change
+	init_minimap(&cub3d_data, &minimap); //check fail
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
 	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
 	mlx_loop(cub3d_data.window);

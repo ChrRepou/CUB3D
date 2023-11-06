@@ -6,6 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
+/*   Updated: 2023/11/06 16:26:20 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +40,10 @@ void	init_map_info(t_info *map_info)
 	map_info->north_texture = NULL;
 	map_info->west_texture = NULL;
 	map_info->south_texture = NULL;
+	map_info->north = NULL;
+	map_info->south = NULL;
+	map_info->east = NULL;
+	map_info->west = NULL;
 }
 
 /* checks if a file is empty or not and then saves the information and the map*/
