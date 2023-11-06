@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:30:23 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:12:26 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_info(char *line)
 		!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "WE ", 3) || \
 		!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "F ", 2) || \
 		!ft_strncmp(line, "C ", 2))
-		return (free(line), TRUE);
+		return (TRUE);
 	return (FALSE);
 }
 /*checks if a file is empty before parsing*/
