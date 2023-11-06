@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 23:17:53 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:09:50 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	leaks( void )
 int	main(int argc, char *argv[])
 {
 	int			fd;
-	t_cub3d		*cub3d_data; //change
+	t_cub3d		cub3d_data; //change
 	t_minimap	minimap;
 	t_caster	cast_data;
 
@@ -30,22 +30,21 @@ int	main(int argc, char *argv[])
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
-	cub3d_data = (t_cub3d *)malloc(sizeof(t_cub3d));
-	if (!read_file(fd, cub3d_data))
-		return (garbage_collector(cub3d_data), -1); //change
-	replace_spaces(cub3d_data);
+	if (!read_file(fd, &cub3d_data))
+		return (garbage_collector(&cub3d_data), -1); //change
+	replace_spaces(&cub3d_data);
 	printf("MAP AFTER REPLACEMENT:\n");
-	print_map(cub3d_data);
-	printf("x:%f, y:%f\n", cub3d_data->player->x_pos, cub3d_data->player->y_pos);
-	printf("orientation: %d, angle: %f\n", cub3d_data->player->orientation, cub3d_data->player->angle);
-	if(!initiate_cub3d(cub3d_data, &cast_data))
-		garbage_collector(cub3d_data);
-	init_minimap(cub3d_data, &minimap);
-	cub3d_data->minimap = &minimap;
-	draw_minimap(cub3d_data); //change
-	mlx_key_hook(cub3d_data->window, &esc_keyfunc, (void *)cub3d_data->window);
-	mlx_loop_hook(cub3d_data->window, (void (*)(void *))gen_hooks, cub3d_data);
-	mlx_loop(cub3d_data->window);
-	garbage_collector(cub3d_data);//change
+	print_map(&cub3d_data);
+	printf("x:%f, y:%f\n", cub3d_data.player->x_pos, cub3d_data.player->y_pos);
+	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
+	if(!initiate_cub3d(&cub3d_data, &cast_data))
+		garbage_collector(&cub3d_data);
+	init_minimap(&cub3d_data, &minimap);
+	cub3d_data.minimap = &minimap;
+	draw_minimap(&cub3d_data); //change
+	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
+	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
+	mlx_loop(cub3d_data.window);
+	garbage_collector(&cub3d_data);//change
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 23:16:04 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:10:11 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	free_after_split(char **array)
 	int	i;
 
 	i = 0;
+	if (!array)
+		return ;
 	while (array[i])
 	{
 		free(array[i]);
 		i++;
 	}
-	if (array)
-		free(array);
+	free(array);
 }
 
 /* Free every map_line we saved in the linked list */
@@ -135,15 +136,11 @@ void	free_info(t_cub3d *cub3d_info)
 //it checks for allocated memory and frees everything
 void	garbage_collector(t_cub3d *cub3d_info)
 {
-	if (cub3d_info)
-	{
-		delete_images(cub3d_info);
-		free_player(cub3d_info);
-		free_map(cub3d_info);
-		free_info(cub3d_info);
-		if (cub3d_info->window)
-			mlx_terminate(cub3d_info->window);
-		free(cub3d_info);
-	}
+	delete_images(cub3d_info);
+	free_player(cub3d_info);
+	free_map(cub3d_info);
+	free_info(cub3d_info);
+	if (cub3d_info->window)
+		mlx_terminate(cub3d_info->window);
 }
 
