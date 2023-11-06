@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:00:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/03 18:27:24 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:21:42 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ typedef struct cub3d_color		t_color;
 /************** string_manipulation.c **************/
 char		*get_info(char *line, int start_index, int end_index);
 char		*char_to_string(char c);
-
-/******************** memory.c *********************/
 void		free_after_split(char **array);
 
 /******************** information_retrieval.c *********************/

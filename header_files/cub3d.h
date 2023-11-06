@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 22:29:26 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:22:24 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,10 @@ int		read_file(int fd, t_cub3d *cub3d_info);
 
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
-void	free_map_info(t_cub3d *map_info);
 void	garbage_collector(t_cub3d *cub3d_info);
+void	delete_images(t_cub3d *cub3d_info);
+void	free_map(t_cub3d *cub3d_info);
+void	free_info(t_cub3d *cub3d_info);
 
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
