@@ -6,10 +6,10 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
+/*   Updated: 2023/11/06 15:52:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d_minimap.h"
 #include "../header_files/cub3d_raycasting.h"
 #include "../header_files/utils.h"
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	t_minimap	minimap;
 	t_caster	cast_data;
 
-	//atexit(leaks);
+	atexit(leaks);
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
