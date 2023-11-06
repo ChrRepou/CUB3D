@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/05 23:16:04 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 12:59:19 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	free_player(t_cub3d *cub3d_info)
 {
 	if (cub3d_info->player)
 	{
-		if (cub3d_info->player->mini_player && cub3d_info->window)
-			mlx_delete_image(cub3d_info->window, \
-							cub3d_info->player->mini_player);
+		// if (cub3d_info->player->mini_player && cub3d_info->window) //its the pointer to img_player, so will cause double free
+		// 	mlx_delete_image(cub3d_info->window, \
+		// 					cub3d_info->player->mini_player);
 		free(cub3d_info->player);
 	}
 }
