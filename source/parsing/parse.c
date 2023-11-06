@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:44:50 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:47:04 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 			(*cub3d_info)->map[index][i] = 32;
 		else
 			return (print_mixed("Error! This is not a valid line: %s REASON: %d\n", \
-				line, line[i]), free((*cub3d_info)->map[index]), FALSE);
+				line, line[i]), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	i = -1;
