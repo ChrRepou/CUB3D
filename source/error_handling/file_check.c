@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:44:08 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:46:59 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	if (!cub3d_info->info)
 		return (print("Error!\n Allocation problem\n"), FALSE);
 	init_map_info(cub3d_info->info);
-	printf("hello world\n");
 	while (!is_empty_file(&curr_line, fd))
 	{
 		if (first_line)
@@ -64,7 +63,6 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 		if (!save_information(cub3d_info->info, curr_line))
 			return (free(curr_line), FALSE);
 	}
-	printf("hello world\n");
 	if (first_line)
 		return (FALSE);
 	cub3d_info->map = NULL;
