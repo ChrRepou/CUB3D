@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/04 15:43:32 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:20:29 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,20 @@ int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 		cub3d_info->player->orientation = W;
 	cub3d_info->player->angle = get_angle(cub3d_info->player->orientation);
 	return (TRUE);
+}
+
+/* It frees the memory after using function ft_split*/
+void	free_after_split(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

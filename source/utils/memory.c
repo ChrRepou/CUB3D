@@ -6,27 +6,11 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:10:11 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:21:33 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
-
-/* It frees the memory after using function ft_split*/
-void	free_after_split(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 /* Free every map_line we saved in the linked list */
 void	free_map_lines(t_line *line)
@@ -45,29 +29,7 @@ void	free_map_lines(t_line *line)
 	}
 }
 
-void	free_map_info(t_cub3d *map_info)
-{
-	char	**map;
-	int		i;
-
-	map = map_info->map;
-	i = 0;
-	while (i < map_info->height)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-	free(map_info->player);
-	free(map_info->info->north_texture);
-	free(map_info->info->east_texture);
-	free(map_info->info->south_texture);
-	free(map_info->info->west_texture);
-	free(map_info->info);
-	free(map_info);
-}
-
-void	delete_images(t_cub3d *cub3d_info) //change
+void	delete_images(t_cub3d *cub3d_info)
 {
 	if (cub3d_info->img)
 		mlx_delete_image(cub3d_info->window, cub3d_info->img);
@@ -86,17 +48,6 @@ void	delete_images(t_cub3d *cub3d_info) //change
 		if (cub3d_info->minimap->img_player)
 			mlx_delete_image(cub3d_info->window, \
 							cub3d_info->minimap->img_player);
-	}
-}
-
-void	free_player(t_cub3d *cub3d_info)
-{
-	if (cub3d_info->player)
-	{
-		if (cub3d_info->player->mini_player && cub3d_info->window)
-			mlx_delete_image(cub3d_info->window, \
-							cub3d_info->player->mini_player);
-		free(cub3d_info->player);
 	}
 }
 
@@ -133,11 +84,13 @@ void	free_info(t_cub3d *cub3d_info)
 		free(cub3d_info->info);
 	}
 }
+
 //it checks for allocated memory and frees everything
 void	garbage_collector(t_cub3d *cub3d_info)
 {
 	delete_images(cub3d_info);
-	free_player(cub3d_info);
+	if (cub3d_info->player)
+		free(cub3d_info->player);
 	free_map(cub3d_info);
 	free_info(cub3d_info);
 	if (cub3d_info->window)
