@@ -6,59 +6,59 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 18:02:38 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 18:34:25 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 
-void	error_free_exit(char *error_msg, char **map)
-{
-	printf("%s\n", error_msg);
-	if (map)
-		free_after_split(map); // there is more to free!
-	exit (EXIT_FAILURE);
-}
-
-
-static int	initiate_textures(t_cub3d *cub3d)
+int	initiate_textures(t_cub3d *cub3d)
 {
 	cub3d->info->north = mlx_load_png(cub3d->info->north_texture);
-	//if NULL --> error message, terminate previous?, return 1
+	if (!cub3d->info->north)
+	{
+		printf("Error loading the texture: %s\n", cub3d->info->north_texture);
+		return (FALSE);
+	}
 	cub3d->info->south = mlx_load_png(cub3d->info->south_texture);
-	//if NULL --> error message, terminate previous?, return 1
+	if (!cub3d->info->south)
+	{
+		printf("Error loading the texture: %s\n", cub3d->info->south_texture);
+		return (FALSE);
+	}
 	cub3d->info->east = mlx_load_png(cub3d->info->east_texture);
-	//if NULL --> error message, terminate previous?, return 1
+	if (!cub3d->info->east)
+	{
+		printf("Error loading the texture: %s\n", cub3d->info->east_texture);
+		return (FALSE);
+	}
 	cub3d->info->west = mlx_load_png(cub3d->info->west_texture);
-	//if NULL --> error message, terminate previous?, return 1
-	return (0);
-}
-
-int	initiate_window(t_cub3d *cub3d_data)
-{
-	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
-	if (!cub3d_data->window)
-		error_free_exit("error while creating a window", cub3d_data->map);
-	cub3d_data->img = mlx_new_image(cub3d_data->window, WIDTH, HEIGHT);
-	if (!cub3d_data->img)
+	if (!cub3d->info->west)
 	{
-		mlx_terminate(cub3d_data->window);
-		error_free_exit("error creating the image", cub3d_data->map);
+		printf("Error loading the texture: %s\n", cub3d->info->west_texture);
+		return (FALSE);
 	}
-	if (mlx_image_to_window(cub3d_data->window, cub3d_data->img, 0, 0) < 0)
-	{
-		mlx_delete_image(cub3d_data->window, cub3d_data->img);
-		mlx_terminate(cub3d_data->window);
-		error_free_exit("error displaying the image", cub3d_data->map);
-	}
-	return (0);
+	return (TRUE);
 }
 
 int	initiate_mlx(t_cub3d *cub3d_data)
 {
-	if (initiate_window(cub3d_data) != 0)
-		return (EXIT_FAILURE);
-	if (initiate_textures(cub3d_data) != 0)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
+	if (!cub3d_data->window)
+	{
+		printf("Error while creating a window\n");
+		return (FALSE);
+	}
+	cub3d_data->img = mlx_new_image(cub3d_data->window, WIDTH, HEIGHT);
+	if (!cub3d_data->img)
+	{
+		printf("Error while creating an image\n");
+		return (FALSE);
+	}
+	if (mlx_image_to_window(cub3d_data->window, cub3d_data->img, 0, 0) < 0)
+	{
+		printf("Error while putting rhe image to the window\n");
+		return (FALSE);
+	}
+	return (TRUE);
 }

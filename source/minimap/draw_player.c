@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/05 21:18:27 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/07 20:03:26 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_minimap.h"
 
 static t_2d	get_endpoint(t_2d start_pt, double angle, int length)
 {
@@ -42,13 +43,13 @@ void	draw_player(mlx_image_t *img, double angle)
 	int	end;
 
 	ft_memset(img->pixels, 0, img->width * img->height * sizeof(int32_t));
-	x_px = img->height / 2 - 2;
-	y_px = img->height / 2 - 2;
-	end = img->height / 2 + 3;
+	x_px = img->height / 2 - 1;
+	y_px = img->height / 2 - 1;
+	end = img->height / 2 + 2;
 	x_start = x_px;
-	while (y_px <= end)
+	while (y_px <= end && y_px < (int)img->height)
 	{
-		mlx_put_pixel(img, x_px++, y_px, PLAYER_COLOR);
+		my_put_pixel(img, x_px++, y_px, PLAYER_COLOR);
 		if (x_px == end)
 		{
 			x_px = x_start;
@@ -58,10 +59,12 @@ void	draw_player(mlx_image_t *img, double angle)
 	draw_direction(img, angle);
 }
 
-void	move_miniplayer(t_player_info *cub3d_player_info)
+void	move_miniplayer(t_player *player)
 {
-	cub3d_player_info->mini_player->instances[0].x = \
-		(int)round((cub3d_player_info->x_pos - 0.5) * cub3d_player_info->mini_player->height);
-	cub3d_player_info->mini_player->instances[0].y = \
-		(int)round((cub3d_player_info->y_pos - 0.5) * cub3d_player_info->mini_player->height);
+	if (!player->mini_player)
+		return ;
+	player->mini_player->instances[0].x = \
+		(int)round((player->x_pos - 0.5) * player->mini_player->height);
+	player->mini_player->instances[0].y = \
+		(int)round((player->y_pos - 0.5) * player->mini_player->height);
 }

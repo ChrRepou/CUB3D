@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 22:58:02 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/05 21:18:17 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/07 19:13:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_minimap.h"
 
 /*places pixels to draw a line, 
 following Bresenhams algorithm*/

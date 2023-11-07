@@ -6,11 +6,13 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 16:23:03 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 19:27:19 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_minimap.h"
+
 /* Free every map_line we saved in the linked list */
 void	free_map_lines(t_line *line)
 {
@@ -32,14 +34,6 @@ void	delete_images(t_cub3d *cub3d_info)
 {
 	if (cub3d_info->img)
 		mlx_delete_image(cub3d_info->window, cub3d_info->img);
-	// if (cub3d_info->north_img)
-	// 	mlx_delete_image(cub3d_info->window, cub3d_info->north_img);
-	// if (cub3d_info->south_img)
-	// 	mlx_delete_image(cub3d_info->window, cub3d_info->south_img);
-	// if (cub3d_info->east_img)
-	// 	mlx_delete_image(cub3d_info->window, cub3d_info->east_img);
-	// if (cub3d_info->west_img)
-	// 	mlx_delete_image(cub3d_info->window, cub3d_info->west_img);
 	if (cub3d_info->minimap)
 	{
 		if (cub3d_info->minimap->img_mini)

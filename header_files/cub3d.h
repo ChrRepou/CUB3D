@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 17:01:49 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 19:28:03 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include <stdio.h>
 # include "cub3d_errors.h"
 # include "utils.h"
-# include "cub3d_parsing.h"
-# include "cub3d_minimap.h"
 
 # define WIDTH 1280
 # define HEIGHT 800
@@ -58,7 +56,7 @@ typedef struct cub3d_player_info
 }				t_player;
 
 typedef struct cub3d_info
-{	
+{
 	char			*north_texture;
 	char			*south_texture;
 	char			*east_texture;
@@ -90,10 +88,11 @@ typedef struct s_cub3d
 	int							height;
 	int							index;
 	t_info						*info;
-	t_minimap					*minimap; //change
+	struct s_minimap			*minimap;
 }				t_cub3d;
 
 typedef struct s_raycaster	t_caster;
+typedef struct s_minimap	t_minimap;
 
 // map will be represented as a 2d array [][]
 
@@ -149,6 +148,7 @@ int		replace_spaces(t_cub3d *cub3d_info);
 
 /************** initiate.c ***************/
 int		initiate_mlx(t_cub3d *cub3d_data);
+int		initiate_textures(t_cub3d *cub3d);
 
 /************** cub3d.c ***************/
 int		initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data);
@@ -166,10 +166,5 @@ void	move_left(t_player *player, char **map, double x, double y);
 
 /************** draw/draw.c ***************/
 void	my_put_pixel(mlx_image_t *image, int x, int y, uint32_t color);
-
-int		init_minimap(t_cub3d *cub3d_data, t_minimap *minimap);
-int		draw_minimap(t_cub3d *data); //change
-void	move_miniplayer(t_player_info *cub3d_player_info);
-void	delete_images(t_cub3d *cub3d_info); //change
 
 #endif

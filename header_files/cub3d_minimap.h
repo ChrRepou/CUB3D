@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_minimap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/05 21:19:40 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/07 19:22:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # define PLAYER_COLOR 0xFF0000FF
 # define SPACE_COLOR 0xCCCCCCFF
 
-# include "../MLX42/include/MLX42/MLX42.h"
-
-typedef struct cub3d_player_info	t_player_info;
+typedef struct cub3d_player_info	t_player;
+typedef struct s_cub3d				t_cub3d;
 
 typedef struct s_minimap
 {
@@ -51,8 +50,10 @@ typedef struct s_px {
 	int		dy;
 }	t_px;
 
+int		init_minimap(t_cub3d *cub3d_data, t_minimap *minimap);
 void	draw_player(mlx_image_t *img, double angle);
 void	draw_line(mlx_image_t *img, t_2d s_p1, t_2d s_p2);
-
+void	draw_minimap(t_cub3d *data);
+void	move_miniplayer(t_player *player);
 
 #endif

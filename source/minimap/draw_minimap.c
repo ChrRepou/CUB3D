@@ -6,11 +6,12 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/06 15:41:27 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 19:13:05 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
+#include "../../header_files/cub3d_minimap.h"
 
 static void	init_minimap_draw(t_mini_draw *s_minimap)
 {
@@ -20,6 +21,7 @@ static void	init_minimap_draw(t_mini_draw *s_minimap)
 	s_minimap->y_tile = 0;
 }
 
+/*Draws one tile of the minimap*/
 static void	draw_tile(mlx_image_t *img, t_mini_draw *data, int tile_h)
 {
 	int	max_y;
@@ -42,7 +44,7 @@ static void	draw_tile(mlx_image_t *img, t_mini_draw *data, int tile_h)
 	}
 }
 
-int	draw_minimap(t_cub3d *data) //change
+void	draw_minimap(t_cub3d *data)
 {
 	t_mini_draw	mmap;
 
@@ -65,5 +67,5 @@ int	draw_minimap(t_cub3d *data) //change
 		mmap.x_px = 0;
 		mmap.y_tile++;
 	}
-	return (0);
+	return ;
 }
