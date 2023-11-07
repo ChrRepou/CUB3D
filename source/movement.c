@@ -6,20 +6,20 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 19:05:17 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 18:01:53 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d.h"
 #include "../header_files/cub3d_minimap.h"
 
+/*returns true, when player position has reached the wall*/
 bool	is_wall(char **map, double x, double y)
 {
-	if (map[(int)(y + 0.1)][(int)(x + 0.1)] == '1' || \
-		map[(int)(y - 0.1)][(int)(x - 0.1)] == '1' || \
-		map[(int)(y + 0.1)][(int)(x - 0.1)] == '1' || \
-		map[(int)(y - 0.1)][(int)(x + 0.1)] == '1')
-	// if (map[(int)y][(int)x] == '1')
+	if (map[(int)(y + 0.2)][(int)(x + 0.2)] == '1' || \
+		map[(int)(y - 0.2)][(int)(x - 0.2)] == '1' || \
+		map[(int)(y + 0.2)][(int)(x - 0.2)] == '1' || \
+		map[(int)(y - 0.2)][(int)(x + 0.2)] == '1')
 		return (TRUE);
 	else
 		return (FALSE);

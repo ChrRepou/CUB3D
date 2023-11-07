@@ -9,7 +9,8 @@ SRCS = ./source/cub3d.c ./source/main.c ./source/initiate.c ./source/hooks.c ./s
 ./source/utils/string_manipulation.c ./source/utils/memory.c ./source/utils/information_retrieval.c ./source/utils/printing.c \
 ./source/utils/math.c ./source/utils/colors.c \
 ./source/minimap/draw_minimap.c ./source/minimap/init_minimap.c ./source/minimap/draw_line.c ./source/minimap/draw_player.c \
-./source/raycasting/raycaster.c ./source/raycasting/single_ray.c ./source/raycasting/single_ray_2.c ./source/raycasting/raycasting_utils.c\
+./source/raycasting/raycaster.c ./source/raycasting/single_ray.c ./source/raycasting/single_ray_2.c \
+./source/raycasting/texture.c ./source/raycasting/raycasting_utils.c\
 ./source/draw/draw.c
 
 LIBFT = ./libft/libft.a

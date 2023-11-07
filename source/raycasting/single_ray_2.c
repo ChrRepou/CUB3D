@@ -6,13 +6,15 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/04 16:35:44 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 17:49:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 #include "../../header_files/cub3d_raycasting.h"
 
+/*finds the point on the map where ray intersects a wall on x axis.
+Returns FALSE when intersection does not happen*/
 static int	get_x_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 {
 	t_ray_utils	ray;
@@ -42,6 +44,8 @@ static int	get_x_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 	return (FALSE);
 }
 
+/*finds the point on the map where ray intersects a wall on y axis.
+Returns FALSE when intersection does not happen*/
 static int	get_y_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 {
 	t_ray_utils	ray;
@@ -71,6 +75,8 @@ static int	get_y_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 	return (FALSE);
 }
 
+/*returns the direction of the wall
+based on the angle of the ray and the axis intersection */
 static t_orientation	get_wall(double angle, char hit_axis)
 {
 	if (hit_axis == 'x')
@@ -101,7 +107,9 @@ static void	set_ray_data(t_ray *ray, t_pt *hit_point, t_player *st, char axis)
 	return ;
 }
 
-void	get_ray_data(t_cub3d *cub3d, t_ray *ray)
+/*compares the x and y axis intersections finding the actual hit point, 
+calculates and sets the values to the variables in t_ray s_sray struct*/
+void	get_ray_data(t_cub3d *cub3d, t_ray *ray, double ray_angle)
 {
 	t_pt	x_wall;
 	t_pt	y_wall;
@@ -110,6 +118,7 @@ void	get_ray_data(t_cub3d *cub3d, t_ray *ray)
 
 	x_dist = 0;
 	y_dist = 0;
+	ray->true_angle = get_true_angle(cub3d->player->angle, ray_angle);
 	if (!get_x_intersect(cub3d, &x_wall, ray->true_angle))
 	{
 		get_y_intersect(cub3d, &y_wall, ray->true_angle);

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/06 16:57:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 18:02:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ void	error_free_exit(char *error_msg, char **map)
 	exit (EXIT_FAILURE);
 }
 
-// static mlx_image_t	*texture_to_img(mlx_t *mlx, char *path)
-// {
-// 	xpm_t		*texture_s;
-// 	mlx_image_t	*texture_as_img;
-
-// 	texture_s = mlx_load_xpm42(path);
-// 	if (!texture_s)
-// 		return (NULL);	
-// 	texture_as_img = mlx_texture_to_image(mlx, &texture_s->texture);
-// 	mlx_delete_texture(&texture_s->texture);
-// 	if (!texture_as_img)
-// 		return (NULL);
-// 	return (texture_as_img);
-// }
 
 static int	initiate_textures(t_cub3d *cub3d)
 {

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 15:36:38 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 17:34:04 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_ray
 	t_orientation	wall;
 	double			distance;
 	int				wall_h;
+	mlx_texture_t	*texture;
 }	t_ray;
 
 typedef struct s_pt
@@ -53,10 +54,13 @@ void	initiate_casting(t_caster *cast_data);
 void	draw_raycast_image(t_cub3d *cub3d_data);
 
 /************** single_ray.c **************/
-void	get_ray_data(t_cub3d *cub3d, t_ray *ray);
+void	get_ray_data(t_cub3d *cub3d, t_ray *ray, double ray_angle);
 
 /************** single_ray_2.c **************/
 void	draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i);
+
+/************** texture.c **************/
+int		draw_texture_column(t_cub3d *cub3d, t_ray *ray, int ray_i, int y_start);
 
 /************** raycasting_utils.c **************/
 bool	is_wall_hit(char **map, int x, int y);

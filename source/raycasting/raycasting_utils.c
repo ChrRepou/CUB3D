@@ -6,13 +6,14 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:55:45 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/03 13:45:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/07 17:58:33 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d.h"
 #include "../../header_files/cub3d_raycasting.h"
 
+/*returns TRUE when ray has intersected a wall*/
 bool	is_wall_hit(char **map, int x, int y)
 {
 	if (map[y][x] == '1')
@@ -20,11 +21,14 @@ bool	is_wall_hit(char **map, int x, int y)
 	return (FALSE);
 }
 
+/*removes fisheye distortion from the distance.
+returns corrected value*/
 double	remove_distortion(double distance, double angle_offcenter)
 {
 	return (distance * cos(angle_offcenter));
 }
 
+/*returns the 0 to full circle angle (in radians) of the ray*/
 double	get_true_angle(double player_angle, double ray_angle)
 {
 	double	temp_angle;
