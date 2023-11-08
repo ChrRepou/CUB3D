@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.c                                        :+:      :+:    :+:   */
+/*   draw_line_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 22:58:02 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 19:13:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:04:34 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 /*places pixels to draw a line, 
 following Bresenhams algorithm*/

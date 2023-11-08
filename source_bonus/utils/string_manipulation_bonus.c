@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_manipulation.c                              :+:      :+:    :+:   */
+/*   string_manipulation_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:33:01 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:11:23 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
 /*
 returns the string contained in the line starting 
 from index: start_index until index:end_index

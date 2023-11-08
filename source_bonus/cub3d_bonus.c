@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:24:29 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:32:29 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:23:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d.h"
-#include "../header_files/cub3d_raycasting.h"
+#include "../header_files_bonus/cub3d_bonus.h"
+#include "../header_files_bonus/cub3d_raycasting_bonus.h"
 
 void	init_struct(t_cub3d *cub3d_data)
 {
+	cub3d_data->minimap = NULL;
 	cub3d_data->img = NULL;
 	cub3d_data->window = NULL;
 	cub3d_data->player = NULL;
@@ -25,6 +26,7 @@ void	init_struct(t_cub3d *cub3d_data)
 
 int	initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data)
 {
+	cub3d_data->player->mini_player = NULL;
 	cub3d_data->raycaster = cast_data;
 	if (!initiate_mlx(cub3d_data))
 		return (FALSE);

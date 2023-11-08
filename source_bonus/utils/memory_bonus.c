@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.c                                           :+:      :+:    :+:   */
+/*   memory_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:35:06 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:11:08 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 /* Free every map_line we saved in the linked list */
 void	free_map_lines(t_line *line)
@@ -33,6 +34,14 @@ void	delete_images(t_cub3d *cub3d_info)
 {
 	if (cub3d_info->img)
 		mlx_delete_image(cub3d_info->window, cub3d_info->img);
+	if (cub3d_info->minimap)
+	{
+		if (cub3d_info->minimap->img_mini)
+			mlx_delete_image(cub3d_info->window, cub3d_info->minimap->img_mini);
+		if (cub3d_info->minimap->img_player)
+			mlx_delete_image(cub3d_info->window, \
+							cub3d_info->minimap->img_player);
+	}
 }
 
 void	free_map(t_cub3d *cub3d_info)

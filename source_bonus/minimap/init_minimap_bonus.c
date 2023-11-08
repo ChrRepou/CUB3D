@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minimap.c                                     :+:      :+:    :+:   */
+/*   init_minimap_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 14:01:18 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:37:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 /*Calculates and returns side length of one minimap tile*/
 static int	get_tile_size(map_w, map_h)

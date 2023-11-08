@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_minimap.h                                    :+:      :+:    :+:   */
+/*   cub3d_minimap_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 19:22:48 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:22:29 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_MINIMAP_H
-# define CUB3D_MINIMAP_H
+#ifndef CUB3D_MINIMAP_BONUS_H
+# define CUB3D_MINIMAP_BONUS_H
 
 # define MINI_H 200
 # define MINI_W 300

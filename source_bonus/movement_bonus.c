@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   movement_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:34:45 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:13:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d.h"
+#include "../header_files_bonus/cub3d_bonus.h"
+#include "../header_files_bonus/cub3d_minimap_bonus.h"
 
 /*returns true, when player position has reached the wall*/
 bool	is_wall(char **map, double x, double y)

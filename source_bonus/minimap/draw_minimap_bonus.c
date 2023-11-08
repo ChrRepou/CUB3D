@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_minimap.c                                     :+:      :+:    :+:   */
+/*   draw_minimap_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 19:13:05 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:04:50 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 static void	init_minimap_draw(t_mini_draw *s_minimap)
 {

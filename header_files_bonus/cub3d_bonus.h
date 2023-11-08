@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:30:59 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:21:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "cub3d_errors.h"
-# include "utils.h"
+# include "cub3d_errors_bonus.h"
+# include "utils_bonus.h"
 
 # define WIDTH 1280
 # define HEIGHT 800
@@ -50,6 +50,7 @@ typedef struct cub3d_player_info
 {
 	double			x_pos;
 	double			y_pos;
+	mlx_image_t		*mini_player;
 	t_orientation	orientation;
 	double			angle;
 }				t_player;
@@ -87,10 +88,13 @@ typedef struct s_cub3d
 	int							height;
 	int							index;
 	t_info						*info;
+	struct s_minimap			*minimap;
 }				t_cub3d;
 
 typedef struct s_raycaster	t_caster;
+typedef struct s_minimap	t_minimap;
 
+// map will be represented as a 2d array [][]
 
 /************************* parse.c ************************/
 int		save_information(t_info *map_info, char *line);

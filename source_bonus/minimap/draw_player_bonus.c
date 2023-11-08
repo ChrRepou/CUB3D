@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_player.c                                      :+:      :+:    :+:   */
+/*   draw_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 20:03:26 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:05:05 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 static t_2d	get_endpoint(t_2d start_pt, double angle, int length)
 {

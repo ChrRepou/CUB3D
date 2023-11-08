@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:34:33 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 18:12:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d.h"
-#include "../header_files/cub3d_raycasting.h"
+#include "../header_files_bonus/cub3d_bonus.h"
+#include "../header_files_bonus/cub3d_minimap_bonus.h"
+#include "../header_files_bonus/cub3d_raycasting_bonus.h"
 
 void	esc_keyfunc(mlx_key_data_t keydata, void *param)
 {
@@ -37,6 +38,8 @@ static void	linear_move_hook(keys_t key, t_cub3d *cub3d_data)
 	if (key == MLX_KEY_S)
 		move_backward(cub3d_data->player, cub3d_data->map, \
 		cub3d_data->player->x_pos, cub3d_data->player->y_pos);
+	if (cub3d_data->player->mini_player)
+		move_miniplayer(cub3d_data->player);
 	draw_raycast_image(cub3d_data);
 }
 
@@ -54,6 +57,8 @@ static void	rotation_hook(keys_t key, t_cub3d *cub3d_data)
 			cub3d_data->player->angle = cub3d_data->player->angle - 2 * M_PI;
 		cub3d_data->player->angle += TURN_SPEED;
 	}
+	if (cub3d_data->player->mini_player)
+		draw_player(cub3d_data->player->mini_player, cub3d_data->player->angle);
 	draw_raycast_image(cub3d_data);
 }
 
