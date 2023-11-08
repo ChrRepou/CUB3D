@@ -1,6 +1,6 @@
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Ofast
 INCLUDE = -I ./gnl -I ./libft
 SRCS = ./source/cub3d.c ./source/main.c ./source/initiate.c ./source/hooks.c ./source/movement.c \
 ./source/error_handling/input_check.c ./source/error_handling/file_check.c ./source/error_handling/info_check.c \

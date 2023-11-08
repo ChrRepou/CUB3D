@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 21:26:15 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/08 21:51:23 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,6 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	if (!create_map_array(head, cub3d_info))
 		return (free_map_lines(head), FALSE);
 	if (!map_is_valid(cub3d_info))
-		return (FALSE);
+		return (free_map_lines(head), FALSE);
 	return (free_map_lines(head), TRUE);
 }
