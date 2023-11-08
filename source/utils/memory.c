@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 21:26:44 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/08 21:58:11 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ void	garbage_collector(t_cub3d *cub3d_info)
 	if (cub3d_info->window)
 		mlx_terminate(cub3d_info->window);
 }
-

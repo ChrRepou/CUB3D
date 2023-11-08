@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 21:18:15 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/08 22:11:41 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,4 +168,7 @@ void	move_left(t_player *player, char **map, double x, double y);
 /************** draw/draw.c ***************/
 void	my_put_pixel(mlx_image_t *image, int x, int y, uint32_t color);
 
+/************** parse/parse_utils.c.c ***************/
+char	*create_expanded_line(t_cub3d *cub3d_info, t_line *list);
+void	create_map_line(t_line *map_lines, char *curr_line);
 #endif
