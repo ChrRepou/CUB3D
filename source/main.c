@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
+/*   Updated: 2023/11/08 16:03:59 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header_files/cub3d_minimap.h"
 #include "../header_files/cub3d_raycasting.h"
 #include "../header_files/utils.h"
 
@@ -39,6 +39,7 @@ int	main(int argc, char *argv[])
 	printf("orientation: %d, angle: %f\n", cub3d_data.player->orientation, cub3d_data.player->angle);
 	if(!initiate_cub3d(&cub3d_data, &cast_data))
 		garbage_collector(&cub3d_data);
+	//printf("heyyyyy\n");
 	init_minimap(&cub3d_data, &minimap);
 	draw_minimap(&cub3d_data); //change
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);

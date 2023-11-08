@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 14:22:24 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/08 14:24:45 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct cub3d_info
 typedef struct cub3d_line
 {
 	char				*ln;
+	int					width;
 	struct cub3d_line	*next;
 }				t_line;
 

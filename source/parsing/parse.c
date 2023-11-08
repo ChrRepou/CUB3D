@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 15:47:04 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/08 16:06:50 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,32 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
 		else if (!line[i] || line[i] == 10)
-			(*cub3d_info)->map[index][i] = 32;
+			(*cub3d_info)->map[index][i] = 32;//change
 		else
-			return (print_mixed("Error! This is not a valid line: %s REASON: %d\n", \
-				line, line[i]), FALSE);
+		{
+			printf("Special char: %i\n", line[i]);
+			return (print("Error! The map is not valid\n"), FALSE);
+		}
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	i = -1;
 	return (TRUE);
+}
+
+char	*set_line_char(t_line *list, int max_width)
+{
+	int	i;
+	char *new_line;
+
+	i = list->width - 1;
+	new_line = (char *)malloc(max_width + 1);
+	printf("size: %zu", ft_strlen(list->ln));
+	while (i < max_width)
+	{
+		list->ln[i] = 32;
+		i++;
+	}
+	return (list->ln);
 }
 
 /*
@@ -99,6 +117,8 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 {
 	t_line	*list;
 	int		i;
+	char	*expand_line;
+	char	*new_ln;
 
 	list = head;
 	cub3d_info->width = get_width(head);
@@ -107,7 +127,17 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 	i = 0;
 	while (list)
 	{
-		if (!save_line(list->ln, &cub3d_info, i))
+		if (list->width < cub3d_info->width) //change
+		{
+			expand_line = (char *)malloc(cub3d_info->width - list->width + 1);
+			ft_memset(expand_line, 32, cub3d_info->width - list->width);
+			new_ln = ft_strjoin(list->ln, expand_line);
+			printf("%s\n", list->ln);
+			free(expand_line);
+			free(list->ln);
+			list->ln = new_ln;
+		}
+		if (!save_line(list->ln, &cub3d_info, i)) //change
 			return (FALSE);
 		list = list->next;
 		i++;
@@ -132,6 +162,7 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 		if (!map_lines)
 			return (free_map_lines(head), printf("Error!\n"), FALSE);
 		map_lines->ln = curr_line;
+		map_lines->width = ft_strlen(curr_line);
 		map_lines->next = NULL;
 		tail->next = map_lines;
 		tail = tail->next;
