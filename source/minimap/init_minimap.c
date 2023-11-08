@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 20:19:04 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 14:01:18 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_minimap(t_cub3d *cub3d_data, t_minimap *minimap)
 	}
 	if (mlx_image_to_window(cub3d_data->window, minimap->img_mini, 0, 0) < 0)
 	{
-		printf("error displaying the minimap image\n");
+		printf("Error displaying the minimap image\n");
 		return (FALSE);
 	}
 	draw_minimap(cub3d_data);
