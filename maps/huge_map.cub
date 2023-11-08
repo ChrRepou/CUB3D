@@ -1,7 +1,7 @@
-NO textures/greystone.png
+NO textures/purplestone.png
 SO textures/mossy.png
-WE textures/purplestone.png
-EA textures/lava.png
+WE textures/wood.png
+EA textures/colorstone.png
 
 F 69,222,199
 C 235,198,52

@@ -1,7 +1,7 @@
-NO textures/greystone.png
-SO textures/mossy.png
-WE textures/purplestone.png
-EA textures/wood.png
+NO textures/purpleish.png
+SO textures/yellowish.png
+WE textures/turquoise.png
+EA textures/greenish.png
 
 F 220,100,0
 C 255,231,176

@@ -1,7 +1,7 @@
-NO textures/transparent.png
-SO textures/mossy.png
+NO textures/wood.png
+SO textures/wood_horiz.png
 WE textures/purplestone.png
-EA textures/wood.png
+EA textures/colorstone.png
 
 C 35,19,73
 F 15,6,40
