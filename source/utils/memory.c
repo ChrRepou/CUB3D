@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/07 19:27:19 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 21:26:44 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	free_map_lines(t_line *line)
 			free(line);
 		line = head;
 	}
+	printf("hello\n");
 }
 
 void	delete_images(t_cub3d *cub3d_info)
