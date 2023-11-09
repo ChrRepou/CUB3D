@@ -2,7 +2,7 @@ NAME = cub3d
 NAME_BONUS = cub3d_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast
+CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address
 INCLUDE = -I ./gnl -I ./libft
 
 SRCS = ./source/main.c	./source/cub3d.c ./source/initiate.c ./source/hooks.c ./source/movement.c \
@@ -37,10 +37,10 @@ all: gnl libft libmlx $(NAME)
 bonus: gnl libft libmlx $(NAME_BONUS)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -Ofast -march=nocona -flto $(INCLUDE) $(OBJS) -L$(LIBMLX) -L./gnl/ -lgnl -L./libft -lft -lmlx42 -L "$(shell brew --prefix glfw)/lib/" -lglfw  -o $(NAME)
+	$(CC) $(CFLAGS) -march=nocona -flto $(INCLUDE) $(OBJS) -L$(LIBMLX) -L./gnl/ -lgnl -L./libft -lft -lmlx42 -L "$(shell brew --prefix glfw)/lib/" -lglfw  -o $(NAME)
 
 $(NAME_BONUS): $(OBJS_BONUS)
-	$(CC) $(CFLAGS) -Ofast -march=nocona -flto $(INCLUDE) $(OBJS_BONUS) -L$(LIBMLX) -L./gnl/ -lgnl -L./libft -lft -lmlx42 -L "$(shell brew --prefix glfw)/lib/" -lglfw  -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) -march=nocona -flto $(INCLUDE) $(OBJS_BONUS) -L$(LIBMLX) -L./gnl/ -lgnl -L./libft -lft -lmlx42 -L "$(shell brew --prefix glfw)/lib/" -lglfw  -o $(NAME_BONUS)
 
 libmlx:
 	${MAKE} -C $(LIBMLX)
