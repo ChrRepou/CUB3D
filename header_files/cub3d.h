@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 20:33:36 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 20:53:45 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,5 @@ void	my_put_pixel(mlx_image_t *image, int x, int y, uint32_t color);
 /************** parse/parse_utils.c.c ***************/
 char	*create_expanded_line(t_cub3d *cub3d_info, t_line *list);
 void	create_map_line(t_line *map_lines, char *curr_line);
+
 #endif

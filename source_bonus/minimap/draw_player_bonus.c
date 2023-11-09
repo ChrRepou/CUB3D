@@ -6,12 +6,12 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:17 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/09 20:38:52 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 21:18:46 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header_files/cub3d.h"
-#include "../../header_files/cub3d_minimap.h"
+#include "../../header_files_bonus/cub3d_bonus.h"
+#include "../../header_files_bonus/cub3d_minimap_bonus.h"
 
 static t_2d	get_endpoint(t_2d start_pt, double angle, int length)
 {
