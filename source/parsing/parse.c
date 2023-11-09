@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 15:47:04 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/09 18:21:45 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,20 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	i = -1;
 	while (++i < (*cub3d_info)->width)
 	{
+		if (line[i] == '\0' && i + 1 != (*cub3d_info)->width)									 //This "if" avoids checking line[i] after 
+			return (print("Error! Not a valid map! Map lines need consistent length! \n"), FALSE);//the line has finished (when line_len != map_width)
+		//	
+		// if (line[i] == '\0' && i + 1 != (*cub3d_info)->width)			//this is an alternative to the prevous if-condition, filling rest
+		// {																//of the map line with spaces
+		// 	printf("I get here %s\n", line);								//atm map will get declared not valid afterwards in some other check
+		// 	while (i < (*cub3d_info)->width)
+		// 	{
+		// 		(*cub3d_info)->map[index][i] = 32;
+		// 		i++;
+		// 	}
+		// 	break ;			
+		// }
+		//
 		if (line[i] == 32 || line[i] == '1' || line[i] == '0' || is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
 		else if (!line[i] || line[i] == 10)
