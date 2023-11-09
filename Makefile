@@ -11,7 +11,7 @@ SRCS = ./source/cub3d.c ./source/main.c ./source/initiate.c ./source/hooks.c ./s
 ./source/minimap/draw_minimap.c ./source/minimap/init_minimap.c ./source/minimap/draw_line.c ./source/minimap/draw_player.c \
 ./source/raycasting/raycaster.c ./source/raycasting/single_ray.c ./source/raycasting/single_ray_2.c \
 ./source/raycasting/texture.c ./source/raycasting/raycasting_utils.c\
-./source/draw/draw.c
+./source/draw/draw.c ./source/parsing/parse_utils.c
 
 LIBFT = ./libft/libft.a
 OBJS = $(SRCS:.c=.o)

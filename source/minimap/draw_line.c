@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 22:58:02 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 19:13:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 21:57:11 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 /*places pixels to draw a line, 
 following Bresenhams algorithm*/
-
 static void	draw_line_low(mlx_image_t *img, t_2d s_p1, t_2d s_p2, t_px *s_px)
 {
 	int	p;
@@ -72,7 +71,6 @@ static void	draw_line_high(mlx_image_t *img, t_2d s_p1, t_2d s_p2, t_px *s_px)
 	}
 }
 
-
 void	draw_line(mlx_image_t *img, t_2d s_p1, t_2d s_p2)
 {
 	t_px	pixel;
@@ -93,4 +91,3 @@ void	draw_line(mlx_image_t *img, t_2d s_p1, t_2d s_p2)
 			draw_line_high(img, s_p1, s_p2, &pixel);
 	}
 }
-
