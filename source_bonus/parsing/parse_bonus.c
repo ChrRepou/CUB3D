@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 21:07:04 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 21:53:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 		if ( i > (int)ft_strlen(line) || !line[i] || line[i] == 10)
 			(*cub3d_info)->map[index][i] = 32;
 		else if (line[i] == 32 || line[i] == '1' || line[i] == '0' \
+			|| line[i] == '2' || line[i] == '3' \
 			|| is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
 

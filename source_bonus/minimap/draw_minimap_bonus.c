@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:22:26 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:04:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 22:20:41 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	draw_minimap(t_cub3d *data)
 	{
 		while (mmap.x_tile < data->width)
 		{
-			if (data->map[mmap.y_tile][mmap.x_tile] == '1')
+			if (data->map[mmap.y_tile][mmap.x_tile] == '1' ||
+				data->map[mmap.y_tile][mmap.x_tile] == '2')
 				mmap.color = WALL_COLOR;
 			else
 				mmap.color = SPACE_COLOR;

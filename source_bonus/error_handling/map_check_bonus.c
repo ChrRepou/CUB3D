@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:04:31 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:03:26 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 22:13:24 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_left_wall(t_cub3d *cub3d_info)
 	map = cub3d_info->map;
 	while (y < cub3d_info->height)
 	{
-		if (map[y][0] == '0')
+		if (map[y][0] == '0' || map[y][0] == '2' || map[y][0] == '3')
 			return (FALSE);
 		else if (map[y][0] == 32)
 			if (!check_row(map[y]))
@@ -76,7 +76,7 @@ int	check_right_wall(t_cub3d *cub3d_info)
 	x = cub3d_info->width - 1;
 	while (y < cub3d_info->height)
 	{
-		if (map[y][x] == '0')
+		if (map[y][x] == '0' || map[y][x] == '2' || map[y][x] == '3')
 			return (FALSE);
 		else if (map[y][x] == 32)
 			if (!check_row_reverse(map[y], x))
