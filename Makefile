@@ -15,17 +15,6 @@ SRCS = ./source/main.c	./source/cub3d.c ./source/initiate.c ./source/hooks.c ./s
 ./source/raycasting/texture.c ./source/raycasting/raycasting_utils.c\
 ./source/draw/draw.c
 
-SRCS_BONUS = ./source_bonus/main_bonus.c ./source_bonus/cub3d_bonus.c ./source_bonus/initiate_bonus.c ./source_bonus/hooks_bonus.c ./source_bonus/movement_bonus.c \
-./source_bonus/error_handling/input_check_bonus.c ./source_bonus/error_handling/file_check_bonus.c ./source_bonus/error_handling/info_check_bonus.c \
-./source_bonus/error_handling/map_check_bonus.c ./source_bonus/error_handling/map_check2_bonus.c ./source_bonus/error_handling/player_check_bonus.c \
-./source_bonus/parsing/parse_bonus.c ./source_bonus/parsing/init_bonus.c ./source_bonus/parsing/replace_bonus.c \
-./source_bonus/utils/string_manipulation_bonus.c ./source_bonus/utils/memory_bonus.c ./source_bonus/utils/information_retrieval_bonus.c ./source_bonus/utils/printing_bonus.c \
-./source_bonus/utils/math_bonus.c ./source_bonus/utils/colors_bonus.c \
-./source_bonus/raycasting/raycaster_bonus.c ./source_bonus/raycasting/single_ray_bonus.c ./source_bonus/raycasting/single_ray_2_bonus.c \
-./source_bonus/raycasting/texture_bonus.c ./source_bonus/raycasting/raycasting_utils_bonus.c\
-./source_bonus/draw/draw_bonus.c \
-./source_bonus/minimap/draw_minimap_bonus.c ./source_bonus/minimap/init_minimap_bonus.c ./source_bonus/minimap/draw_line_bonus.c ./source_bonus/minimap/draw_player_bonus.c
-
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft/
 LIBMLX = ./MLX42

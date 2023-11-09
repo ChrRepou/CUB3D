@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:35:06 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/09 20:37:49 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	free_map_lines(t_line *line)
 			free(line);
 		line = head;
 	}
+	printf("hello\n");
 }
 
 void	delete_images(t_cub3d *cub3d_info)
@@ -88,4 +89,3 @@ void	garbage_collector(t_cub3d *cub3d_info)
 	if (cub3d_info->window)
 		mlx_terminate(cub3d_info->window);
 }
-

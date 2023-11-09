@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/06 16:26:20 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/08 22:00:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	int		first_line;
 
 	first_line = TRUE;
-	init_struct(cub3d_info); //change
+	init_struct(cub3d_info);
 	cub3d_info->info = (t_info *)malloc(sizeof(t_info));
 	if (!cub3d_info->info)
 		return (print("Error!\n Allocation problem\n"), FALSE);
