@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 17:31:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 18:18:20 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define FALSE 0
 # define MOVE_SPEED 0.1
 # define TURN_SPEED 0.02
+
+# define DOOR "textures/door.png"
+# define SPRITE "textures/dog.png"
+
 
 typedef struct cub3d_color
 {
@@ -67,6 +71,8 @@ typedef struct cub3d_info
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
 	mlx_texture_t	*west;
+	mlx_texture_t	*door;
+	mlx_texture_t	*sprite;
 	uint32_t		floor_color;
 	uint32_t		celing_color;
 }				t_info;
@@ -150,6 +156,7 @@ int		replace_spaces(t_cub3d *cub3d_info);
 /************** initiate.c ***************/
 int		initiate_mlx(t_cub3d *cub3d_data);
 int		initiate_textures(t_cub3d *cub3d);
+int		initiate_bonus_textures(t_info *info);
 
 /************** cub3d.c ***************/
 int		initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data);

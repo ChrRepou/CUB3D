@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_check_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 15:49:44 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/10 18:22:23 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	init_map_info(t_info *map_info)
 	map_info->north_texture = NULL;
 	map_info->west_texture = NULL;
 	map_info->south_texture = NULL;
+	map_info->door = NULL;
+	map_info->sprite = NULL;
 	map_info->north = NULL;
 	map_info->south = NULL;
 	map_info->east = NULL;

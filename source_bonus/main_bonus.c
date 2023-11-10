@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 17:39:40 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 19:18:31 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char *argv[])
 	replace_spaces(&cub3d_data);
 	if (!initiate_cub3d(&cub3d_data, &cast_data))
 		return (garbage_collector(&cub3d_data), EXIT_FAILURE);
-	printf("do i get here\n");
 	if (!init_minimap(&cub3d_data, &minimap))
 		return (garbage_collector(&cub3d_data), EXIT_FAILURE);
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
