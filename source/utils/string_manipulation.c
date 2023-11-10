@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 20:37:25 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:15:52 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_info(char *line, int start_index, int end_index)
 	if (end_index == -1)
 	{
 		end_index = start_index;
-		while (line[end_index] != '\n')
+		while (line[end_index] != '\n' && line[end_index] != '\0')
 			end_index++;
 	}
 	new_line = (char *)malloc(end_index - start_index + 1);
