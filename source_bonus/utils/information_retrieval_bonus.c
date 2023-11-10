@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   information_retrieval_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 21:08:56 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:52:27 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	print_map(t_cub3d *cub3d_info)
 			printf("%c", map[y][x]);
 			x++;
 		}
-		printf("\n");
 		y++;
 		x = 0;
 	}

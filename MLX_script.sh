@@ -1,4 +1,3 @@
-MLX42_LIBRARY=./MLX42/build/libmlx42.a
 GLFW_LIBRARY=./glfw/build/src/libglfw3.a
 echo "Getting submodules..."
 git submodule update --init --recursive
@@ -25,11 +24,5 @@ if ([ ! -f "$GLFW_LIBRARY" ]); then
 			cd ./glfw && cmake -B build && cmake --build build -j4 && cd ..
 		else
 			echo "Building MLX42"
-	fi
-
-	if [ ! -f "$MLX42_LIBRARY" ]; then
-			cd ./MLX42 && cmake -B build && cmake --build build -j4 && cd ..
-		else
-			echo "Building fractol"
 	fi
 fi

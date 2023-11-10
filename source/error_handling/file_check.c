@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 22:00:14 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:49:16 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 			return (free(curr_line), FALSE);
 	}
 	if (first_line)
-		return (FALSE);
+		return (print("Error! The file shouldn't be empty!"), FALSE);
 	cub3d_info->map = NULL;
 	if (!save_map(cub3d_info, curr_line, fd))
 		return (FALSE);

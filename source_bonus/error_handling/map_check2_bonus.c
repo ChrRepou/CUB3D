@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:55:29 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 22:15:39 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 16:25:00 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_column(t_cub3d *cub3d_info, int x)
 		else
 			return (FALSE);
 	}
-	return (FALSE);
+	return (TRUE);
 }
 
 int	check_column_reverse(t_cub3d *cub3d_info, int x)
@@ -47,7 +47,7 @@ int	check_column_reverse(t_cub3d *cub3d_info, int x)
 		else
 			return (FALSE);
 	}
-	return (FALSE);
+	return (TRUE);
 }
 
 int	check_top_wall(t_cub3d *cub3d_info)
