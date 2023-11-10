@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/09 21:07:04 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:42:53 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	get_color(char *line, t_color *color, uint32_t *pixel_color)
 	if (!colors)
 		return (print("Error!\n Problem during saving color.\n"), FALSE);
 	if (!colors[0] || !is_number(colors[0]))
-		return (free_after_split(colors), FALSE);
+		return (free(line), free_after_split(colors), FALSE);
 	color->red = ft_atoi(colors[0]);
 	if (!colors[1] || !is_number(colors[1]))
-		return (free_after_split(colors), FALSE);
+		return (free(line), free_after_split(colors), FALSE);
 	color->green = ft_atoi(colors[1]);
 	if (!colors[2] || !is_number(colors[2]))
-		return (free_after_split(colors), FALSE);
+		return (free(line), free_after_split(colors), FALSE);
 	color->blue = ft_atoi(colors[2]);
 	free_after_split(colors);
 	*pixel_color = rgb_to_color(*color);
@@ -85,7 +85,7 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 			(*cub3d_info)->map[index][i] = line[i];
 
 		else
-			return (print("Error! This is not a valid map!\n:"), FALSE);
+			return (print("Error! This is not a valid map!\n"), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	return (TRUE);

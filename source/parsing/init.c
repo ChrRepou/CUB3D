@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:06:00 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 21:22:28 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:44:35 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	init_list(t_line **tail, t_line **head, char *curr_line)
 {
 	if (!curr_line)
-		return (print("Error!\n There is not map to parse\n"), FALSE);
+		return (print("Error!\nThere is not map to parse!\n"), FALSE);
 	*tail = (t_line *)malloc(sizeof(t_line));
 	if (!(*tail))
-		return (print("Error!\n Map allocation problem\n"), FALSE);
+		return (print("Error!\nMap allocation problem!\n"), FALSE);
 	(*tail)->ln = curr_line;
 	(*tail)->width = ft_strlen(curr_line);
 	(*tail)->next = NULL;

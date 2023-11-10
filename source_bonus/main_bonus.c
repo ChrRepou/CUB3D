@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 12:42:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 16:05:04 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char *argv[])
 	if (!read_file(fd, &cub3d_data))
 		return (garbage_collector(&cub3d_data), EXIT_FAILURE);
 	replace_spaces(&cub3d_data);
-	print_map(&cub3d_data);
 	if (!initiate_cub3d(&cub3d_data, &cast_data))
 		return (garbage_collector(&cub3d_data), EXIT_FAILURE);
 	if (!init_minimap(&cub3d_data, &minimap))

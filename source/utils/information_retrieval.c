@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:05:34 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 21:58:37 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/10 15:53:09 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	print_map(t_cub3d *cub3d_info)
 			printf("%c", map[y][x]);
 			x++;
 		}
-		printf("\n");
 		y++;
 		x = 0;
 	}
