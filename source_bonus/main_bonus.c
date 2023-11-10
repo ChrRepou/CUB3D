@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:13:27 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:42:50 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	leaks( void )
 {
-	system("leaks cub3d");
+	system("leaks cub3d_bonus");
 }
 
 int	main(int argc, char *argv[])
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	t_caster	cast_data;
 	t_minimap	minimap;
 
-	// atexit(leaks);
+	atexit(leaks);
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);

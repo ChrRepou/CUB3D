@@ -1,0 +1,33 @@
+
+
+1. Remove extra colon:
+
+	tmarts@2-G-4 CUB3D % ./cub3d maps/map1.cub
+	Error! This is not a valid map!
+	:%        
+
+2. No error message with fully empty file
+
+3. If possible - remove extra space (test case with empty map, one newline)
+
+	tmarts@2-G-4 CUB3D % ./sanitize maps/temp.cub
+	Error!
+	There is not map to parse
+
+4. When map is valid, but there are two newlines in the end (so not valid). Can you remove the extra spaces
+
+	tmarts@2-G-4 CUB3D % ./sanitize maps/temp.cub
+
+
+	Error!
+	The map is not valid!
+
+5.Map had a space on the empty line before the floor color. Can you remove the printed out empty lines and the floor color line?
+	
+	tmarts@2-G-4 CUB3D %  ./sanitizeb maps/temp.cub
+ 
+
+	F 220,100,0
+
+	Error! This is not a valid map!
+	:%      	
