@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 16:23:14 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 17:39:40 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ int	main(int argc, char *argv[])
 	if (!init_minimap(&cub3d_data, &minimap))
 		return (garbage_collector(&cub3d_data), EXIT_FAILURE);
 	mlx_key_hook(cub3d_data.window, &esc_keyfunc, (void *)cub3d_data.window);
-	// mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
+	mlx_loop_hook(cub3d_data.window, (void (*)(void *))gen_hooks, &cub3d_data);
 	mlx_loop(cub3d_data.window);
 	garbage_collector(&cub3d_data);
 	return (0);
 }
 
 //add door and sprite to the texture pointers and load them in the beginning 
-//- when getting texture check if Nor E wall is door/sprite, if S-or W wall is door/sprote
+//- when getting texture check if N or E wall is door/sprite, if S-or W wall 
+//is door/sprite
 // for partner check that door is between two walls 

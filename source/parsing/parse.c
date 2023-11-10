@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 15:42:48 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/10 17:38:06 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,17 @@ int	save_line(char *line, t_cub3d **cub3d_info, int index)
 	i = -1;
 	while (++i < (*cub3d_info)->width)
 	{
-		if ( i > (int)ft_strlen(line) || !line[i] || line[i] == 10)
+		if (i > (int)ft_strlen(line) || !line[i] || line[i] == 10)
 			(*cub3d_info)->map[index][i] = 32;
 		else if (line[i] == 32 || line[i] == '1' || line[i] == '0' \
 			|| is_orientation(line[i], (*cub3d_info), i, index))
 			(*cub3d_info)->map[index][i] = line[i];
-
 		else
 			return (print("Error! This is not a valid map!\n"), FALSE);
 	}
 	(*cub3d_info)->map[index][i] = '\0';
 	return (TRUE);
 }
-
 
 /*
 saves the whole map in an array and returns TRUE

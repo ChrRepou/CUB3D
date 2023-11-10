@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:11:08 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/10 17:44:28 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ void	garbage_collector(t_cub3d *cub3d_info)
 	if (cub3d_info->window)
 		mlx_terminate(cub3d_info->window);
 }
-
