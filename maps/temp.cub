@@ -2,13 +2,3 @@ NO textures/purpleish.png
 EA textures/greenish.png
 SO textures/yellowish.png
 WE textures/turquoise.png
-
-F 220,100,0 
-C 255,231,176
-
-1 1 1 1 1 1 1
-1 3 0 110 0 1
-110 011 0 0 1
-1 110 N 010 1
-1 1 0 0 0 011
-1 1 1 1 1 1 1
