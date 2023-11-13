@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 18:18:20 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/13 19:13:51 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 # define FALSE 0
 # define MOVE_SPEED 0.1
 # define TURN_SPEED 0.02
+# define EPSILON 0.000001
 
 # define DOOR "textures/door.png"
 # define SPRITE "textures/dog.png"
-
 
 typedef struct cub3d_color
 {

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:22:43 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/13 15:55:53 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,23 @@ typedef struct s_ray_utils
 }	t_ray_utils;
 
 /************** raycaster.c **************/
-void	initiate_casting(t_caster *cast_data);
-void	draw_raycast_image(t_cub3d *cub3d_data);
+void			initiate_casting(t_caster *cast_data);
+void			draw_raycast_image(t_cub3d *cub3d_data);
 
 /************** single_ray.c **************/
-void	get_ray_data(t_cub3d *cub3d, t_ray *ray, double ray_angle);
+void			get_ray_data(t_cub3d *cub3d, t_ray *ray, double ray_angle);
 
 /************** single_ray_2.c **************/
-void	draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i);
+void			draw_column(t_cub3d *cub3d_data, double ray_angle, int ray_i);
 
 /************** texture.c **************/
-int		draw_texture_column(t_cub3d *cub3d, t_ray *ray, int ray_i, int y_start);
+int				draw_texture_column(t_cub3d *cub3d, t_ray *ray, \
+											int ray_i, int y_start);
 
 /************** raycasting_utils.c **************/
-bool	is_wall_hit(char **map, int x, int y);
-double	remove_distortion(double distance, double angle_offcenter);
-double	get_true_angle(double player_angle, double ray_angle);
+bool			is_wall_hit(char **map, int x, int y);
+t_orientation	get_wall(double angle, char hit_axis);
+double			remove_distortion(double distance, double angle_offcenter);
+double			get_true_angle(double player_angle, double ray_angle);
 
 #endif

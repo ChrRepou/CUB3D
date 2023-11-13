@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/10 19:17:29 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/13 18:50:47 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ void	draw_column(t_cub3d *cub3d, double ray_angle, int ray_i)
 
 	i = 0;
 	get_ray_data(cub3d, &ray_data, ray_angle);
+	if (ray_angle > -ANGLE_TOLERANCE && ray_angle < ANGLE_TOLERANCE)
+	{
+		printf("RAY DATA: \n");
+		printf("true angle: [%f], wall [%d]\n", ray_data.true_angle, ray_data.wall);
+		printf("coords: [%f, %f], distance [%f]\n", ray_data.hit_x, ray_data.hit_y, ray_data.distance);
+	}
 	ray_data.wall_h = \
 	get_wall_pixels(cub3d->raycaster, ray_data.distance, ray_angle);
 	ray_data.texture = get_texture(cub3d, &ray_data);
