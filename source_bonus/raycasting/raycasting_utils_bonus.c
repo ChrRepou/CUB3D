@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:55:45 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 15:53:23 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/14 18:28:30 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 bool	is_wall_hit(char **map, int x, int y)
 {
 	if (map[y][x] == '1' || map[y][x] == '2' || map[y][x] == '3')
+		return (TRUE);
+	return (FALSE);
+}
+
+/*returns TRUE when the coordinates are withn the map*/
+bool	valid_coords(const t_pt *point, int map_width, int map_height)
+{
+	if ((int)point->x >= 0 && (int)point->x < map_width && \
+	(int)point->y >= 0 && (int)point->y < map_height)
 		return (TRUE);
 	return (FALSE);
 }

@@ -6,13 +6,12 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 18:50:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/14 19:31:32 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files_bonus/cub3d_bonus.h"
 #include "../../header_files_bonus/cub3d_raycasting_bonus.h"
-// #include "../../header_files_bonus/utils_bonus.h"
 
 /*removes distortion and 
 returns the relative height of the wall (in pixels) to be drawn*/
@@ -50,38 +49,22 @@ static mlx_texture_t	*get_texture(t_cub3d *cub3d, t_ray *ray)
 		if (!right_tx)
 			return (cub3d->info->north);
 	}
-	else if (ray->wall == S)
-	{
-		right_tx = door_or_sprite(cub3d, (int)ray->hit_x, (int)ray->hit_y);
-		if (!right_tx)
-			return (cub3d->info->south);
-	}
 	else if (ray->wall == W)
 	{
 		right_tx = door_or_sprite(cub3d, (int)ray->hit_x - 1, (int)ray->hit_y);
 		if (!right_tx)
 			return (cub3d->info->west);
 	}
-	else if (ray->wall == E)
+	else if (ray->wall == S || ray->wall == E)
 	{
 		right_tx = door_or_sprite(cub3d, (int)ray->hit_x, (int)ray->hit_y);
-		if (!right_tx)
+		if (!right_tx && ray->wall == S)
+			return (cub3d->info->south);
+		else if (!right_tx && ray->wall == E)
 			return (cub3d->info->east);
 	}
 	return (right_tx);
 }
-
-// static mlx_texture_t	*get_texture(t_cub3d *cub3d, t_orientation wall)
-// {
-// 	if (wall == N)
-// 		return (cub3d->info->north);
-// 	if (wall == S)
-// 		return (cub3d->info->south);
-// 	if (wall == W)
-// 		return (cub3d->info->west);
-// 	else
-// 		return (cub3d->info->east);
-// }
 
 /*draws the  column of pixels that corresponds to one cast ray*/
 void	draw_column(t_cub3d *cub3d, double ray_angle, int ray_i)
@@ -92,12 +75,6 @@ void	draw_column(t_cub3d *cub3d, double ray_angle, int ray_i)
 
 	i = 0;
 	get_ray_data(cub3d, &ray_data, ray_angle);
-	if (ray_angle > -ANGLE_TOLERANCE && ray_angle < ANGLE_TOLERANCE)
-	{
-		printf("RAY DATA: \n");
-		printf("true angle: [%f], wall [%d]\n", ray_data.true_angle, ray_data.wall);
-		printf("coords: [%f, %f], distance [%f]\n", ray_data.hit_x, ray_data.hit_y, ray_data.distance);
-	}
 	ray_data.wall_h = \
 	get_wall_pixels(cub3d->raycaster, ray_data.distance, ray_angle);
 	ray_data.texture = get_texture(cub3d, &ray_data);

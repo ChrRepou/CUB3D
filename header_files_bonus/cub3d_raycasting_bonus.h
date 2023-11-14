@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 15:55:53 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/14 17:53:09 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct s_pt
 typedef struct s_ray_utils
 {
 	int			modifier;
-	int			direction;
+	double		increment_x;
+	double		increment_y;
 	t_player	*pt_0;
 }	t_ray_utils;
 
@@ -64,6 +65,7 @@ int				draw_texture_column(t_cub3d *cub3d, t_ray *ray, \
 											int ray_i, int y_start);
 
 /************** raycasting_utils.c **************/
+bool			valid_coords(const t_pt *point, int map_width, int map_height);
 bool			is_wall_hit(char **map, int x, int y);
 t_orientation	get_wall(double angle, char hit_axis);
 double			remove_distortion(double distance, double angle_offcenter);

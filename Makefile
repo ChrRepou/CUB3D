@@ -54,11 +54,13 @@ gnl:
 clean:
 	@rm -f $(OBJS) $(OBJS_BONUS)
 	@${MAKE} clean -C $(LIBMLX)
+	@${MAKE} clean -C $(LIBFT_DIR)
 	@${MAKE} clean -C ./gnl/
 
 fclean: clean
 	@rm -f $(NAME) $(NAME_BONUS)
 	@${MAKE} -C $(LIBMLX) fclean
+	@${MAKE} -C $(LIBFT_DIR) fclean
 	@${MAKE} -C ./gnl/ fclean
 
 re: fclean all
