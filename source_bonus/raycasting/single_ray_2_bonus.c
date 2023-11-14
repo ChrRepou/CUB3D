@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 19:15:47 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/13 19:48:05 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "../../header_files_bonus/cub3d_raycasting_bonus.h"
 
 /*returns the x value of the intersection point 
-while avoiding very large (or error) tangens values*/
+while avoiding very large (or error) tan() values*/
 static double	avoid_vertical(double true_angle, t_player *player, double y)
 {
-	if (fabs(true_angle - M_PI_2) < 0.0001 || \
-		fabs(true_angle - 3.0 * M_PI_2) < 0.0001)
+	if (fabs(true_angle - M_PI_2) < EPSILON || \
+		fabs(true_angle - 3.0 * M_PI_2) < EPSILON)
 		return (player->x_pos);
 	else
 		return (player->x_pos + (player->y_pos - y) / -tan(true_angle));
@@ -30,32 +30,63 @@ static int	get_x_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
 {
 	t_ray_utils	ray;
 
-	ray.modifier = 0;
-	ray.direction = 1;
-	ray.pt_0 = cub3d->player;
-	if (fabs(true_angle) < ANGLE_TOLERANCE || \
-		fabs(true_angle - M_PI) < ANGLE_TOLERANCE)
-		return (FALSE);
-	if (true_angle < M_PI)
-		pt->y = ceil(ray.pt_0->y_pos);
-	else
+	if (fabs(true_angle) >= ANGLE_TOLERANCE && fabs(true_angle - M_PI) >= ANGLE_TOLERANCE)
 	{
-		pt->y = floor(ray.pt_0->y_pos);
-		ray.modifier = -1;
-		ray.direction = -1;
-	}
-	if (fabs(ray.pt_0->y_pos - floor(ray.pt_0->y_pos)) < EPSILON)
-		pt->y = pt->y + ray.direction;
-	pt->x = avoid_vertical(true_angle, ray.pt_0, pt->y);
-	while (pt->x >= 0 && pt->x <= cub3d->width - 1 && pt->y <= cub3d->height)
-	{
-		if (is_wall_hit(cub3d->map, (int)pt->x, (int)pt->y + ray.modifier))
-			return (TRUE);
-		pt->y = pt->y + ray.direction;
+		ray.modifier = 0;
+		ray.direction = 1;
+		ray.pt_0 = cub3d->player;
+		if (true_angle < M_PI)
+			pt->y = ceil(ray.pt_0->y_pos);
+		else
+		{
+			pt->y = floor(ray.pt_0->y_pos);
+			ray.modifier = -1;
+			ray.direction = -1;
+		}
+		if (fabs(ray.pt_0->y_pos - floor(ray.pt_0->y_pos)) < EPSILON)
+			pt->y = pt->y + ray.direction;
 		pt->x = avoid_vertical(true_angle, ray.pt_0, pt->y);
+		while (pt->x >= 0 && pt->x <= cub3d->width - 1 && pt->y <= cub3d->height)
+		{
+			if (is_wall_hit(cub3d->map, (int)pt->x, (int)pt->y + ray.modifier))
+				return (TRUE);
+			pt->y = pt->y + ray.direction;
+			pt->x = avoid_vertical(true_angle, ray.pt_0, pt->y);
+		}	
 	}
 	return (FALSE);
 }
+
+// static int	get_x_intersect(t_cub3d *cub3d, t_pt *pt, double true_angle)
+// {
+// 	t_ray_utils	ray;
+
+// 	ray.modifier = 0;
+// 	ray.direction = 1;
+// 	ray.pt_0 = cub3d->player;
+// 	if (fabs(true_angle) < ANGLE_TOLERANCE || \
+// 		fabs(true_angle - M_PI) < ANGLE_TOLERANCE)
+// 		return (FALSE);
+// 	if (true_angle < M_PI)
+// 		pt->y = ceil(ray.pt_0->y_pos);
+// 	else
+// 	{
+// 		pt->y = floor(ray.pt_0->y_pos);
+// 		ray.modifier = -1;
+// 		ray.direction = -1;
+// 	}
+// 	if (fabs(ray.pt_0->y_pos - floor(ray.pt_0->y_pos)) < EPSILON)
+// 		pt->y = pt->y + ray.direction;
+// 	pt->x = avoid_vertical(true_angle, ray.pt_0, pt->y);
+// 	while (pt->x >= 0 && pt->x <= cub3d->width - 1 && pt->y <= cub3d->height)
+// 	{
+// 		if (is_wall_hit(cub3d->map, (int)pt->x, (int)pt->y + ray.modifier))
+// 			return (TRUE);
+// 		pt->y = pt->y + ray.direction;
+// 		pt->x = avoid_vertical(true_angle, ray.pt_0, pt->y);
+// 	}
+// 	return (FALSE);
+// }
 
 /*finds the point on the map where ray intersects a wall on y axis.
 Returns FALSE when intersection does not happen*/
