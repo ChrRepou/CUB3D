@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/14 19:31:32 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:33:31 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static int	get_wall_pixels(t_caster *cast_data, double dist, double ray_angle)
 	return (wall_h_px);
 }
 
-static mlx_texture_t	*door_or_sprite(t_cub3d *cub3d, int x, int y)
+static mlx_texture_t	*get_door(t_cub3d *cub3d, int x, int y)
 {
 	mlx_texture_t	*tx;
 
 	tx = NULL;
 	if (cub3d->map[y][x] == '2')
-		tx = cub3d->info->door;
-	else if (cub3d->map[y][x] == '3')
-		tx = cub3d->info->sprite;
+		tx = cub3d->info->closed_door;
 	return (tx);
 }
 
@@ -45,19 +43,19 @@ static mlx_texture_t	*get_texture(t_cub3d *cub3d, t_ray *ray)
 	right_tx = NULL;
 	if (ray->wall == N)
 	{
-		right_tx = door_or_sprite(cub3d, (int)ray->hit_x, (int)ray->hit_y - 1);
+		right_tx = get_door(cub3d, (int)ray->hit_x, (int)ray->hit_y - 1);
 		if (!right_tx)
 			return (cub3d->info->north);
 	}
 	else if (ray->wall == W)
 	{
-		right_tx = door_or_sprite(cub3d, (int)ray->hit_x - 1, (int)ray->hit_y);
+		right_tx = get_door(cub3d, (int)ray->hit_x - 1, (int)ray->hit_y);
 		if (!right_tx)
 			return (cub3d->info->west);
 	}
 	else if (ray->wall == S || ray->wall == E)
 	{
-		right_tx = door_or_sprite(cub3d, (int)ray->hit_x, (int)ray->hit_y);
+		right_tx = get_door(cub3d, (int)ray->hit_x, (int)ray->hit_y);
 		if (!right_tx && ray->wall == S)
 			return (cub3d->info->south);
 		else if (!right_tx && ray->wall == E)

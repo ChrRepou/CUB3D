@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:11:32 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 18:23:55 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:17:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ void	free_info(t_cub3d *cub3d_info)
 			mlx_delete_texture(cub3d_info->info->east);
 		if (cub3d_info->info->west)
 			mlx_delete_texture(cub3d_info->info->west);
-		if (cub3d_info->info->door)
-			mlx_delete_texture(cub3d_info->info->door);
-		if (cub3d_info->info->sprite)
-			mlx_delete_texture(cub3d_info->info->sprite);
+		if (cub3d_info->info->closed_door)
+			mlx_delete_texture(cub3d_info->info->closed_door);
 		free(cub3d_info->info);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/13 19:13:51 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:38:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@
 # define TURN_SPEED 0.02
 # define EPSILON 0.000001
 
-# define DOOR "textures/door.png"
-# define SPRITE "textures/dog.png"
+# define DOOR_TX "textures/door.png"
 
 typedef struct cub3d_color
 {
@@ -41,6 +40,14 @@ typedef struct cub3d_color
 	int	blue;
 	int	green;
 }				t_color;
+
+/* 
+from map:
+ '0' = empty space
+ '1' = wall
+ '2' = closed door
+ '3' = open door
+ */
 
 typedef enum cub3d_orientation
 {
@@ -71,8 +78,7 @@ typedef struct cub3d_info
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
 	mlx_texture_t	*west;
-	mlx_texture_t	*door;
-	mlx_texture_t	*sprite;
+	mlx_texture_t	*closed_door;
 	uint32_t		floor_color;
 	uint32_t		celing_color;
 }				t_info;
@@ -163,7 +169,7 @@ int		initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data);
 void	init_struct(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
-void	esc_keyfunc(mlx_key_data_t keydata, void *param);
+void	keyfunc(mlx_key_data_t keydata, void *param);
 void	gen_hooks(t_cub3d	*cub3d_data);
 
 /************** movements.c ***************/

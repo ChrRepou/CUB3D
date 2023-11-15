@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/10 18:16:55 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:14:05 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,10 @@ int	initiate_textures(t_cub3d *cub3d)
 
 int	initiate_bonus_textures(t_info *info)
 {
-	info->door = mlx_load_png(DOOR);
-	if (!info->door)
+	info->closed_door = mlx_load_png(DOOR_TX);
+	if (!info->closed_door)
 	{
-		printf("Error loading the texture: %s\n", DOOR);
-		return (FALSE);
-	}
-	info->sprite = mlx_load_png(SPRITE);
-	if (!info->sprite)
-	{
-		printf("Error loading the texture: %s\n", SPRITE);
+		printf("Error loading the texture: %s\n", DOOR_TX);
 		return (FALSE);
 	}
 	return (TRUE);

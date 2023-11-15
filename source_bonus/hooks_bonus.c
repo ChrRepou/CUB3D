@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 18:34:58 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 16:41:38 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,37 @@
 #include "../header_files_bonus/cub3d_minimap_bonus.h"
 #include "../header_files_bonus/cub3d_raycasting_bonus.h"
 
-void	esc_keyfunc(mlx_key_data_t keydata, void *param)
+static void	change_door_status(t_cub3d *cub3d)
 {
-	mlx_t	*window;
+	double	front_x;
+	double	front_y;
 
-	window = (mlx_t *)param;
+	front_x = cub3d->player->x_pos + cos(cub3d->player->angle) * 1.2;
+	front_y = cub3d->player->y_pos + sin(cub3d->player->angle) * 1.2;
+	if (cub3d->map[(int)front_y][(int)front_x] == '2' && \
+		cub3d->map[(int)cub3d->player->y_pos][(int)cub3d->player->x_pos] != '2')
+	{
+		cub3d->map[(int)front_y][(int)front_x] = '3';
+		draw_raycast_image(cub3d);
+		return ;
+	}
+	if (cub3d->map[(int)front_y][(int)front_x] == '3' && \
+		cub3d->map[(int)cub3d->player->y_pos][(int)cub3d->player->x_pos] != '3')
+	{
+		cub3d->map[(int)front_y][(int)front_x] = '2';
+		draw_raycast_image(cub3d);
+	}
+}
+
+void	keyfunc(mlx_key_data_t keydata, void *param)
+{
+	t_cub3d	*cub3d;
+
+	cub3d = (t_cub3d *)param;
 	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(window);
+		mlx_close_window(cub3d->window);
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+		change_door_status(cub3d);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:51:10 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/07 18:34:25 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:19:47 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	initiate_textures(t_cub3d *cub3d)
 
 int	initiate_mlx(t_cub3d *cub3d_data)
 {
-	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
+	cub3d_data->window = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
 	if (!cub3d_data->window)
 	{
 		printf("Error while creating a window\n");

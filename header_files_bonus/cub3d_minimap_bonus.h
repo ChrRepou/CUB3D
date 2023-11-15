@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:22:29 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:36:27 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define WALL_COLOR 0x333333FF
 # define PLAYER_COLOR 0xFF0000FF
 # define SPACE_COLOR 0xCCCCCCFF
+# define DOOR_COLOR 0x999999FF
 
 typedef struct cub3d_player_info	t_player;
 typedef struct s_cub3d				t_cub3d;

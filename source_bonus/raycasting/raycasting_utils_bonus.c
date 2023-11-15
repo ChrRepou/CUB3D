@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:55:45 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/14 18:28:30 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:19:18 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*returns TRUE when ray has intersected a wall*/
 bool	is_wall_hit(char **map, int x, int y)
 {
-	if (map[y][x] == '1' || map[y][x] == '2' || map[y][x] == '3')
+	if (map[y][x] == '1' || map[y][x] == '2')
 		return (TRUE);
 	return (FALSE);
 }

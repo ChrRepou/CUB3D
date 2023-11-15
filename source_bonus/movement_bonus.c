@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:02:03 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/13 16:15:22 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:22:25 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ bool	is_wall(char **map, double x, double y)
 	if (map[(int)(y + 0.2)][(int)(x + 0.2)] == '1' || \
 		map[(int)(y - 0.2)][(int)(x - 0.2)] == '1' || \
 		map[(int)(y + 0.2)][(int)(x - 0.2)] == '1' || \
-		map[(int)(y - 0.2)][(int)(x + 0.2)] == '1')
+		map[(int)(y - 0.2)][(int)(x + 0.2)] == '1' || \
+		map[(int)(y + 0.2)][(int)(x + 0.2)] == '2' || \
+		map[(int)(y - 0.2)][(int)(x - 0.2)] == '2' || \
+		map[(int)(y + 0.2)][(int)(x - 0.2)] == '2' || \
+		map[(int)(y - 0.2)][(int)(x + 0.2)] == '2')
 		return (TRUE);
 	else
 		return (FALSE);
