@@ -15,7 +15,8 @@ SRCS = ./source/main.c	./source/cub3d.c ./source/initiate.c ./source/hooks.c ./s
 ./source/raycasting/texture.c ./source/raycasting/raycasting_utils.c\
 ./source/draw/draw.c
 
-SRCS_BONUS = ./source_bonus/main_bonus.c ./source_bonus/cub3d_bonus.c ./source_bonus/initiate_bonus.c ./source_bonus/hooks_bonus.c ./source_bonus/movement_bonus.c \
+SRCS_BONUS = ./source_bonus/main_bonus.c ./source_bonus/cub3d_bonus.c ./source_bonus/initiate_bonus.c ./source_bonus/hooks_bonus.c \
+./source_bonus/hoooks_bonus.c ./source_bonus/movement_bonus.c \
 ./source_bonus/error_handling/input_check_bonus.c ./source_bonus/error_handling/file_check_bonus.c ./source_bonus/error_handling/info_check_bonus.c \
 ./source_bonus/error_handling/map_check_bonus.c ./source_bonus/error_handling/map_check2_bonus.c ./source_bonus/error_handling/player_check_bonus.c \
 ./source_bonus/parsing/parse_bonus.c ./source_bonus/parsing/init_bonus.c ./source_bonus/parsing/replace_bonus.c ./source_bonus/parsing/parse_utils_bonus.c \

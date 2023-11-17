@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:00:30 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:22:54 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/17 18:46:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ uint32_t	rgb_to_color(t_color c);
 
 /******************** math.c *********************/
 double		get_angle(t_orientation cub3d_orientation);
+double		reset_circle(double angle);
 
 #endif

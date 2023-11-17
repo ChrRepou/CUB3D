@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/15 15:38:17 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/17 19:47:00 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define HEIGHT 800
 # define TRUE 1
 # define FALSE 0
-# define MOVE_SPEED 0.1
-# define TURN_SPEED 0.02
+# define MOVE_SPEED 0.08
+# define TURN_SPEED 0.04
 # define EPSILON 0.000001
 
 # define DOOR_TX "textures/door.png"
@@ -102,6 +102,7 @@ typedef struct s_cub3d
 	int							index;
 	t_info						*info;
 	struct s_minimap			*minimap;
+	int							prev_mouse_x;
 }				t_cub3d;
 
 typedef struct s_raycaster	t_caster;
@@ -170,7 +171,12 @@ void	init_struct(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	keyfunc(mlx_key_data_t keydata, void *param);
-void	gen_hooks(t_cub3d	*cub3d_data);
+void	gen_hooks(t_cub3d	*cub3d);
+
+/************** hoooks.c ***************/
+void	linear_move_hook(keys_t key, t_cub3d *cub3d);
+void	rotation_hook(keys_t key, t_cub3d *cub3d);
+void	my_mouse_hook(t_cub3d *cub3d);
 
 /************** movements.c ***************/
 void	move_forward(t_player *player, char **map, double x, double y);
