@@ -6,13 +6,15 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/14 18:34:50 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 17:16:59 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header_files/cub3d_raycasting.h"
 #include "../header_files/utils.h"
 
+/* to check for leaks add to main:
+atexit(leaks); */
 void	leaks( void )
 {
 	system("leaks cub3d");
@@ -24,7 +26,7 @@ int	main(int argc, char *argv[])
 	t_cub3d		cub3d_data;
 	t_caster	cast_data;
 
-	// atexit(leaks);
+	atexit(leaks);
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
