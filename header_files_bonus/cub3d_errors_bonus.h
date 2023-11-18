@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_errors_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:04:01 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/08 18:22:21 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 19:50:02 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_cub3d	t_cub3d;
 
 /************** input_check.c **************/
-int		check_extension(const char *filename);
+int		check_extension(const char *filename, char *extension);
 int		check_number_of_arguments(int argc);
 int		check_if_file_exists(int fd, const char *filename);
 int		get_file_descriptor(const char *filename);

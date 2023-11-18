@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 15:39:52 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 19:47:48 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ typedef struct cub3d_info
 	mlx_texture_t	*closed_door;
 	uint32_t		floor_color;
 	uint32_t		celing_color;
+	int				has_celing;
+	int				has_floor;
 }				t_info;
 
 typedef struct cub3d_line

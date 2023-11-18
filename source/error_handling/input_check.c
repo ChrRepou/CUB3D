@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:01:25 by crepou            #+#    #+#             */
-/*   Updated: 2023/09/16 13:28:11 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 19:12:21 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Checks if the filename given as argument has the required extension*/
 
-int	check_extension(const char *filename)
+int	check_extension(const char *filename, char *extension) //change
 {
 	const char	*ext;
 
@@ -24,9 +24,9 @@ int	check_extension(const char *filename)
 		printf("Not a valid filename - the file should have an extension\n");
 		return (0);
 	}
-	if (ft_strncmp(ext, ".cub", 4))
+	if (ft_strncmp(ext, extension, 4))
 	{
-		printf("Not a valid filename - the extension should be: .cub\n");
+		printf("Not a valid filename - the extension is not correct\n");
 		return (0);
 	}
 	return (1);
@@ -76,7 +76,7 @@ int	is_input_valid(int argc, char *argv[])
 	fd = 0;
 	if (check_number_of_arguments(argc))
 	{
-		if (check_extension(argv[1]))
+		if (check_extension(argv[1], ".cub"))
 			fd = get_file_descriptor(argv[1]);
 	}
 	return (fd);

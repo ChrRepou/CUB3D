@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 15:49:16 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 19:27:41 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ void	init_map_info(t_info *map_info)
 	map_info->south = NULL;
 	map_info->east = NULL;
 	map_info->west = NULL;
+	map_info->has_celing = 0;
+	map_info->has_floor = 0;//change
+}
+
+int	extensions_correct(t_cub3d *cub3d_info) //change
+{
+	t_info	*info;
+
+	info = cub3d_info->info;
+	if (!check_extension(info->north_texture, ".png") || \
+		!check_extension(info->east_texture, ".png") || \
+		!check_extension(info->west_texture, ".png") || \
+		!check_extension(info->south_texture, ".png"))
+		return (FALSE);
+	return (TRUE);
 }
 
 /* checks if a file is empty or not and then saves the information and the map*/
@@ -70,7 +85,7 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	if (first_line)
 		return (print("Error! The file shouldn't be empty!"), FALSE);
 	cub3d_info->map = NULL;
-	if (!save_map(cub3d_info, curr_line, fd))
+	if (!save_map(cub3d_info, curr_line, fd) || !extensions_correct(cub3d_info)) //change
 		return (FALSE);
 	return (TRUE);
 }

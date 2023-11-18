@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 14:36:11 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 18:18:38 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct cub3d_info
 	mlx_texture_t	*west;
 	uint32_t		floor_color;
 	uint32_t		celing_color;
+	int				has_celing; //change
+	int				has_floor;
 }				t_info;
 
 typedef struct cub3d_line

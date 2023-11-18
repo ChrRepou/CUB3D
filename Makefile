@@ -2,7 +2,7 @@ NAME = cub3d
 NAME_BONUS = cub3d_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Ofast -g3 #-fsanitize=address
 INCLUDE = -I ./gnl -I ./libft
 
 SRCS = ./source/main.c	./source/cub3d.c ./source/initiate.c ./source/hooks.c ./source/movement.c \
