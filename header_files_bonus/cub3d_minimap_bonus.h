@@ -6,15 +6,15 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:51 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/15 15:36:27 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 18:16:39 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_MINIMAP_BONUS_H
 # define CUB3D_MINIMAP_BONUS_H
 
-# define MINI_H 200
-# define MINI_W 300
+# define MINI_H 350
+# define MINI_W 350
 # define WALL_COLOR 0x333333FF
 # define PLAYER_COLOR 0xFF0000FF
 # define SPACE_COLOR 0xCCCCCCFF

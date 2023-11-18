@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 17:16:59 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 18:20:17 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 atexit(leaks); */
 void	leaks( void )
 {
-	system("leaks cub3d");
+	system("leaks cub3D");
 }
 
 int	main(int argc, char *argv[])

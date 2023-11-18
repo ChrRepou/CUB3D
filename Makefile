@@ -1,5 +1,5 @@
-NAME = cub3d
-NAME_BONUS = cub3d_bonus
+NAME = cub3D
+NAME_BONUS = cub3D_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ofast -g3 #-fsanitize=address
