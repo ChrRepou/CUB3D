@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 16:47:52 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 16:51:55 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,3 @@ int	main(int argc, char *argv[])
 	garbage_collector(&cub3d_data);
 	return (0);
 }
-
-//add door and sprite to the texture pointers and load them in the beginning 
-//- when getting texture check if N or E wall is door/sprite, if S-or W wall 
-//is door/sprite
-// for partner check that door is between two walls 
