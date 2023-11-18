@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 18:24:57 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/18 14:27:22 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 15:37:31 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ bool			valid_coords(const t_pt *point, int map_width, int map_height);
 bool			is_wall_hit(char **map, int x, int y);
 t_orientation	get_wall(double angle, char hit_axis);
 double			remove_distortion(double distance, double angle_offcenter);
-// double			get_true_angle(double player_angle, double ray_angle);
+double			get_true_angle(double player_angle, double ray_angle);
 
 #endif

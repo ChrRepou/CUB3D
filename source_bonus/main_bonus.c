@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:29:46 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/17 19:29:41 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 18:19:51 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "../header_files_bonus/cub3d_minimap_bonus.h"
 #include "../header_files_bonus/utils_bonus.h"
 
+/*to check for leaks add to main:
+atexit(leaks); */
 void	leaks( void )
 {
-	system("leaks cub3d_bonus");
+	system("leaks cub3D_bonus");
 }
 
 int	main(int argc, char *argv[])
@@ -26,7 +28,7 @@ int	main(int argc, char *argv[])
 	t_caster	cast_data;
 	t_minimap	minimap;
 
-	// atexit(leaks);
+	atexit(leaks);
 	fd = is_input_valid(argc, argv);
 	if (!fd)
 		return (-1);
@@ -43,8 +45,3 @@ int	main(int argc, char *argv[])
 	garbage_collector(&cub3d_data);
 	return (0);
 }
-
-//add door and sprite to the texture pointers and load them in the beginning 
-//- when getting texture check if N or E wall is door/sprite, if S-or W wall 
-//is door/sprite
-// for partner check that door is between two walls 

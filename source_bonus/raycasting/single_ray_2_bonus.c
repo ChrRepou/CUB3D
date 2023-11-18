@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:20:42 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/18 14:30:10 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 17:14:01 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	get_ray_data(t_cub3d *cub3d, t_ray *ray, double ray_angle)
 
 	x_dist = 0;
 	y_dist = 0;
-	ray->true_angle = reset_circle(cub3d->player->angle + ray_angle);
+	ray->true_angle = get_true_angle(cub3d->player->angle, ray_angle);
 	if (!get_x_intersect(cub3d, &x_wall, ray->true_angle))
 	{
 		get_y_intersect(cub3d, &y_wall, ray->true_angle);

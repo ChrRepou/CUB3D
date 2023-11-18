@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:06:39 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/18 14:31:08 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 15:48:48 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ double	get_angle(t_orientation cub3d_orientation)
 /*protects from angle being ever <0 or >2 * M_PI*/
 double	reset_circle(double angle)
 {
-	if (angle >= 2 * M_PI)
+	if (angle > 2 * M_PI)
 		return (angle - 2 * M_PI);
-	if (angle <= 0)
+	if (angle < 0)
 		return (angle + 2 * M_PI);
 	return (angle);
 }

@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 19:42:21 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/18 14:47:55 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 16:45:35 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,20 @@ void	my_mouse_hook(t_cub3d *cub3d)
 	int	temp;
 
 	mlx_get_mouse_pos(cub3d->window, &mouse_x, &temp);
-	temp = mouse_x - cub3d->prev_mouse_x;
-	if (temp == 0)
+	if (mouse_x - cub3d->prev_mouse_x == 0 || temp < 0 \
+		|| temp > HEIGHT || mouse_x < 0 || mouse_x > WIDTH)
+	{
+		cub3d->prev_mouse_x = mouse_x;
 		return ;
+	}
+	temp = mouse_x - cub3d->prev_mouse_x;
 	if (temp < 0)
 		cub3d->player->angle = \
 			reset_circle(cub3d->player->angle - TURN_SPEED * abs(temp) / 10);
 	else if (temp > 0)
 		cub3d->player->angle = \
 			reset_circle(cub3d->player->angle + TURN_SPEED * abs(temp) / 10);
-	if (mouse_x > WIDTH || mouse_x < 0)
-	{
-		mlx_set_mouse_pos(cub3d->window, WIDTH / 2, HEIGHT / 2);
-		cub3d->prev_mouse_x = WIDTH / 2;
-	}
-	else
-		cub3d->prev_mouse_x = mouse_x;
+	cub3d->prev_mouse_x = mouse_x;
 	if (cub3d->player->mini_player)
 		draw_player(cub3d->player->mini_player, cub3d->player->angle);
 }

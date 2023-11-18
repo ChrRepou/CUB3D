@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:24:29 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/17 19:44:14 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 16:27:16 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	init_struct(t_cub3d *cub3d_data)
 
 static void	initiate_mouse(t_cub3d *cub3d_data)
 {
+	int	temp;
+
 	mlx_set_cursor_mode(cub3d_data->window, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(cub3d_data->window, WIDTH / 2, HEIGHT / 2);
-	cub3d_data->prev_mouse_x = WIDTH / 2;
+	mlx_get_mouse_pos(cub3d_data->window, &cub3d_data->prev_mouse_x, &temp);
 }
 
 int	initiate_cub3d(t_cub3d *cub3d_data, t_caster *cast_data)
