@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:53:49 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/08 18:37:38 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 21:00:14 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	get_tile_size(map_w, map_h)
 
 static void	minimap_not_displayed(t_minimap *minimap)
 {
-	printf("Thats a big map! Minimap will not be displayed.");
+	printf("Thats a big map! Minimap will not be displayed.\n");
 	minimap->img_mini = NULL;
 	minimap->img_player = NULL;
 	minimap->tile_h = 0;
