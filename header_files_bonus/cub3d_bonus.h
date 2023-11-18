@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/17 19:47:00 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 15:39:52 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int		check_top_wall(t_cub3d *cub3d_info);
 int		check_column(t_cub3d *cub3d_info, int x);
 int		check_column_reverse(t_cub3d *cub3d_info, int x);
 int		check_bottom_wall(t_cub3d *cub3d_info);
+int		check_door(t_cub3d *cub3d_info);
 
 /************** player_check.c ***************/
 int		has_one_player(t_cub3d *cub3d_info);
