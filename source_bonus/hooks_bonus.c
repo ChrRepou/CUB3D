@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:07:50 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/17 19:41:20 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 14:18:59 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	gen_hooks(t_cub3d *cub3d)
 		rotation_hook(MLX_KEY_RIGHT, cub3d);
 	my_mouse_hook(cub3d);
 	if (cub3d->player->mini_player)
+	{
 		draw_player(cub3d->player->mini_player, cub3d->player->angle);
+		move_miniplayer(cub3d->player);
+	}
 	draw_raycast_image(cub3d);
 	return ;
 }

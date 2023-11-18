@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 19:42:21 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/17 19:44:35 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 14:16:07 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void	my_mouse_hook(t_cub3d *cub3d)
 	}
 	else
 		cub3d->prev_mouse_x = mouse_x;
-
 }
