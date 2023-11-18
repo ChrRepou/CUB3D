@@ -6,7 +6,7 @@
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/17 15:58:46 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 14:36:11 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	init_struct(t_cub3d *cub3d_data);
 
 /************** hooks.c ***************/
 void	esc_keyfunc(mlx_key_data_t keydata, void *param);
-void	gen_hooks(t_cub3d	*cub3d_data);
+void	gen_hooks(t_cub3d	*cub3d);
 
 /************** movements.c ***************/
 void	move_forward(t_player *player, char **map, double x, double y);

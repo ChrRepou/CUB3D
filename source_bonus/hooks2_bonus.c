@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hoooks_bonus.c                                     :+:      :+:    :+:   */
+/*   hooks2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 19:42:21 by tmarts            #+#    #+#             */
-/*   Updated: 2023/11/18 14:16:07 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 14:47:55 by tmarts           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	linear_move_hook(keys_t key, t_cub3d *cub3d)
 	if (key == MLX_KEY_S)
 		move_backward(cub3d->player, cub3d->map, \
 		cub3d->player->x_pos, cub3d->player->y_pos);
+	if (cub3d->player->mini_player)
+		move_miniplayer(cub3d->player);
 }
 
 void	rotation_hook(keys_t key, t_cub3d *cub3d)
@@ -36,6 +38,8 @@ void	rotation_hook(keys_t key, t_cub3d *cub3d)
 		cub3d->player->angle = reset_circle(cub3d->player->angle - TURN_SPEED);
 	if (key == MLX_KEY_RIGHT)
 		cub3d->player->angle = reset_circle(cub3d->player->angle + TURN_SPEED);
+	if (cub3d->player->mini_player)
+		draw_player(cub3d->player->mini_player, cub3d->player->angle);
 }
 
 void	my_mouse_hook(t_cub3d *cub3d)
@@ -60,4 +64,6 @@ void	my_mouse_hook(t_cub3d *cub3d)
 	}
 	else
 		cub3d->prev_mouse_x = mouse_x;
+	if (cub3d->player->mini_player)
+		draw_player(cub3d->player->mini_player, cub3d->player->angle);
 }
