@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:55:29 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 17:46:26 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 16:01:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,37 @@ int	check_bottom_wall(t_cub3d *cub3d_info)
 			if (!check_column_reverse(cub3d_info, x))
 				return (FALSE);
 		x++;
+	}
+	return (TRUE);
+}
+
+/*
+checks if a door is valid where it is in the map
+*/
+int	check_door(t_cub3d *cub3d_info)
+{
+	int		x;
+	char	**map;
+	int		y;
+
+	y = -1;
+	map = cub3d_info->map;
+	while (++y < cub3d_info->width)
+	{
+		x = -1;
+		while (++x < cub3d_info->height)
+		{
+			if (map[x][y] == '2' || map[x][y] == '3')
+			{
+				if ((map[x - 1][y] == '1' && map[x + 1][y] == '1' && \
+					map[x][y - 1] == '0' && map[x][y + 1] == '0') || \
+					(map[x - 1][y] == '0' && map[x + 1][y] == '0' && \
+					map[x][y - 1] == '1' && map[x][y + 1] == '1'))
+					continue ;
+				else
+					return (FALSE);
+			}
+		}
 	}
 	return (TRUE);
 }
