@@ -6,23 +6,11 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:18:03 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 19:27:41 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:19:26 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header_files/cub3d_errors.h"
-
-/*Checks if the line is an information line*/
-
-int	is_info(char *line)
-{
-	if (!ft_strncmp(line, "\n", 1) || !ft_strncmp(line, "NO ", 3) || \
-		!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "WE ", 3) || \
-		!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "F ", 2) || \
-		!ft_strncmp(line, "C ", 2))
-		return (TRUE);
-	return (FALSE);
-}
 /*checks if a file is empty before parsing*/
 
 int	is_empty_file(char **line, int fd)
@@ -45,10 +33,10 @@ void	init_map_info(t_info *map_info)
 	map_info->east = NULL;
 	map_info->west = NULL;
 	map_info->has_celing = 0;
-	map_info->has_floor = 0;//change
+	map_info->has_floor = 0;
 }
 
-int	extensions_correct(t_cub3d *cub3d_info) //change
+int	extensions_correct(t_cub3d *cub3d_info)
 {
 	t_info	*info;
 
@@ -85,7 +73,7 @@ int	read_file(int fd, t_cub3d *cub3d_info)
 	if (first_line)
 		return (print("Error! The file shouldn't be empty!"), FALSE);
 	cub3d_info->map = NULL;
-	if (!save_map(cub3d_info, curr_line, fd) || !extensions_correct(cub3d_info)) //change
+	if (!save_map(cub3d_info, curr_line, fd) || !extensions_correct(cub3d_info))
 		return (FALSE);
 	return (TRUE);
 }

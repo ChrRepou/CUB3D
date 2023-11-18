@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:01:25 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 19:12:21 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:15:45 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Checks if the filename given as argument has the required extension*/
 
-int	check_extension(const char *filename, char *extension) //change
+int	check_extension(const char *filename, char *extension)
 {
 	const char	*ext;
 

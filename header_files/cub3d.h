@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:25:51 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 18:18:38 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:49:39 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ int		save_line(char *line, t_cub3d **cub3d_info, int index);
 int		files_exist(t_info *map_info);
 int		read_file(int fd, t_cub3d *cub3d_info);
 
+/********************** info_check.c *********************/
+int		has_all_info(t_cub3d *cub3d_info);
+int		valid_info(char *line);
+void	save_textures(t_info *map_info, char *line);
+
 /********************** memory.c *********************/
 void	free_map_lines(t_line *line);
 void	garbage_collector(t_cub3d *cub3d_info);
@@ -116,6 +121,7 @@ void	free_info(t_cub3d *cub3d_info);
 /********************** string_manipulation.c *********************/
 int		is_orientation(char c, t_cub3d *cub3d_info, int x, int y);
 void	print_map(t_cub3d *cub3d_info);
+int		has_duplicates(t_info *map_info, char *line);
 
 /********************** init.c *********************/
 int		init_list(t_line **tail, t_line **head, char *curr_line);

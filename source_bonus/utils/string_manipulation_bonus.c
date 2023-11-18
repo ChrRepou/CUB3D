@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_manipulation_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmarts <tmarts@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:58:23 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/10 17:44:46 by tmarts           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:58:36 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	is_orientation(char c, t_cub3d *cub3d_info, int x, int y)
 {
 	if (c != 'N' && c != 'S' && c != 'E' && c != 'W')
 		return (FALSE);
+	if (cub3d_info->player != NULL)
+		return (FALSE);
 	cub3d_info->player = (t_player *)malloc(sizeof(t_player));
 	if (!cub3d_info->player)
 		return (print("Error!\n Player allocation problem\n"), FALSE);
@@ -97,4 +99,21 @@ void	free_after_split(char **array)
 		i++;
 	}
 	free(array);
+}
+
+int	has_duplicates(t_info *map_info, char *line)
+{
+	if (!ft_strncmp(line, "NO ", 3) && map_info->north_texture != NULL)
+		return (TRUE);
+	if (!ft_strncmp(line, "SO ", 3) && map_info->south_texture != NULL)
+		return (TRUE);
+	if (!ft_strncmp(line, "EA ", 3) && map_info->east_texture != NULL)
+		return (TRUE);
+	if (!ft_strncmp(line, "WE ", 3) && map_info->west_texture != NULL)
+		return (TRUE);
+	if (!ft_strncmp(line, "F ", 2) && map_info->has_floor)
+		return (TRUE);
+	if (!ft_strncmp(line, "C ", 2) && map_info->has_celing)
+		return (TRUE);
+	return (FALSE);
 }

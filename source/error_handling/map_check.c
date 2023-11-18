@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:04:31 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 18:59:50 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:18:14 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,12 @@ int	check_right_wall(t_cub3d *cub3d_info)
 	}
 	return (TRUE);
 }
-//change
-int	has_all_info(t_cub3d *cub3d_info)
-{
-	t_info	*info;
-
-	info = cub3d_info->info;
-	if (!info->east_texture || !info->north_texture || !info->south_texture \
-		|| !info->west_texture || info->has_celing == 0 || info->has_floor == 0)
-		return (FALSE);
-	return (TRUE);
-}
 
 int	map_is_valid(t_cub3d *cub3d_info)
 {
 	if (!check_left_wall(cub3d_info) || !check_right_wall(cub3d_info) \
-		|| !check_top_wall(cub3d_info) || !check_bottom_wall(cub3d_info) || !has_all_info(cub3d_info))
+		|| !check_top_wall(cub3d_info) || !check_bottom_wall(cub3d_info) \
+		|| !has_all_info(cub3d_info))
 		return (print("Error!\nThe map is not valid!\n"), FALSE);
 	if (!has_one_player(cub3d_info))
 		return (FALSE);

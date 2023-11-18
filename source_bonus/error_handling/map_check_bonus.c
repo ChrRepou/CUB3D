@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:04:31 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 20:09:58 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:53:19 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,6 @@ int	check_right_wall(t_cub3d *cub3d_info)
 				return (FALSE);
 		y++;
 	}
-	return (TRUE);
-}
-
-int	has_all_info(t_cub3d *cub3d_info)
-{
-	t_info	*info;
-
-	info = cub3d_info->info;
-	if (!info->east_texture || !info->north_texture || !info->south_texture \
-		|| !info->west_texture || info->has_celing == 0 || info->has_floor == 0)
-		return (FALSE);
 	return (TRUE);
 }
 

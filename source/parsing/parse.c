@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:16:45 by crepou            #+#    #+#             */
-/*   Updated: 2023/11/18 20:05:26 by crepou           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:49:28 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,15 @@ int	get_color(char *line, t_color *color, uint32_t *pixel_color)
 	return (TRUE);
 }
 
-int	has_duplicates(t_info *map_info, char *line) //CHANGE
-{
-	if (!ft_strncmp(line, "NO ", 3) && map_info->north_texture != NULL)
-		return (TRUE);
-	if (!ft_strncmp(line, "SO ", 3) && map_info->south_texture != NULL)
-		return (TRUE);
-	if (!ft_strncmp(line, "EA ", 3) && map_info->east_texture != NULL)
-		return (TRUE);
-	if (!ft_strncmp(line, "WE ", 3) && map_info->west_texture != NULL)
-		return (TRUE);
-	if (!ft_strncmp(line, "F ", 2) && map_info->has_floor)
-		return (TRUE);
-	if (!ft_strncmp(line, "C ", 2) && map_info->has_celing)
-		return (TRUE);
-	return (FALSE);
-}
-
 /* It process and saves the info of the map*/
 int	save_information(t_info *map_info, char *line)
 {
-	if (has_duplicates(map_info, line)) //CHANGE
+	if (has_duplicates(map_info, line))
 		return (print("This map has duplicate values!\n"), FALSE);
 	if (!ft_strncmp(line, "\n", 1))
 		return (free(line), TRUE);
-	if (!ft_strncmp(line, "NO ", 3))
-		map_info->north_texture = get_info(line, 3, -1);
-	else if (!ft_strncmp(line, "SO ", 3))
-		map_info->south_texture = get_info(line, 3, -1);
-	else if (!ft_strncmp(line, "EA ", 3))
-		map_info->east_texture = get_info(line, 3, -1);
-	else if (!ft_strncmp(line, "WE ", 3))
-		map_info->west_texture = get_info(line, 3, -1);
-	else if (!ft_strncmp(line, "F ", 2))
+	save_textures(map_info, line);
+	if (!ft_strncmp(line, "F ", 2))
 	{
 		if (!get_color(get_info(line, 2, -1), \
 			&map_info->floor_rgb, &map_info->floor_color))
@@ -79,7 +55,7 @@ int	save_information(t_info *map_info, char *line)
 		if (!get_color(get_info(line, 2, -1), \
 			&map_info->ceiling_rgb, &map_info->celing_color))
 			return (print("This is not a correct color!\n"), FALSE);
-		map_info->has_celing = 1; //change
+		map_info->has_celing = 1;
 	}
 	if (files_exist(map_info))
 		return (free(line), TRUE);
@@ -137,25 +113,6 @@ int	create_map_array(t_line *head, t_cub3d *cub3d_info)
 	return (TRUE);
 }
 
-int	valid_info(char *line) //change
-{
-	int	i;
-
-	i = 0;
-	if (line[0] == '\n')
-		return (FALSE);
-	while (line[i])
-	{
-		if (line[i] != '1' && line[i] != '0' && line[i] != 32 \
-			&& line[i] != '\n' && line[i] != 'S' && \
-			line[i] != 'N' && line[i] != 'E' \
-			&& line[i] != 'W')
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
 int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 {
 	t_line	*map_lines;
@@ -169,20 +126,18 @@ int	save_map(t_cub3d *cub3d_info, char *curr_line, int fd)
 	cub3d_info->height = 1;
 	while (!is_empty_file(&curr_line, fd))
 	{
-		if (curr_line)
 		map_lines = (t_line *)malloc(sizeof(t_line));
 		if (!map_lines)
-			return (free_map_lines(head), printf("Error!\n"), FALSE);
+			return (free_map_lines(head), print("Error!\n"), FALSE);
 		create_map_line(map_lines, curr_line);
 		tail->next = map_lines;
 		tail = tail->next;
 		cub3d_info->height++;
 		if (!valid_info(curr_line))
-			return (free_map_lines(head), printf("Error!The map is not valid!\n"), FALSE); //change
+			return (free_map_lines(head), \
+			print("Error!The map is not valid!\n"), FALSE);
 	}
-	if (!create_map_array(head, cub3d_info))
-		return (free_map_lines(head), FALSE);
-	if (!map_is_valid(cub3d_info))
+	if (!create_map_array(head, cub3d_info) || !map_is_valid(cub3d_info))
 		return (free_map_lines(head), FALSE);
 	return (free_map_lines(head), TRUE);
 }
